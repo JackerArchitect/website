@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jacker Architect | Independent System Architect</title>
+<link rel="icon" type="image/webp" href="favicon.webp">
+<link rel="apple-touch-icon" href="favicon.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="hero-bg.webp" as="image" type="image/webp">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#090909;
+  --surface:#0e0e0e;
+  --border:#1c1c1c;
+  --border-h:#2c2c2c;
+  --white:#f5f5f5;
+  --gray-1:#b8b8b8;
+  --gray-2:#8a8a8a;
+  --gray-3:#5a5a5a;
+  --green:#4ade80;
+  --blue:#60a5fa;
+  --maxw:1140px;
+  --ease:cubic-bezier(.25,.46,.45,.94);
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--white);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  -webkit-font-smoothing:antialiased;line-height:1.65;overflow-x:hidden;
+}
+body.locked{overflow:hidden}
+::selection{background:var(--white);color:var(--bg)}
+::-webkit-scrollbar{width:2px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border-h)}
+.mono{font-family:'IBM Plex Mono',monospace}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+@media(min-width:768px){.wrap{padding:0 48px}}
+
+/* ══ HEADER  */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(9,9,9,.88);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid transparent;
+  transition:border-color .5s var(--ease);
+}
+header.scrolled{border-bottom-color:var(--border)}
+.hdr-in{
+  max-width:var(--maxw);margin:0 auto;padding:22px 24px;
+  display:flex;justify-content:space-between;align-items:center;
+  transition:padding .4s var(--ease);
+}
+header.scrolled .hdr-in{padding-top:15px;padding-bottom:15px}
+@media(min-width:768px){.hdr-in{padding-left:48px;padding-right:48px}}
+.logo{
+  font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--white);text-decoration:none;display:flex;align-items:center;gap:10px;z-index:210;
+}
+.logo-sq{width:6px;height:6px;background:var(--white);flex-shrink:0}
+.nav-d{display:none;gap:40px}
+@media(min-width:768px){.nav-d{display:flex}}
+.nav-d a{
+  font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--gray-2);text-decoration:none;transition:color .3s;
+}
+.nav-d a:hover{color:var(--white)}
+
+.burger{
+  display:flex;flex-direction:column;justify-content:center;
+  width:28px;height:28px;gap:5px;cursor:pointer;
+  background:none;border:none;padding:0;z-index:210;
+}
+@media(min-width:768px){.burger{display:none}}
+.burger i{display:block;width:18px;height:1px;background:var(--white);transition:all .3s var(--ease);transform-origin:center}
+.burger.on i:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.on i:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.on i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+.mob{
+  position:fixed;inset:0;z-index:199;background:var(--bg);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s var(--ease);
+}
+.mob.open{opacity:1;visibility:visible}
+.mob nav{display:flex;flex-direction:column;align-items:center}
+.mob nav a{
+  font-size:13px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--gray-2);text-decoration:none;padding:20px 32px;
+  opacity:0;transform:translateY(10px);
+  transition:opacity .3s ease,transform .3s ease,color .25s;
+}
+.mob.open nav a{opacity:1;transform:none}
+.mob.open nav a:nth-child(1){transition-delay:.05s}
+.mob.open nav a:nth-child(2){transition-delay:.1s}
+.mob.open nav a:nth-child(3){transition-delay:.15s}
+.mob.open nav a:nth-child(4){transition-delay:.2s}
+.mob.open nav a:nth-child(5){transition-delay:.25s}
+.mob.open nav a:nth-child(6){transition-delay:.3s}
+.mob nav a:hover{color:var(--white)}
+.mob-ft{position:absolute;bottom:36px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-3);opacity:0;transition:opacity .3s ease .35s}
+.mob.open .mob-ft{opacity:1}
+
+/* ══ SECTIONS ═ */
+section{padding:140px 0;border-bottom:1px solid var(--border)}
+@media(max-width:767px){section{padding:96px 0}}
+.sh{
+  display:flex;justify-content:space-between;align-items:baseline;
+  margin-bottom:64px;padding-bottom:20px;border-bottom:1px solid var(--border);
+}
+.sh-n{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gray-1)}
+.sh-t{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-3)}
+
+/* ══ HERO ═ */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding-top:80px;border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:linear-gradient(to bottom,rgba(9,9,9,.55),rgba(9,9,9,.9)),url('hero-bg.webp') center/cover no-repeat;
+}
+.hero .wrap{position:relative;z-index:1}
+.hero-g{display:grid;grid-template-columns:1fr;gap:56px;align-items:end;padding-bottom:80px}
+@media(min-width:1024px){.hero-g{grid-template-columns:7fr 5fr;gap:80px;padding-bottom:120px}}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gray-1);margin-bottom:40px;
+}
+.hero-dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.hero h1{
+  font-size:clamp(52px,11vw,92px);font-weight:800;
+  letter-spacing:-.05em;line-height:.87;color:var(--white);
+}
+.hero-r{padding-bottom:6px}
+.hero-lines{margin-bottom:40px}
+.hero-ln{
+  font-size:14px;color:var(--gray-1);line-height:1.6;
+  padding:7px 0;border-bottom:1px solid var(--border);
+}
+.hero-ln:last-child{border-bottom:none}
+.hero-ln strong{color:var(--white);font-weight:500}
+.hero-btns{display:flex;flex-direction:column;gap:10px}
+.btn-w{
+  display:block;text-align:center;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:500;padding:14px 24px;
+  background:var(--white);color:var(--bg);text-decoration:none;transition:opacity .25s;
+}
+.btn-w:hover{opacity:.82}
+.btn-o{
+  display:block;text-align:center;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:400;padding:14px 24px;
+  border:1px solid var(--border-h);color:var(--gray-1);text-decoration:none;
+  transition:border-color .3s,color .3s;
+}
+.btn-o:hover{border-color:var(--gray-1);color:var(--white)}
+
+/* ══ ABOUT ═ */
+.ab-g{display:grid;grid-template-columns:1fr;gap:56px;align-items:start}
+@media(min-width:1024px){.ab-g{grid-template-columns:1fr 1fr;gap:80px}}
+.ab-q{
+  font-size:clamp(20px,2.8vw,28px);font-weight:600;line-height:1.35;
+  letter-spacing:-.02em;margin-bottom:36px;padding-left:20px;
+  border-left:1px solid var(--gray-3);
+}
+.ab-q em{font-style:normal;color:var(--gray-1);font-weight:300}
+.ab-p{font-size:14px;color:var(--gray-1);line-height:1.9;max-width:480px;margin-bottom:36px}
+.ab-pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gray-1);border:1px solid var(--border-h);padding:5px 12px;
+}
+.ab-vis{
+  width:100%;aspect-ratio:4/5;border:1px solid var(--border);
+  overflow:hidden;position:relative;background:var(--surface);
+}
+.ab-vis img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08);opacity:.82}
+.ab-vis-cap{
+  position:absolute;bottom:14px;left:14px;
+  font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-3);
+}
+
+/* ══ PRINCIPLES & MECHANICS GRID ═ */
+.pr-g{
+  display:grid;grid-template-columns:1fr;gap:1px;
+  background:var(--border);border:1px solid var(--border);
+}
+@media(min-width:640px){.pr-g{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.pr-g{grid-template-columns:repeat(4,1fr)}}
+.pr-c{background:var(--bg);padding:44px 32px;transition:background .3s}
+.pr-c:hover{background:var(--surface)}
+.eng-ic{width:34px;height:34px;color:var(--gray-3);margin-bottom:22px;display:block}
+.pr-n{font-size:10px;letter-spacing:.22em;color:var(--gray-3);margin-bottom:28px}
+.pr-c h3{font-size:16px;font-weight:600;letter-spacing:-.01em;margin-bottom:14px}
+.pr-c p{font-size:13px;color:var(--gray-1);line-height:1.8}
+
+/* ══ FOCUS ═ */
+.fc-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border)}
+.fc-item{
+  background:var(--bg);padding:36px 32px;
+  display:grid;grid-template-columns:1fr;gap:14px;transition:background .3s;
+}
+@media(min-width:768px){.fc-item{grid-template-columns:220px 1fr auto;align-items:start;gap:32px}}
+.fc-item:hover{background:var(--surface)}
+.fc-name{font-size:18px;font-weight:700;letter-spacing:-.02em}
+.fc-desc{font-size:13px;color:var(--gray-1);line-height:1.8}
+.fc-badge{
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gray-3);white-space:nowrap;padding-top:3px;
+}
+.fc-badge.research{color:var(--blue)}
+
+/* ══ MANIFESTO & SPECS TEXT ═ */
+.mf{max-width:680px}
+.mf-id{
+  font-size:10px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--gray-3);margin-bottom:48px;padding-bottom:20px;border-bottom:1px solid var(--border);
+}
+.mf-disc{
+  font-size:12px;color:var(--gray-2);line-height:1.75;
+  border-left:1px solid var(--border-h);padding-left:16px;
+  margin-bottom:48px;font-style:italic;
+}
+.mf-disc strong{color:var(--gray-1);font-style:normal}
+.mf h2{font-size:clamp(22px,3.5vw,30px);font-weight:700;letter-spacing:-.025em;line-height:1.2;margin-bottom:28px}
+.mf h3{font-size:16px;font-weight:600;margin-top:48px;margin-bottom:18px}
+.mf p{font-size:15px;color:var(--gray-1);line-height:1.95;margin-bottom:20px}
+.mf p strong{color:var(--white);font-weight:500}
+.mf ul{list-style:none;padding:0;margin:0 0 24px}
+.mf li{
+  font-size:14px;color:var(--gray-1);line-height:1.8;
+  padding:10px 0 10px 20px;position:relative;border-bottom:1px solid var(--border);
+}
+.mf li:last-child{border-bottom:none}
+.mf li::before{content:'';position:absolute;left:0;top:18px;width:6px;height:1px;background:var(--gray-3)}
+.mf li strong{color:var(--white);font-weight:500}
+.mf-hl{border:1px solid var(--border);padding:28px;margin-top:48px}
+.mf-hl p{font-size:14px;color:var(--gray-1);line-height:1.85;margin:0}
+.mf-hl strong{color:var(--white)}
+
+/* ══ ARCHITECTURE PILLARS ═ */
+.specs-wrap{max-width:100%;}
+.specs-wrap h3{font-size:16px;font-weight:600;margin-top:48px;margin-bottom:18px;color:var(--white)}
+.specs-wrap p{font-size:14px;color:var(--gray-1);line-height:1.9;margin-bottom:20px}
+.specs-wrap p strong{color:var(--white);font-weight:500}
+
+/* ══ CUSTOM LIST ═ */
+.list-custom{list-style:none;padding:0;margin:0 0 28px}
+.list-custom li{
+  font-size:14px;color:var(--gray-1);line-height:1.8;
+  padding:10px 0 10px 20px;position:relative;border-bottom:1px solid var(--border);
+}
+.list-custom li:last-child{border-bottom:none}
+.list-custom li::before{content:'';position:absolute;left:0;top:18px;width:6px;height:1px;background:var(--gray-3)}
+.list-custom li strong{color:var(--white);font-weight:500}
+
+/* ══ PATRONAGE ═ */
+.sp-g{display:grid;grid-template-columns:1fr;gap:56px;align-items:start}
+@media(min-width:1024px){.sp-g{grid-template-columns:1fr 1fr;gap:80px}}
+.sp-l h2{font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:-.025em;line-height:1.2;margin-bottom:24px}
+.sp-l p{font-size:14px;color:var(--gray-1);line-height:1.9;margin-bottom:16px}
+.sp-l p strong{color:var(--white);font-weight:500}
+.sp-note{
+  font-size:12px;color:var(--blue);line-height:1.7;
+  border:1px solid rgba(96,165,250,.22);padding:14px 18px;margin-top:8px;
+}
+.sp-note a{color:var(--blue);text-decoration:none}
+.sp-note a:hover{text-decoration:underline}
+.sp-net{display:flex;gap:28px;margin-bottom:24px;flex-wrap:wrap}
+.sp-net span{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-1)}
+.sp-net strong{color:var(--green);font-weight:500}
+.sp-addr{background:var(--surface);border:1px solid var(--border);padding:20px;margin-bottom:20px}
+.sp-addr-lb{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-3);margin-bottom:8px;display:block}
+.sp-addr-v{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--white);word-break:break-all;user-select:all}
+.sp-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.sp-b{
+  font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  padding:9px 18px;border:1px solid var(--border-h);color:var(--gray-1);
+  text-decoration:none;cursor:pointer;background:none;
+  font-family:'IBM Plex Mono',monospace;transition:border-color .25s,color .25s;
+}
+.sp-b:hover{border-color:var(--gray-1);color:var(--white)}
+.sp-b.fill{background:var(--white);color:var(--bg);border-color:var(--white)}
+.sp-b.fill:hover{opacity:.82;background:var(--white);color:var(--bg)}
+.sp-b.chain{border-color:rgba(96,165,250,.3);color:var(--blue)}
+.sp-b.chain:hover{border-color:var(--blue);background:rgba(96,165,250,.04)}
+.sp-trust{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.sp-ti{background:var(--bg);padding:20px 14px;text-align:center}
+.sp-ti .tl{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-3);margin-bottom:6px}
+.sp-ti .tv{font-size:11px;color:var(--gray-1)}
+.pat-bar{height:4px;background:var(--border);position:relative;overflow:hidden;margin-top:14px}
+.pat-fill{position:absolute;inset:0;width:0%;background:var(--green);transition:width 1.2s var(--ease)}
+
+/* ══ CONNECT  */
+.cn-g{display:grid;grid-template-columns:1fr;gap:56px;align-items:start}
+@media(min-width:1024px){.cn-g{grid-template-columns:1fr 1fr;gap:80px}}
+.cn-hl{font-size:clamp(26px,3.8vw,40px);font-weight:700;letter-spacing:-.03em;line-height:1.12;margin-bottom:28px}
+.cn-bd{font-size:14px;color:var(--gray-1);line-height:1.9;margin-bottom:28px}
+.cn-bd strong{color:var(--white);font-weight:500}
+.cn-rl{font-size:12px;color:var(--gray-2);line-height:1.8;padding-top:28px;border-top:1px solid var(--border)}
+.cn-card{border:1px solid var(--border);padding:40px;background:var(--surface)}
+@media(max-width:767px){.cn-card{padding:28px}}
+.cn-card-lb{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gray-3);margin-bottom:24px;display:block}
+.cn-card h3{font-size:18px;font-weight:600;margin-bottom:14px}
+.cn-card p{font-size:13px;color:var(--gray-1);line-height:1.8;margin-bottom:28px}
+.dm-btn{
+  display:block;text-align:center;width:100%;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:500;padding:14px;
+  border:1px solid var(--white);color:var(--white);text-decoration:none;
+  transition:background .25s,color .25s;
+}
+.dm-btn:hover{background:var(--white);color:var(--bg)}
+.cn-fine{margin-top:18px;font-size:10px;color:var(--gray-3);text-align:center;letter-spacing:.04em}
+
+/* ══ FOOTER ═ */
+footer{padding:80px 0 56px;border-top:1px solid var(--border)}
+.ft-phil{
+  font-size:clamp(18px,2.6vw,26px);font-weight:300;letter-spacing:-.02em;
+  line-height:1.45;color:var(--gray-1);margin-bottom:56px;max-width:440px;
+}
+.ft-phil strong{color:var(--white);font-weight:600}
+.ft-inner{display:flex;flex-direction:column;gap:32px}
+@media(min-width:768px){.ft-inner{flex-direction:row;justify-content:space-between;align-items:flex-start}}
+.ft-brand .ft-name{
+  font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:6px;display:flex;align-items:center;gap:8px;
+}
+.ft-brand .ft-role{font-size:12px;color:var(--gray-2)}
+.ft-links{display:flex;gap:24px;flex-wrap:wrap}
+.ft-links a{font-size:12px;color:var(--gray-2);text-decoration:none;transition:color .25s}
+.ft-links a:hover{color:var(--white)}
+.ft-bottom{
+  border-top:1px solid var(--border);padding-top:24px;margin-top:32px;
+  display:flex;flex-direction:column;gap:8px;
+}
+@media(min-width:768px){.ft-bottom{flex-direction:row;justify-content:space-between}}
+.ft-bottom span{font-size:11px;color:var(--gray-3)}
+.ft-legal{
+  margin-top:24px;padding-top:20px;border-top:1px solid var(--border);
+  display:flex;gap:32px;justify-content:center;flex-wrap:wrap;
+}
+.ft-legal a{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray-3);text-decoration:none;transition:color .25s}
+.ft-legal a:hover{color:var(--white)}
+
+/* ══ MOTION ═ */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.rv.vis{opacity:1;transform:none}
+.pg-in{animation:pgIn .7s var(--ease) both}
+@keyframes pgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.toast{
+  position:fixed;bottom:24px;left:50%;
+  transform:translateX(-50%) translateY(50px);
+  background:var(--white);color:var(--bg);
+  padding:10px 22px;font-size:11px;font-weight:500;letter-spacing:.06em;
+  opacity:0;transition:all .3s var(--ease);z-index:999;pointer-events:none;
+}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="hdr-in">
+    <a href="#" class="logo"><span class="logo-sq"></span>Jacker Architect</a>
+    <nav class="nav-d mono">
+      <a href="#about">About</a><a href="#principles">Principles</a><a href="#focus">Focus</a>
+      <a href="#mechanics">Mechanics</a><a href="#manifesto">Manifesto</a><a href="#support">Patrons</a><a href="#connect">Connect</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="mob" id="mob">
+  <nav class="mono">
+    <a href="#about" class="ml">About</a><a href="#principles" class="ml">Principles</a>
+    <a href="#focus" class="ml">Focus</a><a href="#mechanics" class="ml">Mechanics</a>
+    <a href="#manifesto" class="ml">Manifesto</a><a href="#support" class="ml">Patrons</a>
+    <a href="#connect" class="ml">Connect</a>
+  </nav>
+  <div class="mob-ft mono">Jacker Architect — 2026</div>
+</div>
+
+<section class="hero pg-in">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <div class="hero-g">
+      <div>
+        <div class="hero-tag mono"><span class="hero-dot"></span>System Architecture · Solana Ecosystem</div>
+        <h1>BUILDING<br>SYSTEMS<br>THAT LAST.</h1>
+      </div>
+      <div class="hero-r">
+        <div class="hero-lines">
+          <div class="hero-ln"><strong>Architecture before speculation.</strong></div>
+          <div class="hero-ln"><strong>Rules before markets.</strong></div>
+          <div class="hero-ln"><strong>Long-term systems over short-term hype.</strong></div>
+          <div class="hero-ln"><strong>Reputation is the only equity.</strong></div>
+          <div class="hero-ln">Designing economic systems that survive decades.</div>
+        </div>
+        <div class="hero-btns">
+          <a href="#manifesto" class="btn-w mono">Read the Manifesto</a>
+          <a href="#support" class="btn-o mono">Become a Genesis Patron</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sh rv"><span class="sh-n mono">01 — About</span><span class="sh-t mono">Philosophy</span></div>
+    <div class="ab-g">
+      <div class="rv">
+        <div class="ab-q">"I don't build products.<br>I build systems.<br><em>Products expire. Systems evolve."</em></div>
+        <p class="ab-p">Jacker Architect is focused on economic structures, distributed incentive mechanisms, and real-world implementation. The mission is to design public digital economies that span decades—not just market cycles.</p>
+        <div class="ab-pills">
+          <span class="pill mono">Protocol Design</span><span class="pill mono">Economic Architecture</span>
+          <span class="pill mono" style="color:var(--blue);border-color:rgba(96,165,250,.25)">Solana / SPL</span>
+          <span class="pill mono">Public Infrastructure</span>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="ab-vis">
+          <img src="about-img.webp" alt="Obsidian Core — J" loading="lazy">
+          <span class="ab-vis-cap mono">Obsidian Core // J</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="principles">
+  <div class="wrap">
+    <div class="sh rv"><span class="sh-n mono">02 — Principles</span><span class="sh-t mono">Non-Negotiable</span></div>
+    <div class="pr-g rv">
+      <div class="pr-c"><div class="pr-n mono">001</div><h3>Think Long</h3><p>Measure in decades, not months. Build for the next generation, not the next quarter.</p></div>
+      <div class="pr-c"><div class="pr-n mono">002</div><h3>Build First</h3><p>Code and architecture over marketing. Substance before signal. Always.</p></div>
+      <div class="pr-c"><div class="pr-n mono">003</div><h3>Public Economy</h3><p>Real utility over secondary market speculation. Value precedes price.</p></div>
+      <div class="pr-c"><div class="pr-n mono">004</div><h3>Immutable Rules</h3><p>Human nature shifts. Only rules endure. Design systems that don't require trust.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="focus">
+  <div class="wrap">
+    <div class="sh rv"><span class="sh-n mono">03 — Current Focus</span><span class="sh-t mono">Research &amp; Development</span></div>
+    <div class="fc-list rv">
+      <div class="fc-item">
+        <div class="fc-name">Public Digital Economy</div>
+        <div class="fc-desc">Designing the foundational protocols for a post-speculation economy. Focusing on asset-anchored mechanisms and sustainable incentive structures that serve the public good rather than insider extraction.</div>
+        <div class="fc-badge research mono">In Research</div>
+      </div>
+      <div class="fc-item">
+        <div class="fc-name">Code-Enforced Governance</div>
+        <div class="fc-desc">Architecting code-enforced consensus models and immutable rule sets. Building governance frameworks powered by smart contracts that are transparent, resistant to capture, and designed to outlive their creators.</div>
+        <div class="fc-badge research mono">In Research</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROTOCOL MECHANICS ═ -->
+<section id="mechanics">
+  <div class="wrap">
+    <div class="sh rv"><span class="sh-n mono">04 — Protocol Mechanics</span><span class="sh-t mono">The Engine</span></div>
+    <div class="pr-g rv">
+      <div class="pr-c">
+        <svg class="eng-ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 36 h8 v-8 h8 v-8 h8 v-8 h8 v-8"/></svg>
+        <div class="pr-n mono">ENGINE 01</div><h3>49-Season Decay</h3><p>Emission is not a cliff; it's a staircase. Staking APY decays smoothly over 12.25 years (49 quarters), transitioning from early incentives to long-term DAO governance. Predictable, digestible, anti-inflationary.</p>
+      </div>
+      <div class="pr-c">
+        <svg class="eng-ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M34 20 A14 14 0 1 1 20 6"/><path d="M20 6 l-6 -2 M20 6 l-2 6"/></svg>
+        <div class="pr-n mono">ENGINE 02</div><h3>Profit Flywheel (70/10/10/10)</h3><p>Official LP profits are never extracted. 70% auto-compounds to deepen liquidity; the remaining 30% is divided, in the open, across three rails: 10% Vision (architect royalty), 10% Labor (builders &amp; auditors), 10% Angel (early patrons). Every rail is a claim on profit flow only — never on the base.</p>
+      </div>
+      <div class="pr-c">
+        <svg class="eng-ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="8" width="28" height="24"/><circle cx="20" cy="20" r="6"/><path d="M20 14 v-3 M20 29 v-3 M14 20 h-3 M29 20 h-3"/></svg>
+        <div class="pr-n mono">ENGINE 03</div><h3>Utility Sinks > Burning</h3><p>We do not burn tokens to fake scarcity. We build utility sinks. Future real-world merchant nodes and enterprise collateral will lock massive supply, absorbing emission through genuine economic demand.</p>
+      </div>
+      <div class="pr-c">
+        <svg class="eng-ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 8 h24 v24 h-24 z"/><path d="M8 20 h24 M20 8 v24"/><circle cx="20" cy="20" r="3" fill="currentColor" stroke="none"/></svg>
+        <div class="pr-n mono">ENGINE 04</div><h3>Real-World Settlement</h3><p>The endgame is not secondary market speculation. The on-chain liquidity pool serves as the ultimate clearinghouse for offline, real-world commercial transactions, anchoring digital value to physical utility.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ THE ARCHITECTURE — FOUR PILLARS ═ -->
+<section id="specs" style="padding-top:0; border-top:none;">
+  <div class="wrap">
+    <div class="sh rv"><span class="sh-n mono">04.1 — The Architecture</span><span class="sh-t mono">Four Pillars</span></div>
+    <div class="specs-wrap rv">
+      <div class="mf-hl" style="margin-top:0; border-color:var(--blue); background:rgba(96,165,250,.03);">
+        <p style="margin-bottom:0;"><strong>The Blueprints.</strong> Philosophy is for the public. Mathematics is for the builders. Below is the logical skeleton of the constitution. The exact numbers live on-chain.</p>
+      </div>
+
+      <h3>Pillar I — The Dual-Source Architecture</h3>
+      <p>The base is finite and unlocks along a single fixed curve — a scheduled release of existing supply, never a mint. Staking rewards are minted elastically and exist entirely outside the base. The two sources are mathematically independent and can never contaminate each other. <strong>The protocol chooses supply. The market chooses price.</strong></p>
+
+      <h3>Pillar II — The Fractal Discipline</h3>
+      <p>Macro and micro mirror each other: a 49-season decay staircase above, a 49-day maturation below. Early exit triggers a tiered penalty applied to both principal and rewards. Slashed tokens are never burned — they are pooled and redistributed to every staker who stayed. <strong>Mercenaries pay the tax. Believers reap the reward.</strong></p>
+
+      <h3>Pillar III — The Profit Flywheel</h3>
+      <p>Official LP profits are never extracted. The majority auto-compounds to deepen liquidity; the remainder flows, in the open, across three rails — Vision, Labor, Angel. Every rail is a claim on profit flow only, never on the base. <strong>No work, no fish.</strong></p>
+
+      <h3>Pillar IV — The Execution Engine</h3>
+      <p>Liquidity deploys on Meteora DLMM — discrete fixed-price bins with zero slippage inside each bin. The ladder is pure sell-side depth distributed from P0 to 10×P0. Price climbs one bin at a time. <strong>A staircase, not a wick.</strong></p>
+
+      <div class="mf-hl" style="margin-top:48px;">
+        <p><strong>Every allocation, every percentage, every quarter</strong> — the exact mathematics are published as Documents 001–004, archived immutably on-chain. Nothing here can be quietly changed.</p>
+      </div>
+      <div style="margin-top:32px; display:flex; flex-direction:column; gap:10px;">
+        <a href="https://paragraph.com/@jackerarchitect" target="_blank" rel="noopener" class="btn-w mono" style="display:block;">Read the Mathematics on Paragraph ↗</a>
+        <a href="https://github.com/JackerArchitect" target="_blank" rel="noopener" class="btn-o mono" style="display:block;">Audit the Specifications on GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MANIFESTO ═ -->
+<section id="manifesto">
+  <div class="wrap">
+    <div class="sh rv"><span class="sh-n mono">05 — Manifesto</span><span class="sh-t mono">Document 000</span></div>
+    <div class="mf rv">
+      <div class="mf-id mono">Document 000 — The Architect's Manifesto</div>
+      <div class="mf-disc"><strong>Note:</strong> I am a builder with a vision for system architecture, not a smooth-talking marketer or a fluent copywriter. The core logic, economic model, and rules of this project are my own, but I used AI to help structure and translate my thoughts into this manifesto. If you value substance over hype, read on.</div>
+      <h2>Tired of the Same Old Cycle?</h2>
+      <p>Tired of the 10,000 copy-paste meme coins launching and dying every single day on Solana? Tired of pump-and-dump schemes, hollow hype, and digital games designed purely to extract value from the crowd?</p>
+      <p><strong>So are we.</strong></p>
+      <h3>🏛️ What We Are Building: A True "Public Coin"</h3>
+      <p>We are setting up a serious, long-term, non-speculative digital economy. Our goal is simple yet radical: to build a genuine "Public Coin"—a decentralized asset deeply rooted in real-world utility, equal participation, and sustainable growth.</p>
+      <ul>
+        <li><strong>Growth equals value:</strong> As more people hold and utilize the system, the underlying economic depth expands organically.</li>
+        <li><strong>The Rules Stay Supreme:</strong> As the architect who defines the initial rules, the code governs all—even over the architect himself. The math cannot be bent.</li>
+      </ul>
+      <div class="mf-hl"><p><strong>This is not a token launch.</strong> This is the foundation layer of a public digital economy—one built slowly, built honestly, and built to last.</p></div>
+      <div class="mf-hl" style="margin-top:48px; border-color:var(--blue); background:rgba(96,165,250,.03);">
+        <p><strong>The equations can be copied. The philosophy cannot.</strong> We build for equality. We build for eternity.</p>
+      </div>
+      <div style="margin-top:32px; display:flex; flex-direction:column; gap:10px;">
+        <a href="https://paragraph.com/@jackerarchitect" target="_blank" rel="noopener" class="btn-w mono" style="display:block;">Read the Full Constitution (Docs 000–005) on Paragraph ↗</a>
+        <a href="https://github.com/JackerArchitect" target="_blank" rel="noopener" class="btn-o mono" style="display:block;">Specifications &amp; Bounties on GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HONOR PATRONAGE ═ -->
+<section id="support">
+  <div class="wrap">
+    <div class="sh rv"><span class="sh-n mono">06 — Honor Patronage</span><span class="sh-t mono">Honor, Not Investment</span></div>
+    <div class="sp-g">
+      <div class="sp-l rv">
+        <h2>Honor<br>Patronage</h2>
+        <p>This project holds no company, no token, no treasury of promises. Its only collateral is the Architect's <strong>public, permanent reputation</strong> — anchored on-chain, signed into every Document, and impossible to quietly abandon.</p>
+        <p><strong>One seat = 100 USDC</strong> — a one-time honor contribution that funds the foundation's research, code, and groundwork. <strong>294 seats. 49 per Document.</strong> When a Document's seats are filled, that edition closes forever.</p>
+        <p>A seat confers <strong>recognition, not rights</strong>: a numbered on-chain record, an entry in the public Patron Ledger, and a permanent place beside this reputation.</p>
+        <div class="sp-note">🛡️ <strong>The credibility standard.</strong> The Architect's only asset is this name. Every transfer, every seat, every record is public and permanent. Your protection is not a contract — it is transparency, and his self-interest made visible.</div>
+        <div class="sp-note" style="margin-top:12px;">⚖️ <strong>Plain terms.</strong> Patronage is not equity, not a security, not an investment contract. No return is promised. Any future allocation is a unilateral official gift — gratuitous, non-commercial. <a href="disclaimer.html">Disclaimer ↗</a> · <a href="transfer-terms.html">Transfer Terms ↗</a></div>
+        <div class="sp-note" style="margin-top:12px;">⏱️ <strong>Order of arrival.</strong> Seats are assigned strictly by on-chain arrival order — the chain decides, not the Architect. When an edition closes, intake stops; any excess or late transfer is refunded in full, to the sender's address. The Architect bears all network fees.</div>
+      </div>
+      <div class="rv">
+        <div class="sp-addr" style="margin-bottom:20px;">
+          <span class="sp-addr-lb mono">Genesis Progress — Live</span>
+          <div class="pat-bar"><div class="pat-fill" id="patfill"></div></div>
+          <div class="mono" style="display:flex;justify-content:space-between;font-size:11px;color:var(--gray-1);margin-top:10px;">
+            <span id="patlabel">0 / 294 SEATS FILLED</span>
+            <span id="patpct" style="color:var(--green);">0%</span>
+          </div>
+        </div>
+        <div class="sp-addr" style="margin-bottom:20px;">
+          <span class="sp-addr-lb mono">Seat Map — 6 × 49</span>
+          <div class="mono" style="font-size:11px;color:var(--gray-1);line-height:2.1;user-select:all;">
+            DOC 000 — 49 SEATS · 100 USDC<br>
+            DOC 001 — 49 SEATS · 100 USDC<br>
+            DOC 002 — 49 SEATS · 100 USDC<br>
+            DOC 003 — 49 SEATS · 100 USDC<br>
+            DOC 004 — 49 SEATS · 100 USDC<br>
+            DOC 005 — 49 SEATS · 100 USDC<br>
+            <span style="color:var(--blue);">TOTAL — 294 SEATS · HONOR PATRONAGE, NOT INVESTMENT</span>
+          </div>
+        </div>
+        <div style="margin-bottom:20px;">
+          <a href="patrons.html" class="sp-b chain mono" style="display:inline-block;">View the Roll of Honor ↗</a>
+        </div>
+        <div class="sp-net">
+          <span class="mono">Network: <strong>Solana Mainnet</strong></span>
+          <span class="mono">Assets: <strong>USDC</strong></span>
+        </div>
+        <div class="sp-addr">
+          <span class="sp-addr-lb mono">Personal Wallet Address</span>
+          <div class="sp-addr-v" id="waddr">EHHPsci6pKbfL71t73KNCXrtanM1TWPrWYJZ1ik1b5FH</div>
+        </div>
+        <div class="sp-btns">
+          <button class="sp-b fill mono" onclick="copyAddr()">Copy Address</button>
+          <a href="https://solscan.io/account/EHHPsci6pKbfL71t73KNCXrtanM1TWPrWYJZ1ik1b5FH" target="_blank" rel="noopener" class="sp-b chain mono">View on Solscan ↗</a>
+        </div>
+        <div class="sp-trust">
+          <div class="sp-ti"><div class="tl mono">Purpose</div><div class="tv">Foundation Layer R&amp;D</div></div>
+          <div class="sp-ti"><div class="tl mono">Ownership</div><div class="tv">Personal Wallet</div></div>
+          <div class="sp-ti"><div class="tl mono">Transparency</div><div class="tv">Fully On-Chain</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="connect">
+  <div class="wrap">
+    <div class="sh rv"><span class="sh-n mono">07 — Connect</span><span class="sh-t mono">Zero-to-One</span></div>
+    <div class="cn-g">
+      <div class="rv">
+        <h2 class="cn-hl">If this vision<br>resonates with you—<br>let's build it together.</h2>
+        <p class="cn-bd">This project is at its <strong>zero-to-one stage</strong>. The business model, the mechanics, and the structural boundaries have been engineered. What remains is execution—and execution requires the right people.</p>
+        <p class="cn-bd">I am actively looking for co-architects to execute this phase:</p>
+        <ul class="list-custom">
+          <li><strong>Solana Rust/Anchor Developers:</strong> To audit and deploy the 49-season staking &amp; LP routing contracts.</li>
+          <li><strong>DeFi Researchers:</strong> To stress-test the emission decay models and game theory.</li>
+          <li><strong>Strategic Partners:</strong> Who understand long-term public economies and want to provide the initial seed liquidity.</li>
+        </ul>
+        <div class="mf-hl" style="margin:0 0 28px;">
+          <p><strong>A note on roles:</strong> I am the system architect, not the implementation engineer. I design the economic logic, the emission mathematics, and the governance boundaries — I do not write production code. This is deliberate: the code of a public economy must be written and audited by independent builders bound by transparent incentives, not shaped by a single author's ego. If you build, your code becomes the body of this constitution.</p>
+        </div>
+        <p class="cn-bd">If you value <strong>logic over hype</strong>, transparency over politics, and long-term systems over quick flips—reach out. Tell me what caught your eye and why you want to be part of this.</p>
+        <div class="cn-rl">Rule of engagement: We don't chase quick flips. We build long-term systems.<br>Compensation: No upfront salaries. Early contribution is bound through transparent, on-chain smart contract revenue-sharing and core allocation.</div>
+      </div>
+      <div class="rv">
+        <div class="cn-card">
+          <span class="cn-card-lb mono">Get In Touch</span>
+          <h3>Reach the Architect</h3>
+          <p>Include your background, what you build, and what specifically in this manifesto resonated with you. Serious inquiries only.</p>
+          <div class="sp-addr" style="margin-bottom:12px; padding:14px; background:var(--bg);">
+            <span class="sp-addr-lb mono">Email Address</span>
+            <div class="sp-addr-v" id="eaddr" style="font-size:13px; word-break:break-all; color:var(--blue);">architect@jackerteo.com</div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:18px;">
+            <a href="mailto:architect@jackerteo.com" class="dm-btn mono">Send Email →</a>
+            <button class="sp-b mono" onclick="copyEmail()" style="width:100%; text-align:center;">Copy Email Address</button>
+            <a href="https://t.me/JackerArchitect" target="_blank" rel="noopener" class="btn-o mono" style="display:block; text-align:center;">Telegram Message →</a>
+          </div>
+          <p class="cn-fine">No cold pitches. No agencies. Builders only.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft-phil rv"><strong>Design survives.</strong><br>Hype fades.<br>Reputation compounds.</div>
+    <div class="ft-inner">
+      <div class="ft-brand">
+        <div class="ft-name"><span class="logo-sq"></span> Jacker Architect</div>
+        <div class="ft-role mono">Independent System Architect</div>
+      </div>
+      <div class="ft-links mono">
+        <a href="https://paragraph.com/@jackerarchitect" target="_blank" rel="noopener">Paragraph ↗</a>
+        <a href="https://github.com/JackerArchitect" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://t.me/JackerArchitect" target="_blank" rel="noopener">Telegram ↗</a>
+        <a href="https://x.com/JackerArchitect" target="_blank" rel="noopener">X ↗</a>
+        <a href="mailto:architect@jackerteo.com">Email</a>
+        <a href="patrons.html">Patron Ledger</a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span class="mono">© 2026. Built slowly. Built honestly.</span>
+      <span class="mono">System Status: Operational</span>
+    </div>
+    <div class="ft-legal mono">
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="transfer-terms.html">Transfer Terms</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast mono" id="toast">✓ Address Copied</div>
+
+<script>
+const burger=document.getElementById('burger'),mob=document.getElementById('mob'),mls=document.querySelectorAll('.ml');
+function openM(){burger.classList.add('on');mob.classList.add('open');document.body.classList.add('locked')}
+function closeM(){burger.classList.remove('on');mob.classList.remove('open');document.body.classList.remove('locked')}
+burger.addEventListener('click',()=>mob.classList.contains('open')?closeM():openM());
+mls.forEach(a=>a.addEventListener('click',closeM));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+const hdr=document.getElementById('hdr');
+window.addEventListener('scroll',()=>hdr.classList.toggle('scrolled',window.pageYOffset>40));
+document.querySelectorAll('.nav-d a[href^="#"], .mob nav a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.06,rootMargin:'0px 0px -32px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+/* ══ 每次有新 Patron 加入，只改这一个数字 ═ */
+const SEATS_FILLED = 0;   // ← 有人投入后，改成 1、2、3……
+const TOTAL_SEATS  = 294;
+(function(){
+  const f=document.getElementById('patfill'),
+        l=document.getElementById('patlabel'),
+        p=document.getElementById('patpct');
+  if(f&&l&&p){
+    const pct=Math.round((SEATS_FILLED/TOTAL_SEATS)*1000)/10;
+    f.style.width=(SEATS_FILLED>0?Math.max(pct,1.2):0)+'%';
+    l.innerText=SEATS_FILLED+' / '+TOTAL_SEATS+' SEATS FILLED';
+    p.innerText=pct+'%';
+  }
+})();
+
+function copyAddr(){
+  const v=document.getElementById('waddr').innerText.trim();
+  navigator.clipboard.writeText(v).then(()=>{
+    const t=document.getElementById('toast');
+    t.innerText="✓ Address Copied";
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),2000);
+  });
+}
+
+function copyEmail(){
+  const v=document.getElementById('eaddr').innerText.trim();
+  navigator.clipboard.writeText(v).then(()=>{
+    const t=document.getElementById('toast');
+    t.innerText="✓ Email Copied";
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),2000);
+  });
+}
+</script>
+</body>
+</html>
