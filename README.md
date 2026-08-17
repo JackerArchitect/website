@@ -1,9 +1,14 @@
-# jackerteo.com — Official Website
+# jackerteo.com
 
-Static site of **Jacker Architect — Independent System Architect**.
-Hosted on GitHub Pages · Custom domain: jackerteo.com
+Official static website of **Jacker Architect**.
 
-The constitution (Documents 000–005) and the whitepaper live in the
-[sister repository](https://github.com/JackerArchitect/mathematical-constitution).
+This repository contains the frontend source for the official site, hosted via GitHub Pages.
+
+* **Live Site:** [jackerteo.com](https://jackerteo.com)
+* **Constitutional Documents & Whitepaper:** [mathematical-constitution](https://github.com/JackerArchitect/mathematical-constitution)
+
+---
+
+**JackerArchitect** — Independent System Architect
 
 *The equations can be copied. The philosophy cannot.*
