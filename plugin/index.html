@@ -77,18 +77,22 @@
                 The lightweight, zero-bloat WordPress login protection plugin. Hide your login page, enforce signed access tokens, and block unauthorized IP attempts instantly.
             </p>
             
-            <!-- 核心按钮区：包含直接下载和 GitHub 源码链接 -->
+            <!-- 核心按钮区：包含 GitHub Release 下载和源码链接 -->
             <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-                <a href="hide-login-secure.zip" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-download text-xl"></i> Download Plugin (.zip)
+                <!-- 【已更新】指向 GitHub Release 的下载链接，标注文件大小 -->
+                <a href="https://github.com/JackerArchitect/hide-login-secure/releases/download/v1.0.0/hide-login-secure.zip" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-download text-xl"></i> 
+                    <div class="flex flex-col items-start">
+                        <span>Download Plugin v1.0.0</span>
+                        <span class="text-xs opacity-75 font-normal">.zip file · 14.2 KB</span>
+                    </div>
                 </a>
                 
-                <!-- 【关键】GitHub 仓库链接已加在这里 -->
                 <a href="https://github.com/JackerArchitect/hide-login-secure" target="_blank" class="glass-panel hover:bg-slate-800 text-white font-semibold py-3 px-8 rounded-lg transition-all flex items-center justify-center gap-2">
                     <i class="fa-brands fa-github text-xl"></i> View Source on GitHub
                 </a>
             </div>
-            <p class="mt-4 text-sm text-slate-500">Currently under review on WordPress.org. Download the .zip directly to install it now!</p>
+            <p class="mt-4 text-sm text-slate-500">Currently under review on WordPress.org. Download the .zip directly from GitHub to install it now!</p>
 
             <!-- 简易安装说明框 -->
             <div class="mt-12 glass-panel p-6 rounded-xl border border-blue-500/30 max-w-2xl mx-auto text-left">
@@ -96,7 +100,7 @@
                     <i class="fa-brands fa-wordpress text-blue-400"></i> How to Install in WordPress
                 </h4>
                 <ol class="list-decimal list-inside text-slate-300 space-y-2 text-sm">
-                    <li>Click the <strong>Download Plugin (.zip)</strong> button above.</li>
+                    <li>Click the <strong>Download Plugin</strong> button above to get the latest .zip file.</li>
                     <li>Go to your WordPress Dashboard → <strong>Plugins</strong> → <strong>Add New Plugin</strong>.</li>
                     <li>Click <strong>Upload Plugin</strong> at the top, choose the downloaded .zip file, and click "Install Now".</li>
                     <li>Activate the plugin, then go to <strong>Settings > Hide Login</strong> to set your secret URL.</li>
@@ -342,7 +346,6 @@
                     </p>
                 </div>
                 
-                <!-- 【关键】GitHub 仓库链接也加在了底部支持区 -->
                 <div class="mt-6 flex flex-col sm:flex-row justify-center items-center gap-4 text-sm text-slate-400">
                     <span>Check out the full source code:</span>
                     <a href="https://github.com/JackerArchitect/hide-login-secure" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold flex items-center gap-1">
