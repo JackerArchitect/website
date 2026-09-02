@@ -9,9 +9,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 使用绝对路径 + 版本号强制打破缓存 -->
-    <link rel="icon" type="image/webp" href="/plugin/favicon.webp?v=2">
-    <link rel="apple-touch-icon" href="/plugin/favicon.webp?v=2">
+    <!-- Favicon (使用相对路径 + 版本号打破缓存) -->
+    <link rel="icon" type="image/webp" href="favicon.webp?v=2">
+    <link rel="apple-touch-icon" href="favicon.webp?v=2">
     <style>
         .gradient-text {
             background: linear-gradient(to right, #60a5fa, #34d399);
@@ -77,18 +77,20 @@
                 The lightweight, zero-bloat WordPress login protection plugin. Hide your login page, enforce signed access tokens, and block unauthorized IP attempts instantly.
             </p>
             
-            <!-- 修改点 1 & 2：主按钮改为直接下载 ZIP，次要按钮指向 WordPress.org -->
+            <!-- 核心按钮区：包含直接下载和 GitHub 源码链接 -->
             <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
                 <a href="hide-login-secure.zip" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-download text-xl"></i> Download Plugin (.zip)
                 </a>
-                <a href="https://wordpress.org/plugins/hide-login-secure/" target="_blank" class="glass-panel hover:bg-slate-800 text-white font-semibold py-3 px-8 rounded-lg transition-all flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-wordpress text-xl"></i> View on WordPress.org
+                
+                <!-- 【关键】GitHub 仓库链接已加在这里 -->
+                <a href="https://github.com/JackerArchitect/hide-login-secure" target="_blank" class="glass-panel hover:bg-slate-800 text-white font-semibold py-3 px-8 rounded-lg transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-github text-xl"></i> View Source on GitHub
                 </a>
             </div>
             <p class="mt-4 text-sm text-slate-500">Currently under review on WordPress.org. Download the .zip directly to install it now!</p>
 
-            <!-- 修改点 3：添加简易安装说明框 -->
+            <!-- 简易安装说明框 -->
             <div class="mt-12 glass-panel p-6 rounded-xl border border-blue-500/30 max-w-2xl mx-auto text-left">
                 <h4 class="text-white font-bold mb-3 flex items-center gap-2">
                     <i class="fa-brands fa-wordpress text-blue-400"></i> How to Install in WordPress
@@ -339,6 +341,15 @@
                         <i class="fa-solid fa-check"></i> Address copied to clipboard!
                     </p>
                 </div>
+                
+                <!-- 【关键】GitHub 仓库链接也加在了底部支持区 -->
+                <div class="mt-6 flex flex-col sm:flex-row justify-center items-center gap-4 text-sm text-slate-400">
+                    <span>Check out the full source code:</span>
+                    <a href="https://github.com/JackerArchitect/hide-login-secure" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold flex items-center gap-1">
+                        <i class="fa-brands fa-github"></i> github.com/JackerArchitect/hide-login-secure
+                    </a>
+                </div>
+
                 <p class="mt-6 text-sm text-slate-500">
                     Every contribution, no matter how small, is deeply appreciated and goes directly towards server costs and future development.
                 </p>
