@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hide Login Secure – WordPress Login Protection | by Jacker Architect</title>
     <meta name="description" content="Lightweight, brute-force-proof WordPress login security plugin. Hide your login page, block unauthorized access, and protect your site without slowing it down.">
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Favicon (使用相对路径 + 版本号打破缓存) -->
     <link rel="icon" type="image/webp" href="favicon.webp?v=2">
     <link rel="apple-touch-icon" href="favicon.webp?v=2">
     <style>
         .gradient-text {
             background: linear-gradient(to right, #60a5fa, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .brand-gradient {
+            background: linear-gradient(135deg, #f97316 0%, #ef4444 50%, #3b82f6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -29,11 +31,22 @@
             66% { transform: translate(-20px, 20px) scale(0.9); }
             100% { transform: translate(0px, 0px) scale(1); }
         }
-        .animate-blob {
-            animation: blob 7s infinite;
+        .animate-blob { animation: blob 7s infinite; }
+        .animation-delay-2000 { animation-delay: 2s; }
+        
+        .tab-btn.active {
+            background: white;
+            border-bottom-color: white;
+            color: #1d2327;
+            font-weight: 600;
         }
-        .animation-delay-2000 {
-            animation-delay: 2s;
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        .sample-note {
+            color: #9ca3af;
+            font-style: italic;
+            font-size: 11px;
         }
     </style>
 </head>
@@ -43,13 +56,19 @@
     <nav class="fixed w-full z-50 glass-panel border-b border-slate-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-shield-virus text-orange-500 text-2xl"></i>
-                    <span class="font-bold text-xl text-white tracking-tight">Hide Login Secure</span>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-orange-500 via-red-500 to-blue-500 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/30">
+                        <i class="fa-solid fa-shield-virus text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-black text-xl text-white tracking-tight block leading-none">Hide Login Secure</span>
+                        <span class="text-[10px] text-slate-400 tracking-widest uppercase">by Jacker Architect</span>
+                    </div>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="#features" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Features</a>
+                        <a href="#preview" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Interface</a>
                         <a href="#story" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Story</a>
                         <a href="#pro" class="hover:text-yellow-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Pro (Soon)</a>
                         <a href="#support" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all">Support Dev</a>
@@ -62,39 +81,38 @@
     <!-- Hero Section -->
     <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/30 border border-blue-700/50 text-blue-300 text-sm font-medium mb-6">
-                <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                </span>
-                v1.0.0 Submitted to WordPress.org
+            
+            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-orange-500/10 via-red-500/10 to-blue-500/10 border border-orange-500/30 mb-8">
+                <div class="w-6 h-6 bg-gradient-to-br from-orange-500 to-blue-500 rounded-md flex items-center justify-center">
+                    <i class="fa-solid fa-shield-virus text-white text-xs"></i>
+                </div>
+                <span class="text-sm font-semibold text-white">Hide Login Secure</span>
+                <span class="text-xs text-slate-400">·</span>
+                <span class="text-xs text-slate-300">v1.0.0 Submitted to WordPress.org</span>
             </div>
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
+            
+            <h1 class="text-5xl md:text-7xl font-black text-white tracking-tight mb-6">
                 Stop Brute-Force Attacks <br>
-                <span class="gradient-text">Before They Start.</span>
+                <span class="brand-gradient">Before They Start.</span>
             </h1>
             <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-400">
                 The lightweight, zero-bloat WordPress login protection plugin. Hide your login page, enforce signed access tokens, and block unauthorized IP attempts instantly.
             </p>
             
-            <!-- 核心按钮区：包含 GitHub Release 下载和源码链接 -->
             <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-                <!-- 【已更新】指向 GitHub Release 的下载链接，标注文件大小 -->
-                <a href="https://github.com/JackerArchitect/hide-login-secure/releases/download/v1.0.0/hide-login-secure.zip" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2">
+                <a href="https://github.com/JackerArchitect/hide-login-secure/releases/download/v1.0.0/hide-login-secure.zip" class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-download text-xl"></i> 
                     <div class="flex flex-col items-start">
                         <span>Download Plugin v1.0.0</span>
                         <span class="text-xs opacity-75 font-normal">.zip file · 15.6 KB</span>
                     </div>
                 </a>
-                
                 <a href="https://github.com/JackerArchitect/hide-login-secure" target="_blank" class="glass-panel hover:bg-slate-800 text-white font-semibold py-3 px-8 rounded-lg transition-all flex items-center justify-center gap-2">
                     <i class="fa-brands fa-github text-xl"></i> View Source on GitHub
                 </a>
             </div>
             <p class="mt-4 text-sm text-slate-500">Currently under review on WordPress.org. Download the .zip directly from GitHub to install it now!</p>
 
-            <!-- 简易安装说明框 -->
             <div class="mt-12 glass-panel p-6 rounded-xl border border-blue-500/30 max-w-2xl mx-auto text-left">
                 <h4 class="text-white font-bold mb-3 flex items-center gap-2">
                     <i class="fa-brands fa-wordpress text-blue-400"></i> How to Install in WordPress
@@ -103,12 +121,12 @@
                     <li>Click the <strong>Download Plugin</strong> button above to get the latest .zip file.</li>
                     <li>Go to your WordPress Dashboard → <strong>Plugins</strong> → <strong>Add New Plugin</strong>.</li>
                     <li>Click <strong>Upload Plugin</strong> at the top, choose the downloaded .zip file, and click "Install Now".</li>
-                    <li>Activate the plugin, then go to <strong>Settings > Hide Login</strong> to set your secret URL.</li>
+                    <li>Activate the plugin.</li>
+                    <li><strong>Configure:</strong> Go to <strong>Settings → Hide Login</strong> in your WordPress admin menu to set your secret URL and security options.</li>
                 </ol>
             </div>
         </div>
         
-        <!-- Background decorative elements -->
         <div class="absolute top-0 left-1/2 w-full -translate-x-1/2 h-full z-0 opacity-20 pointer-events-none">
             <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
             <div class="absolute top-20 right-10 w-72 h-72 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
@@ -119,6 +137,9 @@
     <section id="features" class="py-20 bg-slate-800/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-bold uppercase tracking-wider mb-4">
+                    <i class="fa-solid fa-shield-virus"></i> Hide Login Secure Features
+                </div>
                 <h2 class="text-3xl font-bold text-white">Why Choose This Plugin?</h2>
                 <p class="mt-4 text-slate-400">Built from the ground up to solve real security problems without slowing down your site.</p>
             </div>
@@ -169,10 +190,322 @@
         </div>
     </section>
 
+    <!-- Real Admin Interface Preview Section (100% Fake Data) -->
+    <section id="preview" class="py-20 bg-slate-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">
+                    <i class="fa-solid fa-desktop"></i> Live Preview
+                </div>
+                <h2 class="text-3xl font-bold text-white mb-4">Clean & Intuitive Admin Interface</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    No bloated menus or confusing options. Everything you need to secure your login page is organized in one clean settings panel.
+                </p>
+            </div>
+
+            <div class="bg-[#f0f0f1] p-4 md:p-8 rounded-xl shadow-2xl border border-slate-700 overflow-x-auto">
+                <div class="bg-white rounded shadow-sm border border-[#c3c4c7] p-6 md:p-8 min-w-[800px] mx-auto font-sans text-[13px] text-[#1d2327]">
+                    
+                    <div class="flex items-center gap-3 mb-4 pb-3 border-b border-[#c3c4c7]">
+                        <div class="w-10 h-10 bg-gradient-to-br from-orange-500 via-red-500 to-blue-500 rounded-lg flex items-center justify-center shadow-md">
+                            <i class="fa-solid fa-shield-virus text-white text-lg"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-[23px] font-normal text-[#1d2327] leading-tight">Hide Login Settings</h1>
+                            <p class="text-[11px] text-[#50575e]">by <span class="font-semibold">Hide Login Secure</span> · Jacker Architect</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex border-b border-[#c3c4c7] mb-6 -mx-8 -mt-2 px-8 bg-[#f0f0f1]">
+                        <button class="tab-btn active border border-[#c3c4c7] border-b-white px-4 py-2 rounded-t text-[#1d2327] font-medium -mb-px relative top-[1px]" onclick="switchTab('settings', this)">Settings</button>
+                        <button class="tab-btn bg-transparent border border-transparent px-4 py-2 text-[#50575e] hover:text-[#1d2327]" onclick="switchTab('events', this)">Login Events</button>
+                    </div>
+
+                    <!-- Settings Tab Content -->
+                    <div id="tab-settings" class="tab-content active">
+                        <div class="bg-[#f0f6fc] border-l-4 border-[#72aee6] p-4 mb-8 text-[#50575e]">
+                            <p class="mb-1"><strong>Hidden Entry URL:</strong> <code class="bg-white px-2 py-0.5 rounded border border-[#c3c4c7] text-[#d63638]">https://example.com/my-login/</code> 
+                            <button class="ml-2 bg-white border border-[#c3c4c7] px-3 py-1 rounded text-[#50575e] hover:bg-[#f6f7f7] text-xs">Copy</button></p>
+                            <p class="text-[#50575e] text-[12px] mt-2">Note: If you encounter a 404 error on first use, please visit Settings > Permalinks and click "Save Changes" to refresh rewrite rules.</p>
+                        </div>
+
+                        <table class="w-full form-table">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="w-[200px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Login Slug</th>
+                                    <td class="py-4 px-2">
+                                        <input type="text" value="my-login" class="regular-text border border-[#8c8f94] rounded px-3 py-1.5 w-[300px] focus:outline-none focus:border-[#2271b1] focus:ring-1 focus:ring-[#2271b1]" readonly>
+                                        <p class="text-[#50575e] text-[12px] mt-1">Enter a single URL slug (lowercase letters, numbers, and hyphens only). Example: my-login</p>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" class="w-[200px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Login Protection Mode</th>
+                                    <td class="py-4 px-2">
+                                        <fieldset>
+                                            <label class="flex items-start gap-2 mb-2 cursor-pointer">
+                                                <input type="radio" name="mode" checked class="mt-1">
+                                                <div>
+                                                    <span class="font-medium text-[#1d2327]">Compatibility Mode (Recommended)</span>
+                                                    <p class="text-[#50575e] text-[12px] mt-0.5">Allows WordPress password reset and recovery links to work normally without the hidden URL.</p>
+                                                </div>
+                                            </label>
+                                            <label class="flex items-start gap-2 cursor-pointer">
+                                                <input type="radio" name="mode" class="mt-1">
+                                                <div>
+                                                    <span class="font-medium text-[#1d2327]">Strict Mode</span>
+                                                    <p class="text-[#50575e] text-[12px] mt-0.5">Maximum protection. Requires the hidden login authorization cookie for all wp-login.php requests.</p>
+                                                </div>
+                                            </label>
+                                        </fieldset>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" class="w-[200px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Unauthorized Request Response</th>
+                                    <td class="py-4 px-2">
+                                        <fieldset>
+                                            <label class="flex items-start gap-2 mb-2 cursor-pointer">
+                                                <input type="radio" name="response" checked class="mt-1">
+                                                <div>
+                                                    <span class="font-medium text-[#1d2327]">Return 404 (Recommended)</span>
+                                                    <p class="text-[#50575e] text-[12px] mt-0.5">Shows a standard "Page Not Found" error.</p>
+                                                </div>
+                                            </label>
+                                            <label class="flex items-start gap-2 mb-2 cursor-pointer">
+                                                <input type="radio" name="response" class="mt-1">
+                                                <div>
+                                                    <span class="font-medium text-[#1d2327]">Return 403 Forbidden</span>
+                                                    <p class="text-[#50575e] text-[12px] mt-0.5">Returns a 403 Forbidden error, acting as a honeypot to waste scanner resources.</p>
+                                                </div>
+                                            </label>
+                                            <label class="flex items-start gap-2 cursor-pointer">
+                                                <input type="radio" name="response" class="mt-1">
+                                                <div>
+                                                    <span class="font-medium text-[#1d2327]">Redirect to homepage</span>
+                                                    <p class="text-[#50575e] text-[12px] mt-0.5">Redirects unauthorized requests to the site homepage.</p>
+                                                </div>
+                                            </label>
+                                        </fieldset>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" class="w-[200px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Cookie Security</th>
+                                    <td class="py-4 px-2">
+                                        <label class="flex items-start gap-2 cursor-pointer">
+                                            <input type="checkbox" class="mt-1 rounded border-[#8c8f94]">
+                                            <div>
+                                                <span class="text-[#1d2327]">Bind authorization to visitor IP (Optional).</span>
+                                                <p class="text-[#50575e] text-[12px] mt-0.5">If enabled, the cookie becomes invalid if the user's IP changes.</p>
+                                            </div>
+                                        </label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" class="w-[200px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">
+                                        Whitelist IPs<br>
+                                        <span class="text-[11px] font-normal text-[#50575e] block mt-1">IPv4 or IPv6. CIDR supported:<br>IPv4 (0-32), IPv6 (0-128). One per line.</span>
+                                        <em class="text-[11px] text-[#666] block mt-2 not-italic" style="font-style: italic;">Security Note: Cloudflare headers are only trusted if the request originates from an official Cloudflare IP range.</em>
+                                    </th>
+                                    <td class="py-4 px-2">
+                                        <textarea class="w-full border border-[#8c8f94] rounded px-3 py-1.5 font-mono text-[12px] focus:outline-none focus:border-[#2271b1] focus:ring-1 focus:ring-[#2271b1]" rows="5" readonly>192.0.2.1 (example)
+198.51.100.0/24 (example)
+203.0.113.50 (example)</textarea>
+                                        <p class="sample-note mt-1">↑ Sample IPs shown for demonstration</p>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" class="w-[200px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">
+                                        Blacklist IPs<br>
+                                        <span class="text-[11px] font-normal text-[#50575e] block mt-1">IPv4 or IPv6. CIDR supported:<br>IPv4 (0-32), IPv6 (0-128). One per line.</span>
+                                        <em class="text-[11px] text-[#d63638] block mt-2 not-italic" style="font-style: italic;">Note: Blacklist always takes priority over Whitelist.</em>
+                                    </th>
+                                    <td class="py-4 px-2">
+                                        <textarea class="w-full border border-[#8c8f94] rounded px-3 py-1.5 font-mono text-[12px] focus:outline-none focus:border-[#2271b1] focus:ring-1 focus:ring-[#2271b1]" rows="5" readonly>192.0.2.100 (example)
+198.51.100.55 (example)
+203.0.113.0/24 (example)</textarea>
+                                        <p class="sample-note mt-1">↑ Sample IPs shown for demonstration</p>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" class="w-[200px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Security Options</th>
+                                    <td class="py-4 px-2">
+                                        <fieldset class="space-y-2">
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input type="checkbox" checked class="rounded border-[#8c8f94]"> 
+                                                <span>Add basic Security Headers (X-Frame-Options, etc.)</span>
+                                            </label>
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input type="checkbox" checked class="rounded border-[#8c8f94]"> 
+                                                <span>Enable Event Logging (Auto-cleans to keep last 300)</span>
+                                            </label>
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input type="checkbox" checked class="rounded border-[#8c8f94]"> 
+                                                <span>Block XML-RPC</span>
+                                            </label>
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input type="checkbox" checked class="rounded border-[#8c8f94]"> 
+                                                <span>Block Author Enumeration</span>
+                                            </label>
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input type="checkbox" checked class="rounded border-[#8c8f94]"> 
+                                                <span>Protect REST API User Enumeration</span>
+                                            </label>
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input type="checkbox" checked class="rounded border-[#8c8f94]"> 
+                                                <span>Remove Username from Body Class</span>
+                                            </label>
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input type="checkbox" checked class="rounded border-[#8c8f94]"> 
+                                                <span>Hide Author Name in RSS Feed</span>
+                                            </label>
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input type="checkbox" checked class="rounded border-[#8c8f94]"> 
+                                                <span>Unify Login Error Messages</span>
+                                            </label>
+                                        </fieldset>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="mt-6 pt-4 border-t border-[#c3c4c7]">
+                            <button class="bg-[#2271b1] text-white border border-[#2271b1] px-4 py-1.5 rounded text-[13px] hover:bg-[#135e96] hover:border-[#135e96] shadow-sm">Save Changes</button>
+                        </div>
+
+                        <div class="border border-[#d63638] rounded p-5 mt-8 bg-white relative">
+                            <h3 class="text-[#d63638] font-bold flex items-center gap-2 mb-2 text-[15px]">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                Danger Zone
+                            </h3>
+                            <p class="text-[#50575e] mb-4">Reset all plugin settings to their default values. Your secret URL will revert to the default.</p>
+                            <button class="bg-[#d63638] text-white border border-[#d63638] px-4 py-1.5 rounded text-[13px] hover:bg-[#b32d2e] hover:border-[#b32d2e] shadow-sm">Reset All Settings to Default</button>
+                            
+                            <hr class="my-6 border-[#c3c4c7]">
+                            
+                            <p class="text-[#1d2327] mb-3 font-medium">Data Retention on Plugin Deletion:</p>
+                            <label class="flex items-start gap-3 p-4 bg-[#fff8e5] border border-[#dba617] rounded cursor-pointer">
+                                <input type="checkbox" class="mt-1 rounded border-[#8c8f94]">
+                                <div>
+                                    <span class="font-medium text-[#8a6d3b]">Remove ALL plugin data when deleting the plugin</span>
+                                    <p class="text-[#8a6d3b] text-[12px] mt-1">If checked, your settings, login logs, and database tables will be permanently deleted when you click "Delete" on the Plugins page. If unchecked, your data will be preserved in case you reinstall later.</p>
+                                </div>
+                            </label>
+                            <div class="mt-4">
+                                <button class="bg-white text-[#2271b1] border border-[#2271b1] px-4 py-1.5 rounded text-[13px] hover:bg-[#f6f7f7] shadow-sm">Save Uninstall Preference</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Login Events Tab Content (100% Fake Data) -->
+                    <div id="tab-events" class="tab-content">
+                        <div class="mb-6 flex justify-between items-center">
+                            <h3 class="text-[15px] font-semibold text-[#1d2327]">Login Events — Last 300 Entries (5 total) <span class="sample-note font-normal">· sample data</span></h3>
+                            <button class="bg-white border border-[#dc3232] text-[#dc3232] px-3 py-1 rounded text-[12px] hover:bg-[#dc3232] hover:text-white transition-colors">Clear All Events</button>
+                        </div>
+
+                        <table class="w-full border border-[#c3c4c7] bg-white text-[12px]">
+                            <thead class="bg-[#f6f7f7]">
+                                <tr>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[50px]">ID</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left">Username</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left">Event Time</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left">User IP</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[200px]">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="hover:bg-[#f6f7f7]">
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">5</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><strong>test_user</strong></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">2026-09-03 08:24:15</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">192.0.2.1</code> <span class="sample-note">(example)</span></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2 space-x-1">
+                                        <button class="bg-white border border-[#2271b1] text-[#2271b1] px-2 py-0.5 rounded text-[11px] hover:bg-[#2271b1] hover:text-white">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white">Blacklist</button>
+                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white hover:border-[#dc3232]">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-[#f6f7f7]">
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">4</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><strong>demo_admin</strong></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">2026-09-02 16:21:11</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">198.51.100.45</code> <span class="sample-note">(example)</span></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2 space-x-1">
+                                        <button class="bg-white border border-[#2271b1] text-[#2271b1] px-2 py-0.5 rounded text-[11px] hover:bg-[#2271b1] hover:text-white">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white">Blacklist</button>
+                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white hover:border-[#dc3232]">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-[#f6f7f7]">
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">3</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><strong>root</strong></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">2026-09-01 22:45:03</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">203.0.113.78</code> <span class="sample-note">(example)</span></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2 space-x-1">
+                                        <button class="bg-white border border-[#2271b1] text-[#2271b1] px-2 py-0.5 rounded text-[11px] hover:bg-[#2271b1] hover:text-white">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white">Blacklist</button>
+                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white hover:border-[#dc3232]">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-[#f6f7f7]">
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">2</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><strong>editor</strong></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">2026-08-31 12:39:23</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">192.0.2.52</code> <span class="sample-note">(example)</span></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2 space-x-1">
+                                        <button class="bg-white border border-[#2271b1] text-[#2271b1] px-2 py-0.5 rounded text-[11px] hover:bg-[#2271b1] hover:text-white">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white">Blacklist</button>
+                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white hover:border-[#dc3232]">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-[#f6f7f7]">
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">1</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><strong>subscriber</strong></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">2026-08-31 10:48:29</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">198.51.100.52</code> <span class="sample-note">(example)</span></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2 space-x-1">
+                                        <button class="bg-white border border-[#2271b1] text-[#2271b1] px-2 py-0.5 rounded text-[11px] hover:bg-[#2271b1] hover:text-white">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white">Blacklist</button>
+                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white hover:border-[#dc3232]">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="mt-4 flex items-center justify-between text-[12px] text-[#50575e]">
+                            <span>5 items</span>
+                            <div class="flex gap-1">
+                                <span class="px-3 py-1 bg-[#2271b1] text-white rounded border border-[#2271b1]">1</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 p-3 bg-[#f0f6fc] border-l-4 border-[#72aee6] rounded text-[12px] text-[#50575e]">
+                            <i class="fa-solid fa-info-circle mr-1"></i>
+                            <strong>Note:</strong> The data above is sample data for demonstration purposes. Your actual login events will appear here after activation.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <p class="text-center text-slate-500 text-sm mt-8">
+                <i class="fa-solid fa-eye mr-2"></i> A preview of the actual <span class="font-semibold text-white">Hide Login Secure</span> settings page inside WordPress.
+            </p>
+        </div>
+    </section>
+
     <!-- Story Section -->
     <section id="story" class="py-20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4">
+                    <i class="fa-solid fa-heart"></i> The Story
+                </div>
                 <h2 class="text-3xl font-bold text-white mb-4">Why I Built This Plugin</h2>
                 <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
             </div>
@@ -204,33 +537,6 @@
                                 <p class="text-slate-400 text-sm">Independent Developer & Security Enthusiast</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How it Works -->
-    <section id="how-it-works" class="py-20 bg-slate-800/50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-white mb-12">How It Protects You</h2>
-            <div class="relative">
-                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-slate-700 -translate-y-1/2 z-0"></div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-                    <div class="glass-panel p-6 rounded-xl">
-                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-4">1</div>
-                        <h4 class="font-bold text-white mb-2">You visit Secret URL</h4>
-                        <p class="text-sm text-slate-400">You access your custom, hidden slug (e.g., `/my-secret-entry/`).</p>
-                    </div>
-                    <div class="glass-panel p-6 rounded-xl">
-                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-4">2</div>
-                        <h4 class="font-bold text-white mb-2">Token is Generated</h4>
-                        <p class="text-sm text-slate-400">The plugin issues a short-lived, cryptographically signed cookie to your browser.</p>
-                    </div>
-                    <div class="glass-panel p-6 rounded-xl">
-                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-4">3</div>
-                        <h4 class="font-bold text-white mb-2">Secure Login</h4>
-                        <p class="text-sm text-slate-400">You are redirected to `wp-login.php`. The plugin verifies the cookie and grants access.</p>
                     </div>
                 </div>
             </div>
@@ -363,9 +669,14 @@
     <!-- Footer -->
     <footer class="bg-slate-950 py-12 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2">
-                <i class="fa-solid fa-shield-virus text-orange-500 text-xl"></i>
-                <span class="font-bold text-lg text-white">Hide Login Secure</span>
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-gradient-to-br from-orange-500 via-red-500 to-blue-500 rounded-md flex items-center justify-center">
+                    <i class="fa-solid fa-shield-virus text-white text-sm"></i>
+                </div>
+                <div>
+                    <span class="font-black text-lg text-white block leading-none">Hide Login Secure</span>
+                    <span class="text-[10px] text-slate-500 tracking-widest uppercase">by Jacker Architect</span>
+                </div>
             </div>
             <div class="text-slate-500 text-sm text-center md:text-right">
                 <p>&copy; <span id="current-year"></span> Jacker Architect. All rights reserved.</p>
@@ -390,6 +701,19 @@
             }).catch(err => {
                 console.error('Failed to copy: ', err);
             });
+        }
+
+        function switchTab(tabName, btn) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('active');
+                el.classList.add('bg-transparent', 'border-transparent');
+                el.classList.remove('border-[#c3c4c7]', 'border-b-white');
+            });
+            
+            document.getElementById('tab-' + tabName).classList.add('active');
+            btn.classList.add('active', 'border-[#c3c4c7]', 'border-b-white');
+            btn.classList.remove('bg-transparent', 'border-transparent');
         }
     </script>
 </body>
