@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneWebP - 100% Free Local WebP Optimizer & SEO Booster for WordPress</title>
+    <meta name="description" content="Boost WordPress SEO and Core Web Vitals with OneWebP. 100% free, open-source, zero API limits. Smart lazy loading and local WebP conversion keep your site lightweight and fast.">
+    <style>
+        /* =========================================
+           CSS Variables & Reset
+           ========================================= */
+        :root {
+            --primary: #2271b1;
+            --primary-dark: #135e96;
+            --accent: #008080;
+            --accent-light: #e6f7f7;
+            --text-main: #1d2327;
+            --text-muted: #50575e;
+            --bg-light: #f6f7f7;
+            --bg-white: #ffffff;
+            --border: #c3c4c7;
+            --danger: #d63638;
+            --warning: #dba617;
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: var(--font-stack); 
+            line-height: 1.6; 
+            color: var(--text-main); 
+            background-color: var(--bg-white); 
+            overflow-x: hidden; 
+        }
+        a { text-decoration: none; color: var(--primary); transition: color 0.2s; }
+        a:hover { color: var(--primary-dark); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* =========================================
+           Header & Navigation
+           ========================================= */
+        header { 
+            background-color: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border); 
+            padding: 16px 0; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 22px; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .logo span { color: var(--accent); }
+        .logo:hover { color: var(--primary); }
+        
+        .burger-menu { display: none; flex-direction: column; cursor: pointer; gap: 5px; padding: 5px; }
+        .burger-menu span { width: 24px; height: 3px; background-color: var(--text-main); border-radius: 2px; transition: all 0.3s ease; }
+        
+        nav ul { display: flex; list-style: none; gap: 32px; }
+        nav a { color: var(--text-main); font-weight: 600; font-size: 15px; }
+        nav a:hover { color: var(--primary); }
+        .nav-cta { 
+            background-color: var(--primary); 
+            color: #fff !important; 
+            padding: 8px 20px; 
+            border-radius: 4px; 
+        }
+        .nav-cta:hover { background-color: var(--primary-dark); color: #fff !important; }
+
+        /* =========================================
+           Hero Section
+           ========================================= */
+        .hero { 
+            padding: 100px 0 80px; 
+            text-align: center; 
+            background: radial-gradient(circle at top center, #f0f6fc 0%, #ffffff 70%); 
+        }
+        .hero-badge { 
+            display: inline-block; 
+            background: var(--accent-light); 
+            color: var(--accent); 
+            padding: 6px 16px; 
+            border-radius: 20px; 
+            font-size: 13px; 
+            font-weight: 700; 
+            margin-bottom: 24px; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px;
+        }
+        .hero h1 { 
+            font-size: 52px; 
+            font-weight: 800; 
+            margin-bottom: 24px; 
+            color: var(--text-main); 
+            line-height: 1.2;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero h1 span { color: var(--primary); }
+        .hero p { 
+            font-size: 20px; 
+            color: var(--text-muted); 
+            margin-bottom: 40px; 
+            max-width: 750px; 
+            margin-left: auto; 
+            margin-right: auto; 
+        }
+        .cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .btn { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px;
+            padding: 14px 28px; 
+            border-radius: 6px; 
+            font-weight: 600; 
+            font-size: 16px; 
+            transition: all 0.2s ease; 
+            cursor: pointer; 
+            border: none; 
+        }
+        .btn-primary { background-color: var(--primary); color: #ffffff; box-shadow: 0 4px 6px rgba(34, 113, 177, 0.2); }
+        .btn-primary:hover { background-color: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(34, 113, 177, 0.3); color: #fff; }
+        .btn-secondary { background-color: var(--bg-white); color: var(--text-main); border: 2px solid var(--border); }
+        .btn-secondary:hover { background-color: var(--bg-light); border-color: var(--text-main); transform: translateY(-2px); }
+
+        /* =========================================
+           Problem vs Solution (Comparison)
+           ========================================= */
+        .comparison { padding: 80px 0; background-color: var(--bg-white); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 36px; font-weight: 700; margin-bottom: 16px; }
+        .section-header p { font-size: 18px; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+        
+        .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 900px; margin: 0 auto; }
+        .compare-card { padding: 40px; border-radius: 12px; border: 1px solid var(--border); }
+        .compare-card.bad { background-color: #fcf0f1; border-color: #f5c6cb; }
+        .compare-card.good { background-color: var(--accent-light); border-color: #b2dfdb; box-shadow: 0 10px 30px rgba(0, 128, 128, 0.05); }
+        .compare-card h3 { font-size: 22px; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+        .compare-card.bad h3 { color: var(--danger); }
+        .compare-card.good h3 { color: var(--accent); }
+        .compare-list { list-style: none; }
+        .compare-list li { margin-bottom: 16px; font-size: 16px; display: flex; align-items: flex-start; gap: 12px; }
+        .compare-list li span { font-size: 20px; line-height: 1; }
+
+        /* =========================================
+           Core Features (Grid)
+           ========================================= */
+        .features { padding: 80px 0; background-color: var(--bg-light); }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .feature-card { 
+            background-color: var(--bg-white); 
+            border: 1px solid var(--border); 
+            border-radius: 12px; 
+            padding: 32px; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .feature-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: var(--primary); }
+        .feature-icon { 
+            width: 56px; height: 56px; 
+            background-color: #f0f6fc; 
+            color: var(--primary); 
+            border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 28px; 
+            margin-bottom: 24px; 
+        }
+        .feature-card h3 { font-size: 20px; margin-bottom: 12px; font-weight: 700; }
+        .feature-card p { color: var(--text-muted); font-size: 15px; }
+
+        /* =========================================
+           SEO & Performance Focus
+           ========================================= */
+        .seo-focus { padding: 80px 0; background-color: var(--bg-white); }
+        .seo-content { display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
+        .seo-text { flex: 1; min-width: 300px; }
+        .seo-text h2 { font-size: 36px; margin-bottom: 24px; line-height: 1.3; }
+        .seo-text p { margin-bottom: 20px; color: var(--text-muted); font-size: 17px; }
+        .seo-checklist { list-style: none; margin-top: 30px; }
+        .seo-checklist li { margin-bottom: 16px; font-size: 16px; font-weight: 500; display: flex; align-items: center; gap: 12px; }
+        .seo-checklist li::before { content: '✓'; color: var(--accent); font-weight: bold; font-size: 18px; }
+        
+        .seo-visual { 
+            flex: 1; min-width: 300px; 
+            background: linear-gradient(135deg, #f0f6fc 0%, #e6f7f7 100%); 
+            border: 1px solid var(--border); 
+            border-radius: 16px; 
+            padding: 40px; 
+            text-align: center;
+        }
+        .metric-box { background: #fff; padding: 20px; border-radius: 8px; margin-bottom: 16px; border: 1px solid var(--border); text-align: left; }
+        .metric-label { font-size: 12px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 8px; }
+        .metric-bar-bg { background: #f0f0f1; height: 12px; border-radius: 6px; overflow: hidden; }
+        .metric-bar-fill { height: 100%; border-radius: 6px; }
+        .metric-bar-fill.green { background: var(--accent); width: 98%; }
+        .metric-bar-fill.blue { background: var(--primary); width: 95%; }
+
+        /* =========================================
+           Interactive UI Preview (High Fidelity WP Admin)
+           ========================================= */
+        .plugin-preview { padding: 80px 0; background-color: var(--bg-light); }
+        
+        /* WP Admin Simulator Styles */
+        .wp-admin-simulator {
+            background-color: #f0f0f1;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            max-width: 1100px;
+            margin: 0 auto;
+            font-family: var(--font-stack);
+            color: #1d2327;
+            text-align: left;
+        }
+        .sim-tabs {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            padding: 0 20px;
+            display: flex;
+            gap: 5px;
+        }
+        .sim-tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #50575e;
+            border: 1px solid transparent;
+            border-bottom: none;
+            margin-bottom: -1px;
+            background: #f6f7f7;
+            border-radius: 4px 4px 0 0;
+            transition: all 0.2s;
+        }
+        .sim-tab:hover { color: var(--primary); }
+        .sim-tab.active {
+            background: #fff;
+            color: var(--text-main);
+            border-color: var(--border);
+            border-bottom-color: #fff;
+        }
+        .sim-body {
+            padding: 30px;
+            background: #fff;
+            min-height: 500px;
+        }
+        .sim-content { display: none; animation: fadeIn 0.3s ease; }
+        .sim-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Simulator: Dashboard */
+        .sim-dash-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.04);
+        }
+        .sim-dash-card h2 { font-size: 1.3em; margin-bottom: 10px; font-weight: 400; }
+        .sim-dash-card p { margin-bottom: 15px; color: #50575e; }
+        .sim-stats-box {
+            background: #f6f7f7;
+            padding: 15px;
+            border-left: 4px solid var(--primary);
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        .sim-stats-box strong { font-size: 18px; }
+        .sim-progress-bg {
+            background: #f0f0f1;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            height: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .sim-progress-fill {
+            background: var(--accent);
+            width: 80%;
+            height: 100%;
+        }
+        .sim-progress-text {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: bold; color: #fff;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        .sim-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--primary);
+            color: #fff;
+            border: 1px solid var(--primary);
+            border-radius: 3px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* Simulator: Settings */
+        .sim-form-table { width: 100%; border-collapse: collapse; }
+        .sim-form-table th {
+            text-align: right;
+            padding: 15px 10px 15px 0;
+            width: 30%;
+            vertical-align: top;
+            font-weight: 600;
+            color: #1d2327;
+        }
+        .sim-form-table td { padding: 15px 10px; vertical-align: top; }
+        .sim-form-table tr { border-bottom: 1px solid #f0f0f1; }
+        .sim-input-text { padding: 6px 10px; border: 1px solid #8c8f94; border-radius: 4px; width: 80px; }
+        .sim-desc { font-size: 13px; color: #646970; margin-top: 5px; font-style: italic; }
+        .sim-format-notes {
+            margin-top: 15px;
+            padding: 12px;
+            background: #fcf0f1;
+            border-left: 4px solid var(--danger);
+            font-size: 13px;
+            color: #1d2327;
+        }
+        .sim-format-notes strong { display: block; margin-bottom: 8px; }
+        .sim-submit-btn {
+            background: var(--primary); color: #fff; border: none; padding: 8px 20px; border-radius: 3px; font-weight: 600; margin-top: 20px; cursor: pointer;
+        }
+
+        /* Simulator: Manager */
+        .sim-manager-style {
+            /* Replicating the CSS fixes from onewebp.php */
+        }
+        .sim-manager-style table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--border); }
+        .sim-manager-style th {
+            background: #f6f7f7; text-align: left; padding: 12px 8px; font-size: 13px; color: #1d2327; border-bottom: 1px solid var(--border);
+        }
+        .sim-manager-style td {
+            vertical-align: middle !important; padding: 12px 8px !important; border-bottom: 1px solid #f0f0f1; font-size: 13px;
+        }
+        .sim-col-preview { width: 80px !important; text-align: center; }
+        .sim-col-size { width: 180px !important; }
+        .sim-col-orig { width: 120px !important; }
+        .sim-col-webp { width: 180px !important; }
+        .sim-col-actions { width: 220px !important; }
+        .sim-mgr-img {
+            width: 40px; height: 40px; object-fit: cover; border: 1px solid #ddd; display: inline-block; vertical-align: middle; margin: 0 auto; background: #ddd;
+        }
+        .sim-mgr-size-name { font-weight: bold; display: block; }
+        .sim-mgr-dim { color: #666; font-size: 11px; }
+        .sim-mgr-save { color: var(--accent); font-weight: bold; font-size: 11px; }
+        .sim-mgr-actions a { color: var(--primary); margin-right: 5px; text-decoration: none; }
+        .sim-mgr-actions a.remove { color: var(--danger); }
+
+        /* =========================================
+           Installation Steps
+           ========================================= */
+        .install { padding: 80px 0; background-color: var(--bg-white); }
+        .install-steps { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .step { background-color: var(--bg-white); border: 1px solid var(--border); border-radius: 12px; padding: 40px 30px; text-align: center; flex: 1; min-width: 280px; position: relative; transition: transform 0.3s; }
+        .step:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .step-number { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; background-color: var(--primary); color: #ffffff; border-radius: 50%; font-weight: 800; font-size: 20px; margin-bottom: 20px; }
+        .step h3 { font-size: 20px; margin-bottom: 12px; font-weight: 700; }
+        .step p { color: var(--text-muted); font-size: 15px; }
+
+        /* =========================================
+           FAQ Section
+           ========================================= */
+        .faq { padding: 80px 0; background-color: var(--bg-light); }
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { background-color: var(--bg-white); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 16px; padding: 24px; transition: box-shadow 0.2s; }
+        .faq-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .faq-item h3 { font-size: 18px; margin-bottom: 12px; color: var(--text-main); font-weight: 700; }
+        .faq-item p { color: var(--text-muted); font-size: 15px; }
+
+        /* =========================================
+           Support & Solana Donation
+           ========================================= */
+        .support { padding: 100px 0; text-align: center; background: linear-gradient(135deg, #1d2327 0%, #2c3338 100%); color: #ffffff; }
+        .support h2 { font-size: 36px; margin-bottom: 16px; font-weight: 800; }
+        .support > .container > p { font-size: 18px; color: #a7aaad; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        
+        .donate-card { 
+            background: rgba(255,255,255,0.05); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 16px; 
+            padding: 40px; 
+            max-width: 550px; 
+            margin: 0 auto; 
+            backdrop-filter: blur(10px);
+        }
+        .donate-header { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px; }
+        .sol-icon { width: 32px; height: 32px; background: linear-gradient(135deg, #9945FF 0%, #14F195 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #fff; font-size: 14px; }
+        .donate-title { font-size: 20px; font-weight: 700; }
+        .donate-subtitle { font-size: 13px; color: #a7aaad; margin-top: 4px; }
+        
+        .wallet-box { 
+            background: rgba(0,0,0,0.3); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 8px; 
+            padding: 16px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .wallet-address { 
+            font-family: monospace; 
+            font-size: 14px; 
+            color: #e0e0e0; 
+            word-break: break-all; 
+            text-align: left;
+        }
+        .copy-btn { 
+            background: var(--primary); 
+            color: #fff; 
+            border: none; 
+            padding: 10px 20px; 
+            border-radius: 6px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.2s; 
+            white-space: nowrap;
+            font-size: 14px;
+        }
+        .copy-btn:hover { background: var(--primary-dark); }
+        .copy-btn.copied { background: var(--accent); }
+        
+        .donate-footer { font-size: 13px; color: #a7aaad; }
+
+        /* =========================================
+           Footer
+           ========================================= */
+        footer { background-color: #111; color: #a7aaad; padding: 40px 0; text-align: center; border-top: 1px solid #222; }
+        footer p { font-size: 14px; margin-bottom: 10px; }
+        footer a { color: #ffffff; }
+        footer a:hover { color: var(--primary); }
+
+        /* =========================================
+           Responsive Design
+           ========================================= */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 40px; }
+            .compare-grid { grid-template-columns: 1fr; }
+            .seo-content { flex-direction: column; }
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 60px 0; }
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 17px; }
+            .section-header h2 { font-size: 28px; }
+            
+            .burger-menu { display: flex; }
+            nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--bg-white); border-bottom: 1px solid var(--border); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+            nav.active { display: block; }
+            nav ul { flex-direction: column; padding: 20px; gap: 0; }
+            nav li { border-bottom: 1px solid #f0f0f1; }
+            nav li:last-child { border-bottom: none; }
+            nav a { display: block; padding: 16px 0; }
+            .nav-cta { text-align: center; margin-top: 10px; }
+            
+            .burger-menu.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+            .burger-menu.active span:nth-child(2) { opacity: 0; }
+            .burger-menu.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+            .sim-form-table, .sim-form-table tbody, .sim-form-table tr, .sim-form-table td, .sim-form-table th { display: block; width: 100%; text-align: left; }
+            .sim-form-table th { padding: 10px 0; }
+            .sim-manager-style { overflow-x: auto; }
+            .wallet-box { flex-direction: column; align-items: stretch; text-align: center; }
+            .wallet-address { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">One<span>WebP</span></a>
+            <div class="burger-menu" id="burger-menu"><span></span><span></span><span></span></div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#seo">SEO & Speed</a></li>
+                    <li><a href="#preview">Live Preview</a></li>
+                    <li><a href="#install">Install</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#support" class="nav-cta">Support</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge"> 100% Free & Open Source</div>
+            <h1>Supercharge Your WordPress <span>SEO & Speed</span>.<br>Zero API Limits.</h1>
+            <p>The ultimate lightweight WebP optimizer. Convert images locally, protect your privacy, and boost Core Web Vitals without spending a dime on third-party APIs.</p>
+            <div class="cta-buttons">
+                <a href="https://jackerteo.com/plugin/onewebp" class="btn btn-primary">⬇ Download Plugin</a>
+                <a href="https://github.com/JackerArchitect/onewebp" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View Source on GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem vs Solution -->
+    <section class="comparison">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose OneWebP?</h2>
+                <p>Stop paying for image optimization. Stop uploading your private images to strangers' servers.</p>
+            </div>
+            <div class="compare-grid">
+                <div class="compare-card bad">
+                    <h3> Traditional API Plugins</h3>
+                    <ul class="compare-list">
+                        <li><span>💸</span> Monthly limits & expensive subscriptions</li>
+                        <li><span></span> Privacy risks (images sent to external servers)</li>
+                        <li><span>🐢</span> Slow processing due to network latency</li>
+                        <li><span>📉</span> Heavy scripts that slow down your frontend</li>
+                    </ul>
+                </div>
+                <div class="compare-card good">
+                    <h3>✅ OneWebP (Local Engine)</h3>
+                    <ul class="compare-list">
+                        <li><span>🆓</span> 100% Free, Unlimited conversions forever</li>
+                        <li><span></span> 100% Privacy (Images never leave your server)</li>
+                        <li><span>⚡</span> Instant local processing via PHP GD</li>
+                        <li><span>🪶</span> Ultra-lightweight, zero frontend bloat</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Powerful Features, Zero Bloat</h2>
+                <p>Engineered for performance, privacy, and ease of use.</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>100% Local & Private</h3>
+                    <p>No third-party APIs. Your images are processed directly on your server using native PHP. Maximum privacy and zero external dependencies.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3>Smart Memory Engine</h3>
+                    <p>Dynamically calculates memory requirements and adjusts batch sizes. Prevents 502 errors and server crashes, even on cheap shared hosting.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Smart Queue Lazy Load</h3>
+                    <p>Boosts LCP scores. Critical above-the-fold images load instantly with <code>fetchpriority="high"</code>, while others lazy-load via a smart queue.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3>Auto Downscaling</h3>
+                    <p>Automatically resizes massive images (e.g., >3000px) during conversion. Saves massive bandwidth and storage space effortlessly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>One-Click Dashboard</h3>
+                    <p>Beautiful, native WordPress UI. Real-time stats, progress bars, and bulk optimization with a single click. No complex configurations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Server Health Monitor</h3>
+                    <p>Proactive warnings for low disk space (&lt;500MB) and RAM (&lt;64MB). Prevents disasters before they happen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO & Performance Focus -->
+    <section class="seo-focus" id="seo">
+        <div class="container">
+            <div class="seo-content">
+                <div class="seo-text">
+                    <h2>Built to Crush Core Web Vitals & SEO</h2>
+                    <p>Google prioritizes fast, lightweight websites. OneWebP is specifically engineered to improve your Largest Contentful Paint (LCP) and Cumulative Layout Shift (CLS) without breaking your design.</p>
+                    <ul class="seo-checklist">
+                        <li>Converts heavy JPG/PNG to next-gen WebP format (up to 80% smaller).</li>
+                        <li>Smart Lazy Loading ensures above-the-fold images load instantly.</li>
+                        <li>Zero external scripts means no render-blocking resources.</li>
+                        <li>Automatic downscaling prevents massive mobile data waste.</li>
+                    </ul>
+                </div>
+                <div class="seo-visual">
+                    <div class="metric-box">
+                        <div class="metric-label">Largest Contentful Paint (LCP)</div>
+                        <div class="metric-bar-bg"><div class="metric-bar-fill green"></div></div>
+                        <div style="margin-top:8px; font-weight:bold; color:var(--accent);">1.2s (Excellent)</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Total Page Weight Reduction</div>
+                        <div class="metric-bar-bg"><div class="metric-bar-fill blue"></div></div>
+                        <div style="margin-top:8px; font-weight:bold; color:var(--primary);">-65% (Lightweight)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive UI Preview (High Fidelity) -->
+    <section class="plugin-preview" id="preview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Experience the Real Interface</h2>
+                <p>Native WordPress design. Click the tabs to explore the actual plugin pages.</p>
+            </div>
+            
+            <div class="wp-admin-simulator">
+                <div class="sim-tabs">
+                    <div class="sim-tab active" onclick="switchSimTab('dashboard')">Dashboard</div>
+                    <div class="sim-tab" onclick="switchSimTab('settings')">Settings</div>
+                    <div class="sim-tab" onclick="switchSimTab('manager')">Image Manager</div>
+                </div>
+
+                <div class="sim-body">
+                    <!-- 1. Dashboard Preview -->
+                    <div id="sim-dashboard" class="sim-content active">
+                        <div class="sim-dash-card">
+                            <h2>One-Click Optimization</h2>
+                            <p>Smart Memory Engine is active. It will process images safely without crashing your server.</p>
+                            <div class="sim-stats-box">
+                                Pending: <strong>2</strong> | Total Saved: <strong style="color:var(--accent);">2.45 MB</strong>
+                            </div>
+                            <div class="sim-progress-bg">
+                                <div class="sim-progress-fill"></div>
+                                <div class="sim-progress-text">80.0%</div>
+                            </div>
+                            <p>
+                                <button class="sim-btn">Start Optimization</button>
+                                <button class="sim-btn" style="background:#fff; color:var(--danger); border-color:var(--danger); margin-left:10px;">Pause</button>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 2. Settings Preview -->
+                    <div id="sim-settings" class="sim-content">
+                        <form onsubmit="return false;">
+                            <table class="sim-form-table">
+                                <tr>
+                                    <th>WebP Quality</th>
+                                    <td><input type="number" class="sim-input-text" value="82" min="50" max="100"><div class="sim-desc">(Recommended: 82). Range: 50-100.</div></td>
+                                </tr>
+                                <tr>
+                                    <th>Max Resolution (px)</th>
+                                    <td><input type="number" class="sim-input-text" value="3000" min="800"><div class="sim-desc">(Recommended: 3000). Images larger than this will be automatically downscaled.</div></td>
+                                </tr>
+                                <tr>
+                                    <th>Conversion Scope</th>
+                                    <td>
+                                        <label style="display:block; margin-bottom:5px;"><input type="radio" name="scope" checked> Original + All Thumbnails (Recommended)</label>
+                                        <label style="display:block; margin-bottom:5px;"><input type="radio" name="scope"> Original Image Only</label>
+                                        <label style="display:block;"><input type="radio" name="scope"> Thumbnails Only</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Image Types to Convert</th>
+                                    <td>
+                                        <label style="display:block; margin-bottom:5px;"><input type="checkbox" checked> JPEG / JPG (Recommended)</label>
+                                        <label style="display:block; margin-bottom:5px;"><input type="checkbox" checked> PNG (Recommended - Transparency preserved)</label>
+                                        <label style="display:block; margin-bottom:10px;"><input type="checkbox"> GIF</label>
+                                        
+                                        <div class="sim-format-notes">
+                                            <strong>Format Support Notes:</strong>
+                                            ✅ <strong>JPEG/JPG → WebP:</strong> Fully supported. Best compression results.<br>
+                                            ✅ <strong>PNG → WebP:</strong> Fully supported. Transparent background is preserved.<br>
+                                            ⚠️ <strong>GIF → WebP:</strong> Static GIF only. Animated GIFs will become static (first frame only). GD library does not support GIF animation.<br>
+                                            ❌ <strong>SVG:</strong> Not supported. SVG is a vector format and cannot be converted by GD library.<br>
+                                            ❌ <strong>BMP/TIFF:</strong> Not recommended. Very large file sizes may cause memory issues.<br>
+                                            ❌ <strong>WebP:</strong> Already WebP. No conversion needed.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Smart Lazy Load</th>
+                                    <td><label><input type="checkbox" checked> Enable queue-based lazy loading for non-critical images.</label></td>
+                                </tr>
+                            </table>
+                            <button class="sim-submit-btn">Save Settings</button>
+                        </form>
+                    </div>
+
+                    <!-- 3. Image Manager Preview -->
+                    <div id="sim-manager" class="sim-content">
+                        <div class="sim-manager-style">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="sim-col-preview">Preview</th>
+                                        <th class="sim-col-size">Size</th>
+                                        <th class="sim-col-orig">Original</th>
+                                        <th class="sim-col-webp">WebP</th>
+                                        <th class="sim-col-actions">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="sim-col-preview"><div class="sim-mgr-img" style="background:#333;"></div></td>
+                                        <td class="sim-col-size"><span class="sim-mgr-size-name">Original</span><span class="sim-mgr-dim">1920x1080</span></td>
+                                        <td class="sim-col-orig">2.36 MB</td>
+                                        <td class="sim-col-webp">306.58 KB <span class="sim-mgr-save">(-87.3%)</span></td>
+                                        <td class="sim-col-actions sim-mgr-actions">
+                                            <a href="#">Edit</a> | <a href="#">Reoptimize</a> | <a href="#" class="remove">Remove</a> | <a href="#">Copy URL</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sim-col-preview"><div class="sim-mgr-img" style="background:#555;"></div></td>
+                                        <td class="sim-col-size"><span class="sim-mgr-size-name">Medium large</span><span class="sim-mgr-dim">768x1108</span></td>
+                                        <td class="sim-col-orig">1.05 MB</td>
+                                        <td class="sim-col-webp">190.98 KB <span class="sim-mgr-save">(-82.2%)</span></td>
+                                        <td class="sim-col-actions sim-mgr-actions">
+                                            <a href="#">Edit</a> | <a href="#">Reoptimize</a> | <a href="#" class="remove">Remove</a> | <a href="#">Copy URL</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sim-col-preview"><div class="sim-mgr-img" style="background:#777;"></div></td>
+                                        <td class="sim-col-size"><span class="sim-mgr-size-name">Thumbnail</span><span class="sim-mgr-dim">150x150</span></td>
+                                        <td class="sim-col-orig">28.29 KB</td>
+                                        <td class="sim-col-webp">5.60 KB <span class="sim-mgr-save">(-80.2%)</span></td>
+                                        <td class="sim-col-actions sim-mgr-actions">
+                                            <a href="#">Edit</a> | <a href="#">Reoptimize</a> | <a href="#" class="remove">Remove</a> | <a href="#">Copy URL</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div style="margin-top:15px; text-align:right; font-size:12px; color:#646970;">3 items</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation -->
+    <section class="install" id="install">
+        <div class="container">
+            <div class="section-header">
+                <h2>Install in 60 Seconds</h2>
+                <p>No complex setup. Get faster immediately.</p>
+            </div>
+            <div class="install-steps">
+                <div class="step"><div class="step-number">1</div><h3>Download & Upload</h3><p>Get the ZIP file and upload it via WordPress Plugins → Add New → Upload.</p></div>
+                <div class="step"><div class="step-number">2</div><h3>Activate</h3><p>Click "Activate". The plugin automatically creates its lightweight database tables.</p></div>
+                <div class="step"><div class="step-number">3</div><h3>Optimize</h3><p>Go to OneWebP Dashboard and click "Start Optimization". That's it!</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item"><h3>Is it really 100% free with no limits?</h3><p>Yes. OneWebP is open-source and uses your server's native PHP GD library. There are no API keys, no monthly quotas, and no hidden fees.</p></div>
+                <div class="faq-item"><h3>Will it crash my shared hosting server?</h3><p>No. Our Smart Memory Engine calculates the exact RAM needed for each image and dynamically adjusts the batch size to prevent memory exhaustion.</p></div>
+                <div class="faq-item"><h3>How does Smart Lazy Load improve SEO?</h3><p>It prioritizes above-the-fold images using <code>fetchpriority="high"</code> to boost LCP, while lazy-loading the rest to save bandwidth and improve overall page speed.</p></div>
+                <div class="faq-item"><h3>What happens if I uninstall the plugin?</h3><p>We include a complete cleanup routine. You can choose to delete all database logs, settings, and generated WebP files to free up space.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support / Solana Donation -->
+    <section class="support" id="support">
+        <div class="container">
+            <h2>Support Open Source Development</h2>
+            <p>OneWebP is built with passion, completely free. If it helps your business, consider supporting sustainable, high-tech plugin development.</p>
+            
+            <div class="donate-card">
+                <div class="donate-header">
+                    <div class="sol-icon">◎</div>
+                    <div>
+                        <div class="donate-title">Donate via Solana (SOL)</div>
+                        <div class="donate-subtitle">Solana Mainnet</div>
+                    </div>
+                </div>
+                
+                <div class="wallet-box">
+                    <div class="wallet-address" id="sol-wallet">EHHPsci6pKbfL71t73KNCXrtanM1TWPrWYJZ1ik1b5FH</div>
+                    <button class="copy-btn" id="copy-btn" onclick="copyWallet()">Copy Address</button>
+                </div>
+                
+                <div class="donate-footer">
+                    Thank you for keeping open source alive! ☕
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 OneWebP by Jacker Architect. Licensed under GPL-2.0+.</p>
+            <p><a href="https://github.com/JackerArchitect/onewebp" target="_blank" rel="noopener noreferrer">View Source on GitHub</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Burger Menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const burgerMenu = document.getElementById('burger-menu');
+            const mainNav = document.getElementById('main-nav');
+            burgerMenu.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mainNav.classList.toggle('active');
+            });
+            document.querySelectorAll('#main-nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    burgerMenu.classList.remove('active');
+                    mainNav.classList.remove('active');
+                });
+            });
+        });
+
+        // UI Preview Tabs
+        function switchSimTab(tabName) {
+            document.querySelectorAll('.sim-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.sim-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('sim-' + tabName).classList.add('active');
+            const clickedTab = Array.from(document.querySelectorAll('.sim-tab')).find(t => t.getAttribute('onclick').includes(tabName));
+            if(clickedTab) clickedTab.classList.add('active');
+        }
+
+        // Copy Solana Wallet
+        function copyWallet() {
+            const walletText = document.getElementById('sol-wallet').innerText;
+            navigator.clipboard.writeText(walletText).then(() => {
+                const btn = document.getElementById('copy-btn');
+                const originalText = btn.innerText;
+                btn.innerText = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
