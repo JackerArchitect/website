@@ -163,8 +163,17 @@
             color: var(--primary); 
             border-radius: 12px; 
             display: flex; align-items: center; justify-content: center; 
-            font-size: 28px; 
             margin-bottom: 24px; 
+        }
+        /* SVG Icon Styling */
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
         .feature-card h3 { font-size: 20px; margin-bottom: 12px; font-weight: 700; }
         .feature-card p { color: var(--text-muted); font-size: 15px; }
@@ -201,7 +210,6 @@
            ========================================= */
         .plugin-preview { padding: 80px 0; background-color: var(--bg-light); }
         
-        /* WP Admin Simulator Styles */
         .wp-admin-simulator {
             background-color: #f0f0f1;
             border: 1px solid var(--border);
@@ -240,112 +248,40 @@
             border-color: var(--border);
             border-bottom-color: #fff;
         }
-        .sim-body {
-            padding: 30px;
-            background: #fff;
-            min-height: 500px;
-        }
+        .sim-body { padding: 30px; background: #fff; min-height: 500px; }
         .sim-content { display: none; animation: fadeIn 0.3s ease; }
         .sim-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Simulator: Dashboard */
-        .sim-dash-card {
-            background: #fff;
-            border: 1px solid var(--border);
-            padding: 20px;
-            border-radius: 4px;
-            box-shadow: 0 1px 1px rgba(0,0,0,.04);
-        }
+        .sim-dash-card { background: #fff; border: 1px solid var(--border); padding: 20px; border-radius: 4px; box-shadow: 0 1px 1px rgba(0,0,0,.04); }
         .sim-dash-card h2 { font-size: 1.3em; margin-bottom: 10px; font-weight: 400; }
         .sim-dash-card p { margin-bottom: 15px; color: #50575e; }
-        .sim-stats-box {
-            background: #f6f7f7;
-            padding: 15px;
-            border-left: 4px solid var(--primary);
-            margin-bottom: 20px;
-            font-size: 15px;
-        }
+        .sim-stats-box { background: #f6f7f7; padding: 15px; border-left: 4px solid var(--primary); margin-bottom: 20px; font-size: 15px; }
         .sim-stats-box strong { font-size: 18px; }
-        .sim-progress-bg {
-            background: #f0f0f1;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            height: 24px;
-            margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        .sim-progress-fill {
-            background: var(--accent);
-            width: 80%;
-            height: 100%;
-        }
-        .sim-progress-text {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 12px; font-weight: bold; color: #fff;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-        }
-        .sim-btn {
-            display: inline-block;
-            padding: 8px 20px;
-            background: var(--primary);
-            color: #fff;
-            border: 1px solid var(--primary);
-            border-radius: 3px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-        }
+        .sim-progress-bg { background: #f0f0f1; border: 1px solid var(--border); border-radius: 4px; height: 24px; margin-bottom: 20px; position: relative; overflow: hidden; }
+        .sim-progress-fill { background: var(--accent); width: 80%; height: 100%; }
+        .sim-progress-text { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+        .sim-btn { display: inline-block; padding: 8px 20px; background: var(--primary); color: #fff; border: 1px solid var(--primary); border-radius: 3px; font-weight: 600; cursor: pointer; text-decoration: none; }
 
-        /* Simulator: Settings */
         .sim-form-table { width: 100%; border-collapse: collapse; }
-        .sim-form-table th {
-            text-align: right;
-            padding: 15px 10px 15px 0;
-            width: 30%;
-            vertical-align: top;
-            font-weight: 600;
-            color: #1d2327;
-        }
+        .sim-form-table th { text-align: right; padding: 15px 10px 15px 0; width: 30%; vertical-align: top; font-weight: 600; color: #1d2327; }
         .sim-form-table td { padding: 15px 10px; vertical-align: top; }
         .sim-form-table tr { border-bottom: 1px solid #f0f0f1; }
         .sim-input-text { padding: 6px 10px; border: 1px solid #8c8f94; border-radius: 4px; width: 80px; }
         .sim-desc { font-size: 13px; color: #646970; margin-top: 5px; font-style: italic; }
-        .sim-format-notes {
-            margin-top: 15px;
-            padding: 12px;
-            background: #fcf0f1;
-            border-left: 4px solid var(--danger);
-            font-size: 13px;
-            color: #1d2327;
-        }
+        .sim-format-notes { margin-top: 15px; padding: 12px; background: #fcf0f1; border-left: 4px solid var(--danger); font-size: 13px; color: #1d2327; }
         .sim-format-notes strong { display: block; margin-bottom: 8px; }
-        .sim-submit-btn {
-            background: var(--primary); color: #fff; border: none; padding: 8px 20px; border-radius: 3px; font-weight: 600; margin-top: 20px; cursor: pointer;
-        }
+        .sim-submit-btn { background: var(--primary); color: #fff; border: none; padding: 8px 20px; border-radius: 3px; font-weight: 600; margin-top: 20px; cursor: pointer; }
 
-        /* Simulator: Manager */
-        .sim-manager-style {
-            /* Replicating the CSS fixes from onewebp.php */
-        }
         .sim-manager-style table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--border); }
-        .sim-manager-style th {
-            background: #f6f7f7; text-align: left; padding: 12px 8px; font-size: 13px; color: #1d2327; border-bottom: 1px solid var(--border);
-        }
-        .sim-manager-style td {
-            vertical-align: middle !important; padding: 12px 8px !important; border-bottom: 1px solid #f0f0f1; font-size: 13px;
-        }
+        .sim-manager-style th { background: #f6f7f7; text-align: left; padding: 12px 8px; font-size: 13px; color: #1d2327; border-bottom: 1px solid var(--border); }
+        .sim-manager-style td { vertical-align: middle !important; padding: 12px 8px !important; border-bottom: 1px solid #f0f0f1; font-size: 13px; }
         .sim-col-preview { width: 80px !important; text-align: center; }
         .sim-col-size { width: 180px !important; }
         .sim-col-orig { width: 120px !important; }
         .sim-col-webp { width: 180px !important; }
         .sim-col-actions { width: 220px !important; }
-        .sim-mgr-img {
-            width: 40px; height: 40px; object-fit: cover; border: 1px solid #ddd; display: inline-block; vertical-align: middle; margin: 0 auto; background: #ddd;
-        }
+        .sim-mgr-img { width: 40px; height: 40px; object-fit: cover; border: 1px solid #ddd; display: inline-block; vertical-align: middle; margin: 0 auto; background: #ddd; }
         .sim-mgr-size-name { font-weight: bold; display: block; }
         .sim-mgr-dim { color: #666; font-size: 11px; }
         .sim-mgr-save { color: var(--accent); font-weight: bold; font-size: 11px; }
@@ -405,28 +341,10 @@
             gap: 12px;
             margin-bottom: 24px;
         }
-        .wallet-address { 
-            font-family: monospace; 
-            font-size: 14px; 
-            color: #e0e0e0; 
-            word-break: break-all; 
-            text-align: left;
-        }
-        .copy-btn { 
-            background: var(--primary); 
-            color: #fff; 
-            border: none; 
-            padding: 10px 20px; 
-            border-radius: 6px; 
-            font-weight: 600; 
-            cursor: pointer; 
-            transition: all 0.2s; 
-            white-space: nowrap;
-            font-size: 14px;
-        }
+        .wallet-address { font-family: monospace; font-size: 14px; color: #e0e0e0; word-break: break-all; text-align: left; }
+        .copy-btn { background: var(--primary); color: #fff; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; font-size: 14px; }
         .copy-btn:hover { background: var(--primary-dark); }
         .copy-btn.copied { background: var(--accent); }
-        
         .donate-footer { font-size: 13px; color: #a7aaad; }
 
         /* =========================================
@@ -517,7 +435,7 @@
                 <div class="compare-card bad">
                     <h3> Traditional API Plugins</h3>
                     <ul class="compare-list">
-                        <li><span>💸</span> Monthly limits & expensive subscriptions</li>
+                        <li><span></span> Monthly limits & expensive subscriptions</li>
                         <li><span></span> Privacy risks (images sent to external servers)</li>
                         <li><span>🐢</span> Slow processing due to network latency</li>
                         <li><span>📉</span> Heavy scripts that slow down your frontend</li>
@@ -526,7 +444,7 @@
                 <div class="compare-card good">
                     <h3>✅ OneWebP (Local Engine)</h3>
                     <ul class="compare-list">
-                        <li><span>🆓</span> 100% Free, Unlimited conversions forever</li>
+                        <li><span></span> 100% Free, Unlimited conversions forever</li>
                         <li><span></span> 100% Privacy (Images never leave your server)</li>
                         <li><span>⚡</span> Instant local processing via PHP GD</li>
                         <li><span>🪶</span> Ultra-lightweight, zero frontend bloat</li>
@@ -545,32 +463,44 @@
             </div>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
+                    </div>
                     <h3>100% Local & Private</h3>
                     <p>No third-party APIs. Your images are processed directly on your server using native PHP. Maximum privacy and zero external dependencies.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon"></div>
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z" /></svg>
+                    </div>
                     <h3>Smart Memory Engine</h3>
                     <p>Dynamically calculates memory requirements and adjusts batch sizes. Prevents 502 errors and server crashes, even on cheap shared hosting.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                    </div>
                     <h3>Smart Queue Lazy Load</h3>
                     <p>Boosts LCP scores. Critical above-the-fold images load instantly with <code>fetchpriority="high"</code>, while others lazy-load via a smart queue.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon"></div>
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" /></svg>
+                    </div>
                     <h3>Auto Downscaling</h3>
                     <p>Automatically resizes massive images (e.g., >3000px) during conversion. Saves massive bandwidth and storage space effortlessly.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
+                    </div>
                     <h3>One-Click Dashboard</h3>
                     <p>Beautiful, native WordPress UI. Real-time stats, progress bars, and bulk optimization with a single click. No complex configurations.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" /></svg>
+                    </div>
                     <h3>Server Health Monitor</h3>
                     <p>Proactive warnings for low disk space (&lt;500MB) and RAM (&lt;64MB). Prevents disasters before they happen.</p>
                 </div>
@@ -808,7 +738,6 @@
 
     <!-- JavaScript -->
     <script>
-        // Burger Menu
         document.addEventListener('DOMContentLoaded', function() {
             const burgerMenu = document.getElementById('burger-menu');
             const mainNav = document.getElementById('main-nav');
@@ -824,7 +753,6 @@
             });
         });
 
-        // UI Preview Tabs
         function switchSimTab(tabName) {
             document.querySelectorAll('.sim-content').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('.sim-tab').forEach(t => t.classList.remove('active'));
@@ -833,7 +761,6 @@
             if(clickedTab) clickedTab.classList.add('active');
         }
 
-        // Copy Solana Wallet
         function copyWallet() {
             const walletText = document.getElementById('sol-wallet').innerText;
             navigator.clipboard.writeText(walletText).then(() => {
