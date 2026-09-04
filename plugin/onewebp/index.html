@@ -213,13 +213,13 @@
         .metric-bar-fill.blue { background: var(--gradient-main); width: 95%; }
 
         /* =========================================
-           Interactive UI Preview
+           Interactive UI Preview (High Fidelity + Modern Style)
            ========================================= */
         .plugin-preview { padding: 100px 0; background-color: #fff; }
         .wp-admin-simulator {
-            background-color: #f1f5f9;
+            background-color: #f8fafc;
             border: 1px solid var(--border-light);
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow-xl);
             max-width: 1000px;
@@ -229,31 +229,39 @@
         .sim-tab { padding: 16px 24px; cursor: pointer; font-weight: 600; color: var(--text-muted); border-bottom: 2px solid transparent; transition: all 0.2s; font-size: 14px; }
         .sim-tab:hover { color: var(--text-main); }
         .sim-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
-        .sim-body { padding: 40px; background: #fff; min-height: 400px; }
+        .sim-body { padding: 40px; background: #fff; min-height: 450px; }
         .sim-content { display: none; animation: fadeIn 0.3s ease; }
         .sim-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .sim-dash-card { background: #fff; border: 1px solid var(--border-light); padding: 24px; border-radius: 12px; }
-        .sim-dash-card h2 { font-size: 1.2em; margin-bottom: 12px; font-weight: 600; color: var(--text-main); }
-        .sim-stats-box { background: #f8fafc; padding: 16px; border-radius: 8px; margin-bottom: 24px; font-size: 14px; border: 1px solid var(--border-light); }
-        .sim-progress-bg { background: #e2e8f0; border-radius: 6px; height: 8px; margin-bottom: 24px; position: relative; overflow: hidden; }
-        .sim-progress-fill { background: var(--gradient-main); width: 80%; height: 100%; border-radius: 6px; }
-        .sim-btn { display: inline-block; padding: 10px 20px; background: var(--primary); color: #fff; border-radius: 6px; font-weight: 600; cursor: pointer; border: none; font-size: 14px; }
+        /* Dashboard Simulator */
+        .sim-dash-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+        .sim-dash-box { background: #f8fafc; border: 1px solid var(--border-light); padding: 20px 16px; text-align: center; border-radius: 12px; }
+        .sim-dash-num { font-size: 28px; font-weight: 800; display: block; margin-bottom: 4px; }
+        .sim-dash-label { font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; }
+        .sim-progress-bg { background: #e2e8f0; border-radius: 6px; height: 32px; margin-bottom: 24px; position: relative; overflow: hidden; border: 1px solid var(--border-light); }
+        .sim-progress-fill { background: var(--accent); width: 100%; height: 100%; border-radius: 6px; }
+        .sim-progress-text { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 13px; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+        .sim-dash-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+        .sim-btn { display: inline-block; padding: 10px 20px; background: var(--primary); color: #fff; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; font-size: 14px; }
 
+        /* Settings Simulator */
         .sim-form-table { width: 100%; border-collapse: collapse; }
-        .sim-form-table th { text-align: left; padding: 16px 0; width: 30%; vertical-align: top; font-weight: 600; color: var(--text-main); font-size: 14px; }
-        .sim-form-table td { padding: 16px 0; vertical-align: top; }
-        .sim-form-table tr { border-bottom: 1px solid var(--border-light); }
+        .sim-form-table th { text-align: left; padding: 20px 0; width: 30%; vertical-align: top; font-weight: 600; color: var(--text-main); font-size: 14px; border-bottom: 1px solid var(--border-light); }
+        .sim-form-table td { padding: 20px 0 20px 20px; vertical-align: top; border-bottom: 1px solid var(--border-light); font-size: 14px; color: var(--text-muted); }
+        .sim-form-table tr:last-child th, .sim-form-table tr:last-child td { border-bottom: none; }
         .sim-input-text { padding: 8px 12px; border: 1px solid var(--border-light); border-radius: 6px; width: 100px; font-size: 14px; }
-        .sim-format-notes { margin-top: 16px; padding: 16px; background: #fef2f2; border-left: 4px solid #ef4444; font-size: 13px; color: var(--text-main); border-radius: 6px; }
+        .sim-format-notes { margin-top: 16px; padding: 16px; background: #fef2f2; border-left: 4px solid #ef4444; font-size: 13px; color: var(--text-main); border-radius: 6px; line-height: 1.6; }
+        .sim-format-notes strong { display: block; margin-bottom: 8px; color: #ef4444; }
 
-        .sim-manager-style table { width: 100%; border-collapse: collapse; }
-        .sim-manager-style th { background: #f8fafc; text-align: left; padding: 12px; font-size: 12px; color: var(--text-muted); border-bottom: 1px solid var(--border-light); font-weight: 600; text-transform: uppercase; }
-        .sim-manager-style td { padding: 16px 12px; border-bottom: 1px solid var(--border-light); font-size: 13px; vertical-align: middle; }
+        /* Manager Simulator */
+        .sim-manager-style table { width: 100%; border-collapse: collapse; background: #fff; }
+        .sim-manager-style th { background: #f8fafc; text-align: left; padding: 12px; font-size: 12px; color: var(--text-muted); border-bottom: 1px solid var(--border-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .sim-manager-style td { padding: 16px 12px; border-bottom: 1px solid var(--border-light); font-size: 13px; vertical-align: middle; color: var(--text-main); }
         .sim-mgr-img { width: 40px; height: 40px; border-radius: 6px; display: inline-block; background: #e2e8f0; }
-        .sim-mgr-save { color: var(--accent); font-weight: 700; font-size: 12px; background: #f0fdfa; padding: 2px 8px; border-radius: 12px; }
+        .sim-mgr-save { color: var(--accent); font-weight: 700; font-size: 12px; background: #f0fdfa; padding: 2px 8px; border-radius: 12px; margin-left: 4px; }
         .sim-mgr-actions a { color: var(--primary); margin-right: 8px; font-size: 13px; font-weight: 600; }
+        .sim-mgr-actions a.remove { color: #ef4444; }
 
         /* =========================================
            Installation Steps
@@ -333,6 +341,7 @@
             .hero h1 { font-size: 48px; }
             .compare-grid { grid-template-columns: 1fr; }
             .seo-content { flex-direction: column; }
+            .sim-dash-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
@@ -353,7 +362,8 @@
             .burger-menu.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
             .sim-form-table, .sim-form-table tbody, .sim-form-table tr, .sim-form-table td, .sim-form-table th { display: block; width: 100%; text-align: left; }
-            .sim-form-table th { padding: 10px 0; }
+            .sim-form-table th { padding: 16px 0 8px; border-bottom: none; }
+            .sim-form-table td { padding: 0 0 16px; }
             .sim-manager-style { overflow-x: auto; }
             .wallet-box { flex-direction: column; align-items: stretch; text-align: center; }
             .wallet-address { text-align: center; }
@@ -408,7 +418,7 @@
                     <ul class="compare-list">
                         <li><span>💸</span> Monthly limits & expensive subscriptions</li>
                         <li><span>🔓</span> Privacy risks (images sent externally)</li>
-                        <li><span></span> Slow processing due to network latency</li>
+                        <li><span>🐢</span> Slow processing due to network latency</li>
                     </ul>
                 </div>
                 <div class="compare-card good">
@@ -432,44 +442,32 @@
             </div>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
                     <h3>100% Local & Private</h3>
                     <p>No third-party APIs. Your images are processed directly on your server using native PHP. Maximum privacy.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
-                    </div>
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
                     <h3>Smart Memory Engine</h3>
                     <p>Dynamically calculates memory requirements and adjusts batch sizes. Prevents 502 errors on shared hosting.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                    </div>
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
                     <h3>Smart Queue Lazy Load</h3>
                     <p>Boosts LCP scores. Critical images load instantly with fetchpriority="high", others lazy-load via smart queue.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>
-                    </div>
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg></div>
                     <h3>Auto Downscaling</h3>
                     <p>Automatically resizes massive images (e.g., >3000px) during conversion. Saves bandwidth effortlessly.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
-                    </div>
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
                     <h3>One-Click Dashboard</h3>
                     <p>Beautiful, native WordPress UI. Real-time stats, progress bars, and bulk optimization with a single click.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-                    </div>
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
                     <h3>Server Health Monitor</h3>
                     <p>Proactive warnings for low disk space (<500MB) and RAM (<64MB). Prevents disasters before they happen.</p>
                 </div>
@@ -506,12 +504,12 @@
         </div>
     </section>
 
-    <!-- Interactive UI Preview -->
+    <!-- Interactive UI Preview (High Fidelity) -->
     <section class="plugin-preview" id="preview">
         <div class="container">
             <div class="section-header">
                 <h2>Experience the Interface</h2>
-                <p>Native WordPress design. Click the tabs to explore.</p>
+                <p>Native WordPress design. Click the tabs to explore the actual plugin pages.</p>
             </div>
             
             <div class="wp-admin-simulator">
@@ -522,46 +520,70 @@
                 </div>
 
                 <div class="sim-body">
+                    <!-- 1. Dashboard Preview -->
                     <div id="sim-dashboard" class="sim-content active">
-                        <div class="sim-dash-card">
-                            <h2>One-Click Optimization</h2>
-                            <div class="sim-stats-box">
-                                Pending: <strong style="color:var(--text-main);">2</strong> | Total Saved: <strong style="color:var(--accent);">2.45 MB</strong>
-                            </div>
-                            <div class="sim-progress-bg">
-                                <div class="sim-progress-fill"></div>
-                            </div>
+                        <div class="sim-dash-grid">
+                            <div class="sim-dash-box"><span class="sim-dash-num">15</span><span class="sim-dash-label">Total Images</span></div>
+                            <div class="sim-dash-box"><span class="sim-dash-num" style="color:var(--accent);">12</span><span class="sim-dash-label">Converted</span></div>
+                            <div class="sim-dash-box"><span class="sim-dash-num" style="color:#eab308;">2</span><span class="sim-dash-label">Pending</span></div>
+                            <div class="sim-dash-box"><span class="sim-dash-num" style="color:#ef4444;">1</span><span class="sim-dash-label">Failed</span></div>
+                        </div>
+                        <div class="sim-progress-bg">
+                            <div class="sim-progress-fill"></div>
+                            <div class="sim-progress-text">100% Complete</div>
+                        </div>
+                        <div class="sim-dash-actions">
                             <button class="sim-btn">Start Optimization</button>
+                            <span style="color:var(--accent); font-weight:700; font-size:15px;">Total Saved: 2.45 MB</span>
                         </div>
                     </div>
 
+                    <!-- 2. Settings Preview -->
                     <div id="sim-settings" class="sim-content">
                         <table class="sim-form-table">
                             <tr>
+                                <th>WebP Quality</th>
+                                <td><input type="number" class="sim-input-text" value="82" min="50" max="100"><div style="margin-top:6px; font-size:12px;">(Recommended: 82). Range: 50-100.</div></td>
+                            </tr>
+                            <tr>
+                                <th>Max Resolution (px)</th>
+                                <td><input type="number" class="sim-input-text" value="3000" min="800"><div style="margin-top:6px; font-size:12px;">(Recommended: 3000). Images larger than this will be automatically downscaled.</div></td>
+                            </tr>
+                            <tr>
                                 <th>Conversion Scope</th>
                                 <td>
-                                    <label style="display:block; margin-bottom:8px; font-size:14px;"><input type="radio" name="scope" checked> Original + All Thumbnails</label>
-                                    <label style="display:block; font-size:14px;"><input type="radio" name="scope"> Original Image Only</label>
+                                    <label style="display:block; margin-bottom:8px;"><input type="radio" name="scope" checked> Original + All Thumbnails (Recommended)</label>
+                                    <label style="display:block;"><input type="radio" name="scope"> Original Image Only</label>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Image Types</th>
+                                <th>Image Types to Convert</th>
                                 <td>
+                                    <label style="display:block; margin-bottom:6px;"><input type="checkbox" checked> JPEG / JPG (Recommended)</label>
+                                    <label style="display:block; margin-bottom:6px;"><input type="checkbox" checked> PNG (Recommended - Transparency preserved)</label>
+                                    <label style="display:block; margin-bottom:12px;"><input type="checkbox"> GIF</label>
+                                    
                                     <div class="sim-format-notes">
                                         <strong>Format Support Notes:</strong>
-                                        ✅ JPEG/PNG: Fully supported. ⚠️ GIF: Static only. ❌ SVG: Not supported.
+                                        ✅ <strong>JPEG/JPG → WebP:</strong> Fully supported. Best compression results.<br>
+                                        ✅ <strong>PNG → WebP:</strong> Fully supported. Transparent background is preserved.<br>
+                                        ⚠️ <strong>GIF → WebP:</strong> Static GIF only. Animated GIFs will become static (first frame only). GD library does not support GIF animation.<br>
+                                        ❌ <strong>SVG:</strong> Not supported. SVG is a vector format and cannot be converted by GD library.<br>
+                                        ❌ <strong>BMP/TIFF:</strong> Not recommended. Very large file sizes may cause memory issues.<br>
+                                        ❌ <strong>WebP:</strong> Already WebP. No conversion needed.
                                     </div>
                                 </td>
                             </tr>
                         </table>
                     </div>
 
+                    <!-- 3. Image Manager Preview -->
                     <div id="sim-manager" class="sim-content">
                         <div class="sim-manager-style">
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Preview</th>
+                                        <th style="width:60px;">Preview</th>
                                         <th>Size</th>
                                         <th>Original</th>
                                         <th>WebP</th>
@@ -570,14 +592,29 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><div class="sim-mgr-img"></div></td>
-                                        <td><strong>Original</strong><br><span style="font-size:11px; color:#94a3b8;">1920x1080</span></td>
+                                        <td><div class="sim-mgr-img" style="background:#334155;"></div></td>
+                                        <td><strong style="display:block;">Original</strong><span style="font-size:11px; color:var(--text-muted);">1920x1080</span></td>
                                         <td>2.36 MB</td>
-                                        <td>306 KB <span class="sim-mgr-save">-87%</span></td>
-                                        <td class="sim-mgr-actions"><a href="#">Edit</a> <a href="#">Remove</a></td>
+                                        <td>306.58 KB <span class="sim-mgr-save">-87.3%</span></td>
+                                        <td class="sim-mgr-actions"><a href="#">Edit</a> <a href="#">Reoptimize</a> <a href="#" class="remove">Remove</a> <a href="#">Copy URL</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="sim-mgr-img" style="background:#475569;"></div></td>
+                                        <td><strong style="display:block;">Medium large</strong><span style="font-size:11px; color:var(--text-muted);">768x1108</span></td>
+                                        <td>1.05 MB</td>
+                                        <td>190.98 KB <span class="sim-mgr-save">-82.2%</span></td>
+                                        <td class="sim-mgr-actions"><a href="#">Edit</a> <a href="#">Reoptimize</a> <a href="#" class="remove">Remove</a> <a href="#">Copy URL</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="sim-mgr-img" style="background:#64748b;"></div></td>
+                                        <td><strong style="display:block;">Thumbnail</strong><span style="font-size:11px; color:var(--text-muted);">150x150</span></td>
+                                        <td>28.29 KB</td>
+                                        <td>5.60 KB <span class="sim-mgr-save">-80.2%</span></td>
+                                        <td class="sim-mgr-actions"><a href="#">Edit</a> <a href="#">Reoptimize</a> <a href="#" class="remove">Remove</a> <a href="#">Copy URL</a></td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <div style="margin-top:16px; text-align:right; font-size:12px; color:var(--text-muted);">3 items</div>
                         </div>
                     </div>
                 </div>
@@ -608,7 +645,6 @@
             <div class="donate-card">
                 <div class="donate-header">
                     <div class="sol-icon">
-                        <!-- Official Solana Logo SVG -->
                         <svg width="32" height="32" viewBox="0 0 396 311" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M64.6 237.9c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.5c-5.8 0-8.7-7-4.6-11.1l62.7-62.7zM64.6 3.8C67.1 1.4 70.4 0 73.8 0h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.5c-5.8 0-8.7-7-4.6-11.1L64.6 3.8zM331.4 120.1c-2.4-2.4-5.7-3.8-9.2-3.8H4.8c-5.8 0-8.7 7-4.6 11.1l62.7 62.7c2.4 2.4 5.7 3.8 9.2 3.8h317.4c5.8 0 8.7-7 4.6-11.1l-62.7-62.7z" fill="url(#solana-gradient)"/>
                             <defs>
