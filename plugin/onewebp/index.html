@@ -223,7 +223,21 @@
         .seo-text p { margin-bottom: 20px; color: var(--text-muted); font-size: 17px; }
         .seo-checklist { list-style: none; margin-top: 32px; }
         .seo-checklist li { margin-bottom: 16px; font-size: 16px; font-weight: 500; display: flex; align-items: center; gap: 12px; color: var(--text-main); }
-        .seo-checklist li::before { content: '✓'; color: #fff; background: var(--accent); width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; }
+        
+        /* FIXED: Perfect circle checkmark using SVG background */
+        .seo-checklist li::before { 
+            content: ''; 
+            display: inline-block;
+            width: 20px; 
+            height: 20px; 
+            background-color: var(--accent); 
+            border-radius: 50%; 
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+            background-size: 12px;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex-shrink: 0;
+        }
         
         .seo-visual { 
             flex: 1; min-width: 300px; 
@@ -641,7 +655,7 @@
                     <ul class="compare-list">
                         <li><span>💸</span> Monthly limits & expensive subscriptions</li>
                         <li><span></span> Privacy risks (images sent externally)</li>
-                        <li><span>🐢</span> Slow processing due to network latency</li>
+                        <li><span></span> Slow processing due to network latency</li>
                     </ul>
                 </div>
                 <div class="compare-card good">
@@ -816,7 +830,7 @@
                                             ✅ <strong>JPEG/JPG → WebP:</strong> Fully supported. Best compression results.<br>
                                             ✅ <strong>PNG → WebP:</strong> Fully supported. Transparent background is preserved.<br>
                                             ⚠️ <strong>GIF → WebP:</strong> Static GIF only. Animated GIFs will become static (first frame only). GD library does not support GIF animation.<br>
-                                             <strong>SVG:</strong> Not supported. SVG is a vector format and cannot be converted by GD library.<br>
+                                            ❌ <strong>SVG:</strong> Not supported. SVG is a vector format and cannot be converted by GD library.<br>
                                             ❌ <strong>BMP/TIFF:</strong> Not recommended. Very large file sizes may cause memory issues.<br>
                                             ❌ <strong>WebP:</strong> Already WebP. No conversion needed.
                                         </div>
