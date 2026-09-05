@@ -68,7 +68,6 @@
         }
         .header-content { display: flex; justify-content: space-between; align-items: center; }
         
-        /* Logo: One is black, WebP is gradient blue, no space */
         .logo { 
             font-size: 22px; 
             font-weight: 800; 
@@ -167,7 +166,7 @@
         .btn-secondary:hover { background: #f1f5f9; border-color: #cbd5e1; transform: translateY(-2px); }
 
         /* =========================================
-           Problem vs Solution (Comparison)
+           Problem vs Solution
            ========================================= */
         .comparison { padding: 100px 0; background-color: var(--bg-body); }
         .section-header { text-align: center; margin-bottom: 64px; }
@@ -187,7 +186,7 @@
         .compare-list li span { font-size: 18px; line-height: 1; }
 
         /* =========================================
-           Core Features (Grid)
+           Core Features
            ========================================= */
         .features { padding: 100px 0; background-color: #fff; }
         .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
@@ -214,7 +213,7 @@
         .feature-card p { color: var(--text-muted); font-size: 15px; line-height: 1.6; }
 
         /* =========================================
-           SEO & Performance Focus
+           SEO & Performance
            ========================================= */
         .seo-focus { padding: 100px 0; background-color: var(--bg-body); }
         .seo-content { display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
@@ -223,8 +222,6 @@
         .seo-text p { margin-bottom: 20px; color: var(--text-muted); font-size: 17px; }
         .seo-checklist { list-style: none; margin-top: 32px; }
         .seo-checklist li { margin-bottom: 16px; font-size: 16px; font-weight: 500; display: flex; align-items: center; gap: 12px; color: var(--text-main); }
-        
-        /* FIXED: Perfect circle checkmark using SVG background */
         .seo-checklist li::before { 
             content: ''; 
             display: inline-block;
@@ -238,7 +235,6 @@
             background-repeat: no-repeat;
             flex-shrink: 0;
         }
-        
         .seo-visual { 
             flex: 1; min-width: 300px; 
             background: #fff; 
@@ -255,7 +251,7 @@
         .metric-bar-fill.blue { background: var(--gradient-main); width: 95%; }
 
         /* =========================================
-           Interactive UI Preview (High Fidelity - WordPress Style)
+           Interactive UI Preview - UPDATED to match latest plugin
            ========================================= */
         .plugin-preview { padding: 100px 0; background-color: #fff; }
         .wp-admin-simulator {
@@ -299,12 +295,12 @@
             font-weight: 600;
         }
         
-        .sim-body { padding: 20px; background: var(--wp-bg); min-height: 450px; }
+        .sim-body { padding: 20px; background: var(--wp-bg); min-height: 480px; }
         .sim-content { display: none; animation: fadeIn 0.3s ease; }
         .sim-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Dashboard Simulator - Exact Match */
+        /* Dashboard */
         .sim-dash-grid { display: flex; gap: 15px; margin: 20px 0; flex-wrap: wrap; }
         .sim-dash-box { 
             flex: 1; 
@@ -334,6 +330,7 @@
             width: 80%; 
             transition: width 0.3s ease; 
         }
+        .sim-progress-fill.completed { background: var(--wp-teal) !important; }
         .sim-progress-text { 
             position: absolute; 
             width: 100%; 
@@ -344,6 +341,7 @@
             font-weight: bold; 
             color: var(--wp-text); 
         }
+        .sim-progress-text.completed { color: #ffffff !important; }
         
         .sim-stats-box {
             background: #f6f7f7; 
@@ -355,7 +353,7 @@
         .sim-stats-text { margin: 0; font-size: 15px; color: var(--wp-text); }
         .sim-stats-num { color: var(--wp-teal); font-size: 18px; font-weight: bold; margin-left: 5px; }
         
-        .sim-btn-row { display: flex; gap: 10px; align-items: center; margin-bottom: 40px; }
+        .sim-btn-row { display: flex; gap: 10px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
         .sim-btn { 
             display: inline-block; 
             padding: 0 24px; 
@@ -373,10 +371,12 @@
         .sim-btn-primary:hover { background: var(--wp-blue-hover); border-color: var(--wp-blue-hover); color: #fff; }
         .sim-btn-secondary { background: #f6f7f7; color: var(--wp-text); border-color: #2271b1; }
         .sim-btn-secondary:hover { background: #f0f0f1; border-color: var(--wp-blue-hover); color: var(--wp-blue-hover); }
+        .sim-btn-danger { background: #fcf0f1; color: var(--wp-red); border-color: var(--wp-red); }
+        .sim-btn-danger:hover { background: #fef2f2; border-color: #a00; color: #a00; }
         .sim-btn-disabled { background: #f6f7f7; color: #a7aaad; border-color: #c3c4c7; cursor: not-allowed; opacity: 0.6; }
         
         .sim-dash-footer { 
-            margin-top: 40px; 
+            margin-top: 20px; 
             padding: 20px; 
             background: #fff; 
             border: 1px solid var(--wp-border); 
@@ -397,7 +397,7 @@
             font-size: 13px; 
         }
 
-        /* Settings Simulator */
+        /* Settings - Updated with deletion mode options */
         .sim-form-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--wp-border); }
         .sim-form-table th { 
             text-align: left; 
@@ -433,6 +433,22 @@
         }
         .sim-format-notes strong { display: block; margin-bottom: 5px; color: var(--wp-text); }
         
+        .sim-deletion-option {
+            display: block;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border: 1px solid var(--wp-border);
+            border-radius: 4px;
+            cursor: pointer;
+            background: #fff;
+            transition: all 0.2s;
+        }
+        .sim-deletion-option:hover { background: #f0f0f1; }
+        .sim-deletion-option.selected { border-color: var(--wp-blue); background: #f0f9ff; }
+        .sim-deletion-option .option-title { font-weight: 600; display: block; }
+        .sim-deletion-option .option-desc { font-size: 13px; color: var(--wp-text-muted); margin-top: 4px; display: block; margin-left: 26px; }
+        .sim-deletion-option input[type="radio"] { margin-right: 10px; margin-top: 3px; }
+        
         .sim-submit-btn { 
             background: var(--wp-blue); 
             color: #fff; 
@@ -446,12 +462,13 @@
             cursor: pointer; 
             font-size: 13px; 
         }
+        .sim-submit-btn:hover { background: var(--wp-blue-hover); border-color: var(--wp-blue-hover); }
         
         .sim-reset-section { margin-top: 30px; border-top: 1px solid var(--wp-border); padding-top: 20px; }
         .sim-reset-title { font-size: 18px; font-weight: 600; margin-bottom: 15px; color: var(--wp-text); }
 
-        /* Manager Simulator */
-        .sim-manager-style { background: #fff; border: 1px solid var(--wp-border); }
+        /* Manager - Updated with better styling */
+        .sim-manager-style { background: #fff; border: 1px solid var(--wp-border); overflow-x: auto; }
         .sim-manager-style table { width: 100%; border-collapse: collapse; background: #fff; }
         .sim-manager-style th { 
             background: #f6f7f7; 
@@ -470,8 +487,9 @@
             color: var(--wp-text); 
         }
         .sim-manager-style tr:last-child td { border-bottom: none; }
+        .sim-manager-style .column-cb { width: 30px; text-align: center; }
         
-        .sim-mgr-img { width: 40px; height: 40px; border-radius: 4px; display: inline-block; background: #e2e8f0; border: 1px solid var(--wp-border); }
+        .sim-mgr-img { width: 40px; height: 40px; border-radius: 4px; display: inline-block; background: #e2e8f0; border: 1px solid var(--wp-border); object-fit: cover; }
         .sim-mgr-filename { font-weight: 600; color: var(--wp-blue); text-decoration: none; display: block; margin-bottom: 2px; }
         .sim-mgr-filename:hover { color: var(--wp-blue-hover); text-decoration: underline; }
         .sim-mgr-dims { font-size: 11px; color: var(--wp-text-muted); }
@@ -479,8 +497,9 @@
         .sim-mgr-link { color: var(--wp-text); text-decoration: underline; }
         .sim-mgr-link:hover { color: var(--wp-blue); }
         .sim-mgr-save { color: var(--wp-teal); font-weight: bold; font-size: 12px; margin-left: 4px; }
+        .sim-mgr-save.negative { color: var(--wp-red); }
         
-        .sim-mgr-actions { font-size: 13px; }
+        .sim-mgr-actions { font-size: 13px; white-space: nowrap; }
         .sim-mgr-actions a { color: var(--wp-blue); margin-right: 6px; text-decoration: none; }
         .sim-mgr-actions a:hover { color: var(--wp-blue-hover); text-decoration: underline; }
         .sim-mgr-actions a.remove { color: var(--wp-red); }
@@ -494,10 +513,18 @@
             font-weight: 600; 
             border: 1px solid transparent;
         }
-        .sim-status-pending { background: #fff8e5; color: #b45309; border-color: #fcd34d; }
-        .sim-status-failed { background: #fcf0f1; color: var(--wp-red); border-color: #fecaca; }
+        .sim-status-success { background: #ecfdf5; color: var(--wp-teal); border-color: #a7f3d0; }
+        .sim-status-pending { background: #fffbeb; color: #b45309; border-color: #fcd34d; }
+        .sim-status-failed { background: #fef2f2; color: var(--wp-red); border-color: #fecaca; }
+        .sim-status-webp { background: #eff6ff; color: var(--wp-blue); border-color: #bfdbfe; }
 
+        .sim-bulk-actions { display: flex; gap: 10px; align-items: center; margin-bottom: 15px; flex-wrap: wrap; }
+        .sim-bulk-actions select { height: 30px; border: 1px solid var(--wp-border); border-radius: 3px; padding: 0 8px; font-size: 13px; }
+        .sim-bulk-actions .sim-btn { height: 30px; line-height: 28px; }
+        .sim-search-box { display: flex; gap: 10px; align-items: center; margin-left: auto; }
+        .sim-search-box input { height: 30px; border: 1px solid var(--wp-border); border-radius: 3px; padding: 0 8px; font-size: 13px; width: 200px; }
         .sim-pagination { padding: 10px; text-align: right; font-size: 13px; color: var(--wp-text-muted); border-top: 1px solid var(--wp-border); background: #fff; }
+        .sim-pagination span { margin: 0 10px; }
 
         /* =========================================
            Installation Steps
@@ -578,6 +605,8 @@
             .compare-grid { grid-template-columns: 1fr; }
             .seo-content { flex-direction: column; }
             .sim-dash-grid { grid-template-columns: repeat(2, 1fr); }
+            .sim-search-box { margin-left: 0; width: 100%; }
+            .sim-search-box input { width: 100%; }
         }
 
         @media (max-width: 768px) {
@@ -603,6 +632,7 @@
             .sim-manager-style { overflow-x: auto; }
             .wallet-box { flex-direction: column; align-items: stretch; text-align: center; }
             .wallet-address { text-align: center; }
+            .sim-dash-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
@@ -611,7 +641,6 @@
     <!-- Header -->
     <header>
         <div class="container header-content">
-            <!-- Logo: One is black, WebP is gradient blue, no space -->
             <a href="#" class="logo">One<span>WebP</span></a>
             <div class="burger-menu" id="burger-menu"><span></span><span></span><span></span></div>
             <nav id="main-nav">
@@ -620,6 +649,7 @@
                     <li><a href="#seo">Performance</a></li>
                     <li><a href="#preview">Interface</a></li>
                     <li><a href="#install">Install</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                     <li><a href="#support" class="nav-cta">Support</a></li>
                 </ul>
             </nav>
@@ -636,7 +666,7 @@
             <h1>Supercharge Your WordPress <span>SEO & Speed</span>.</h1>
             <p>The ultimate lightweight WebP optimizer. Convert images locally, protect your privacy, and boost Core Web Vitals without spending a dime.</p>
             <div class="cta-buttons">
-                <a href="https://github.com/JackerArchitect/onewebp/releases/download/v1.0.0/onewebp.zip" class="btn btn-primary">Download Plugin</a>
+                <a href="https://github.com/JackerArchitect/onewebp/releases/download/v1.0.0/onewebp.zip" class="btn btn-primary">📥 Download Plugin</a>
                 <a href="https://github.com/JackerArchitect/onewebp" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View Source</a>
             </div>
         </div>
@@ -651,15 +681,15 @@
             </div>
             <div class="compare-grid">
                 <div class="compare-card bad">
-                    <h3>Traditional API Plugins</h3>
+                    <h3>❌ Traditional API Plugins</h3>
                     <ul class="compare-list">
                         <li><span>💸</span> Monthly limits & expensive subscriptions</li>
-                        <li><span></span> Privacy risks (images sent externally)</li>
-                        <li><span></span> Slow processing due to network latency</li>
+                        <li><span>🔓</span> Privacy risks (images sent externally)</li>
+                        <li><span>🐌</span> Slow processing due to network latency</li>
                     </ul>
                 </div>
                 <div class="compare-card good">
-                    <h3>OneWebP Local Engine</h3>
+                    <h3>✅ OneWebP Local Engine</h3>
                     <ul class="compare-list">
                         <li><span>🆓</span> 100% Free, Unlimited conversions</li>
                         <li><span>🔒</span> 100% Privacy (Images stay on server)</li>
@@ -681,12 +711,7 @@
                 <div class="feature-card">
                     <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
                     <h3>100% Local & Private</h3>
-                    <p>No third-party APIs. Your images are processed directly on your server using native PHP. Maximum privacy.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
-                    <h3>Smart Memory Engine</h3>
-                    <p>Dynamically calculates memory requirements and adjusts batch sizes. Prevents 502 errors on shared hosting.</p>
+                    <p>No third-party APIs. Your images are processed directly on your server using native PHP GD. Maximum privacy.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
@@ -696,7 +721,7 @@
                 <div class="feature-card">
                     <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg></div>
                     <h3>Auto Downscaling</h3>
-                    <p>Automatically resizes massive images (e.g., >3000px) during conversion. Saves bandwidth effortlessly.</p>
+                    <p>Automatically resizes massive images (e.g., >3000px) during conversion. Saves bandwidth and improves load times.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
@@ -707,6 +732,11 @@
                     <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
                     <h3>Server Health Monitor</h3>
                     <p>Proactive warnings for low disk space (<500MB) and RAM (<64MB). Prevents disasters before they happen.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
+                    <h3>Smart Memory Engine</h3>
+                    <p>Dynamically calculates memory requirements and adjusts batch sizes. Prevents 502 errors on shared hosting.</p>
                 </div>
             </div>
         </div>
@@ -741,7 +771,7 @@
         </div>
     </section>
 
-    <!-- Interactive UI Preview -->
+    <!-- Interactive UI Preview - UPDATED -->
     <section class="plugin-preview" id="preview">
         <div class="container">
             <div class="section-header">
@@ -751,37 +781,49 @@
             
             <div class="wp-admin-simulator">
                 <div class="sim-tabs">
-                    <div class="sim-tab active" onclick="switchSimTab('dashboard')">Dashboard</div>
-                    <div class="sim-tab" onclick="switchSimTab('settings')">Settings</div>
-                    <div class="sim-tab" onclick="switchSimTab('manager')">Image Manager</div>
+                    <div class="sim-tab active" onclick="switchSimTab('dashboard')">📊 Dashboard</div>
+                    <div class="sim-tab" onclick="switchSimTab('settings')">⚙️ Settings</div>
+                    <div class="sim-tab" onclick="switchSimTab('manager')">🖼️ Image Manager</div>
                 </div>
 
                 <div class="sim-body">
-                    <!-- 1. Dashboard Preview -->
+                    <!-- ===== DASHBOARD ===== -->
                     <div id="sim-dashboard" class="sim-content active">
                         <div class="sim-dash-grid">
-                            <div class="sim-dash-box"><span class="sim-dash-num">15</span><span class="sim-dash-label">Total Images</span></div>
-                            <div class="sim-dash-box"><span class="sim-dash-num" style="color:var(--wp-teal);">12</span><span class="sim-dash-label">Converted</span></div>
-                            <div class="sim-dash-box"><span class="sim-dash-num" style="color:var(--wp-yellow);">2</span><span class="sim-dash-label">Pending</span></div>
-                            <div class="sim-dash-box"><span class="sim-dash-num" style="color:var(--wp-red);">1</span><span class="sim-dash-label">Failed / Non-convertible</span></div>
+                            <div class="sim-dash-box">
+                                <span class="sim-dash-num" id="stat-total">156</span>
+                                <span class="sim-dash-label">Total Images</span>
+                            </div>
+                            <div class="sim-dash-box">
+                                <span class="sim-dash-num" style="color:var(--wp-teal);" id="stat-converted">134</span>
+                                <span class="sim-dash-label">Converted</span>
+                            </div>
+                            <div class="sim-dash-box">
+                                <span class="sim-dash-num" style="color:var(--wp-yellow);" id="stat-pending">18</span>
+                                <span class="sim-dash-label">Pending</span>
+                            </div>
+                            <div class="sim-dash-box">
+                                <span class="sim-dash-num" style="color:var(--wp-red);" id="stat-failed">4</span>
+                                <span class="sim-dash-label">Failed</span>
+                            </div>
                         </div>
                         
                         <div class="sim-progress-container">
-                            <div class="sim-progress-fill"></div>
-                            <div class="sim-progress-text">80%</div>
+                            <div class="sim-progress-fill" id="main-progress-bar" style="width:86%;"></div>
+                            <div class="sim-progress-text" id="main-progress-text">86%</div>
                         </div>
                         
                         <div class="sim-stats-box">
                             <p class="sim-stats-text">
                                 Total Space Saved: 
-                                <strong class="sim-stats-num">2.45 MB</strong>
+                                <strong class="sim-stats-num" id="saved-space">42.8 MB</strong>
                             </p>
                         </div>
                         
                         <div class="sim-btn-row">
-                            <button class="sim-btn sim-btn-primary">Start Optimization</button>
-                            <button class="sim-btn sim-btn-secondary" style="color:var(--wp-red); border-color:var(--wp-red);">Pause</button>
-                            <button class="sim-btn sim-btn-secondary">Rescan Library</button>
+                            <button class="sim-btn sim-btn-primary" id="start-optimize-btn">🚀 Start Optimization</button>
+                            <button class="sim-btn sim-btn-danger" id="stop-optimize-btn" style="display:none;">⏸️ Pause</button>
+                            <button class="sim-btn sim-btn-secondary" id="rescan-btn">🔄 Rescan Library</button>
                         </div>
                         
                         <div class="sim-dash-footer">
@@ -791,138 +833,283 @@
                         </div>
                     </div>
 
-                    <!-- 2. Settings Preview -->
+                    <!-- ===== SETTINGS ===== -->
                     <div id="sim-settings" class="sim-content">
                         <form onsubmit="return false;">
                             <table class="sim-form-table">
                                 <tr>
                                     <th>WebP Quality</th>
-                                    <td><input type="number" class="sim-input-text" value="82" min="50" max="100"><div class="sim-desc">(Recommended: 82). Range: 50-100.</div></td>
+                                    <td>
+                                        <input type="number" class="sim-input-text" value="82" min="50" max="100">
+                                        <div class="sim-desc">Recommended: 82. Range: 50-100.</div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Max Resolution (px)</th>
-                                    <td><input type="number" class="sim-input-text" value="3000" min="800"><div class="sim-desc">(Recommended: 3000).</div></td>
+                                    <td>
+                                        <input type="number" class="sim-input-text" value="3000" min="800">
+                                        <div class="sim-desc">Images larger than this will be downscaled.</div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Allow Oversized Images</th>
-                                    <td><label><input type="checkbox"> Disable automatic downscaling.</label></td>
+                                    <td>
+                                        <label><input type="checkbox"> Disable automatic downscaling.</label>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>First N Direct Load</th>
-                                    <td><input type="number" class="sim-input-text" value="3" min="0" max="10"><div class="sim-desc">(Recommended: 3).</div></td>
+                                    <td>
+                                        <input type="number" class="sim-input-text" value="3" min="0" max="10">
+                                        <div class="sim-desc">Number of images to load without lazy loading.</div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Conversion Scope</th>
                                     <td>
-                                        <label style="display:block; margin-bottom:8px;"><input type="radio" name="scope" checked> Original + All Thumbnails (Recommended)</label>
-                                        <label style="display:block;"><input type="radio" name="scope"> Original Image Only</label>
+                                        <label style="display:block; margin-bottom:8px;">
+                                            <input type="radio" name="scope" checked> 
+                                            Original + All Thumbnails (Recommended)
+                                        </label>
+                                        <label style="display:block;">
+                                            <input type="radio" name="scope"> 
+                                            Original Image Only
+                                        </label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Image Types to Convert</th>
                                     <td>
-                                        <label style="display:block; margin-bottom:6px;"><input type="checkbox" checked> JPEG / JPG</label>
-                                        <label style="display:block; margin-bottom:6px;"><input type="checkbox" checked> PNG</label>
-                                        <label style="display:block; margin-bottom:12px;"><input type="checkbox"> GIF</label>
+                                        <label style="display:block; margin-bottom:6px;">
+                                            <input type="checkbox" checked> JPEG / JPG
+                                        </label>
+                                        <label style="display:block; margin-bottom:6px;">
+                                            <input type="checkbox" checked> PNG
+                                        </label>
+                                        <label style="display:block; margin-bottom:12px;">
+                                            <input type="checkbox"> GIF (Static only)
+                                        </label>
                                         
                                         <div class="sim-format-notes">
-                                            <strong>Format Support Notes:</strong>
+                                            <strong>📋 Format Support Notes:</strong>
                                             ✅ <strong>JPEG/JPG → WebP:</strong> Fully supported. Best compression results.<br>
                                             ✅ <strong>PNG → WebP:</strong> Fully supported. Transparent background is preserved.<br>
-                                            ⚠️ <strong>GIF → WebP:</strong> Static GIF only. Animated GIFs will become static (first frame only). GD library does not support GIF animation.<br>
-                                            ❌ <strong>SVG:</strong> Not supported. SVG is a vector format and cannot be converted by GD library.<br>
-                                            ❌ <strong>BMP/TIFF:</strong> Not recommended. Very large file sizes may cause memory issues.<br>
+                                            ⚠️ <strong>GIF → WebP:</strong> Static GIF only. Animated GIFs will become static (first frame only).<br>
+                                            ❌ <strong>SVG:</strong> Not supported. SVG is a vector format.<br>
                                             ❌ <strong>WebP:</strong> Already WebP. No conversion needed.
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Smart Lazy Load</th>
-                                    <td><label><input type="checkbox" checked> Enable queue-based lazy loading.</label></td>
+                                    <td>
+                                        <label><input type="checkbox" checked> Enable queue-based lazy loading.</label>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>External Images</th>
-                                    <td><label><input type="checkbox"> Download and convert external images.</label></td>
+                                    <td>
+                                        <label><input type="checkbox"> Download and convert external images.</label>
+                                        <div class="sim-desc">May affect performance for large external images.</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Image Deletion Mode</th>
+                                    <td>
+                                        <label class="sim-deletion-option selected">
+                                            <input type="radio" name="deletion_mode" checked>
+                                            <span class="option-title">✅ Sync Delete (Recommended)</span>
+                                            <span class="option-desc">When original images are deleted, WebP files are automatically deleted too.</span>
+                                        </label>
+                                        
+                                        <label class="sim-deletion-option">
+                                            <input type="radio" name="deletion_mode">
+                                            <span class="option-title">💾 Keep WebP After Deletion</span>
+                                            <span class="option-desc">WebP files remain on server even when original images are deleted.</span>
+                                        </label>
+                                        
+                                        <label class="sim-deletion-option" style="border-color: var(--wp-red);">
+                                            <input type="radio" name="deletion_mode">
+                                            <span class="option-title" style="color: var(--wp-red);">⚠️ Delete Original After Conversion</span>
+                                            <span class="option-desc">Automatically delete original images after WebP conversion. Cannot re-convert!</span>
+                                        </label>
+                                        
+                                        <div class="sim-desc" style="margin-top: 10px; padding: 10px; background: #f0f0f1; border-left: 4px solid var(--wp-blue); border-radius: 3px;">
+                                            <strong>Note:</strong> These options only apply to images deleted from WordPress Media Library. Manual FTP deletions are not affected.
+                                        </div>
+                                    </td>
                                 </tr>
                             </table>
-                            <button class="sim-submit-btn">Save Settings</button>
+                            <button class="sim-submit-btn">💾 Save Settings</button>
                             
                             <div class="sim-reset-section">
-                                <h3 class="sim-reset-title">Reset Options</h3>
+                                <h3 class="sim-reset-title">🔄 Reset Options</h3>
                                 <button class="sim-btn sim-btn-secondary" style="margin-right:10px;">Reset to Default Settings</button>
-                                <button class="sim-btn sim-btn-secondary" style="color:var(--wp-red); border-color:var(--wp-red);">Clear All Data & WebP Files</button>
+                                <button class="sim-btn sim-btn-danger">🗑️ Clear All Data & WebP Files</button>
                             </div>
                         </form>
                     </div>
 
-                    <!-- 3. Image Manager Preview -->
+                    <!-- ===== IMAGE MANAGER ===== -->
                     <div id="sim-manager" class="sim-content">
+                        <div class="sim-bulk-actions">
+                            <select>
+                                <option value="">Bulk Actions</option>
+                                <option value="delete">Delete</option>
+                                <option value="reoptimize">Reoptimize</option>
+                            </select>
+                            <button class="sim-btn sim-btn-secondary">Apply</button>
+                            
+                            <div class="sim-search-box">
+                                <input type="text" placeholder="Search images...">
+                                <button class="sim-btn sim-btn-secondary">Search</button>
+                            </div>
+                        </div>
+                        
                         <div class="sim-manager-style">
                             <table>
                                 <thead>
                                     <tr>
-                                        <th style="width:60px;">Preview</th>
+                                        <th class="column-cb"><input type="checkbox"></th>
+                                        <th style="width:70px;">Preview</th>
                                         <th style="width:200px;">Size</th>
                                         <th style="width:120px;">Original</th>
-                                        <th style="width:150px;">WebP</th>
+                                        <th style="width:170px;">WebP</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Success Row 1 -->
+                                    <!-- Converted -->
                                     <tr>
+                                        <td><input type="checkbox"></td>
                                         <td><div class="sim-mgr-img" style="background:#334155;"></div></td>
-                                        <td><a href="#" class="sim-mgr-filename">hero-banner.jpg</a><span class="sim-mgr-dims">1920x1080</span></td>
+                                        <td>
+                                            <a href="#" class="sim-mgr-filename">hero-banner.jpg</a>
+                                            <span class="sim-mgr-dims">1920×1080</span>
+                                        </td>
                                         <td>2.36 MB</td>
-                                        <td><a href="#" class="sim-mgr-link">306.58 KB</a> <span class="sim-mgr-save">-87.3%</span></td>
-                                        <td class="sim-mgr-actions"><a href="#">Edit</a> <a href="#">Reoptimize</a> <a href="#" class="remove">Remove</a> <a href="#">Copy URL</a></td>
+                                        <td>
+                                            <a href="#" class="sim-mgr-link">306.58 KB</a>
+                                            <span class="sim-mgr-save">-87.3%</span>
+                                        </td>
+                                        <td class="sim-mgr-actions">
+                                            <a href="#">Edit</a>
+                                            <a href="#">Reoptimize</a>
+                                            <a href="#" class="remove">Remove</a>
+                                            <a href="#">Copy URL</a>
+                                        </td>
                                     </tr>
-                                    <!-- Success Row 2 -->
                                     <tr>
+                                        <td><input type="checkbox"></td>
                                         <td><div class="sim-mgr-img" style="background:#475569;"></div></td>
-                                        <td><a href="#" class="sim-mgr-filename">product-showcase.png</a><span class="sim-mgr-dims">980x980</span></td>
+                                        <td>
+                                            <a href="#" class="sim-mgr-filename">product-showcase.png</a>
+                                            <span class="sim-mgr-dims">980×980</span>
+                                        </td>
                                         <td>608.15 KB</td>
-                                        <td><a href="#" class="sim-mgr-link">174.36 KB</a> <span class="sim-mgr-save">-71.3%</span></td>
-                                        <td class="sim-mgr-actions"><a href="#">Edit</a> <a href="#">Reoptimize</a> <a href="#" class="remove">Remove</a> <a href="#">Copy URL</a></td>
+                                        <td>
+                                            <a href="#" class="sim-mgr-link">174.36 KB</a>
+                                            <span class="sim-mgr-save">-71.3%</span>
+                                        </td>
+                                        <td class="sim-mgr-actions">
+                                            <a href="#">Edit</a>
+                                            <a href="#">Reoptimize</a>
+                                            <a href="#" class="remove">Remove</a>
+                                            <a href="#">Copy URL</a>
+                                        </td>
                                     </tr>
-                                    <!-- Success Row 3 -->
                                     <tr>
+                                        <td><input type="checkbox"></td>
                                         <td><div class="sim-mgr-img" style="background:#64748b;"></div></td>
-                                        <td><a href="#" class="sim-mgr-filename">team-photo.jpg</a><span class="sim-mgr-dims">864x1247</span></td>
-                                        <td>2.36 MB</td>
-                                        <td><a href="#" class="sim-mgr-link">306.58 KB</a> <span class="sim-mgr-save">-87.3%</span></td>
-                                        <td class="sim-mgr-actions"><a href="#">Edit</a> <a href="#">Reoptimize</a> <a href="#" class="remove">Remove</a> <a href="#">Copy URL</a></td>
+                                        <td>
+                                            <a href="#" class="sim-mgr-filename">team-photo.jpg</a>
+                                            <span class="sim-mgr-dims">864×1247</span>
+                                        </td>
+                                        <td>1.82 MB</td>
+                                        <td>
+                                            <a href="#" class="sim-mgr-link">412.50 KB</a>
+                                            <span class="sim-mgr-save">-77.3%</span>
+                                        </td>
+                                        <td class="sim-mgr-actions">
+                                            <a href="#">Edit</a>
+                                            <a href="#">Reoptimize</a>
+                                            <a href="#" class="remove">Remove</a>
+                                            <a href="#">Copy URL</a>
+                                        </td>
                                     </tr>
-                                    
-                                    <!-- Pending Row 1 -->
+                                    <!-- Already WebP -->
                                     <tr>
+                                        <td><input type="checkbox"></td>
+                                        <td><div class="sim-mgr-img" style="background:#2563eb;"></div></td>
+                                        <td>
+                                            <a href="#" class="sim-mgr-filename">icon-avatar.webp</a>
+                                            <span class="sim-mgr-dims">128×128</span>
+                                        </td>
+                                        <td>8.12 KB</td>
+                                        <td>
+                                            <a href="#" class="sim-mgr-link">8.12 KB</a>
+                                            <span class="sim-status-badge sim-status-webp">Already WebP</span>
+                                        </td>
+                                        <td class="sim-mgr-actions">
+                                            <a href="#">Edit</a>
+                                            <a href="#">Reoptimize</a>
+                                            <a href="#" class="remove">Remove</a>
+                                            <a href="#">Copy URL</a>
+                                        </td>
+                                    </tr>
+                                    <!-- Pending -->
+                                    <tr>
+                                        <td><input type="checkbox"></td>
                                         <td><div class="sim-mgr-img" style="background:#94a3b8;"></div></td>
-                                        <td><a href="#" class="sim-mgr-filename">gallery-image-1.png</a><span class="sim-mgr-dims">1536x864</span></td>
+                                        <td>
+                                            <a href="#" class="sim-mgr-filename">gallery-image-1.png</a>
+                                            <span class="sim-mgr-dims">1536×864</span>
+                                        </td>
                                         <td>795.83 KB</td>
-                                        <td><span class="sim-status-badge sim-status-pending">Pending</span></td>
+                                        <td>
+                                            <span class="sim-status-badge sim-status-pending">⏳ Pending</span>
+                                        </td>
                                         <td></td>
                                     </tr>
-                                    
-                                    <!-- Pending Row 2 -->
                                     <tr>
+                                        <td><input type="checkbox"></td>
                                         <td><div class="sim-mgr-img" style="background:#94a3b8;"></div></td>
-                                        <td><a href="#" class="sim-mgr-filename">gallery-image-2.png</a><span class="sim-mgr-dims">768x1108</span></td>
+                                        <td>
+                                            <a href="#" class="sim-mgr-filename">gallery-image-2.png</a>
+                                            <span class="sim-mgr-dims">768×1108</span>
+                                        </td>
                                         <td>1.05 MB</td>
-                                        <td><span class="sim-status-badge sim-status-pending">Pending</span></td>
+                                        <td>
+                                            <span class="sim-status-badge sim-status-pending">⏳ Pending</span>
+                                        </td>
                                         <td></td>
                                     </tr>
-
-                                    <!-- Failed Row -->
+                                    <!-- Failed -->
                                     <tr>
+                                        <td><input type="checkbox"></td>
                                         <td><div class="sim-mgr-img" style="background:#94a3b8;"></div></td>
-                                        <td><a href="#" class="sim-mgr-filename">gallery-image-3.png</a><span class="sim-mgr-dims">709x1024</span></td>
-                                        <td>921.85 KB</td>
-                                        <td><span class="sim-status-badge sim-status-failed">Failed</span></td>
-                                        <td></td>
+                                        <td>
+                                            <a href="#" class="sim-mgr-filename">animated-banner.gif</a>
+                                            <span class="sim-mgr-dims">600×400</span>
+                                        </td>
+                                        <td>1.24 MB</td>
+                                        <td>
+                                            <span class="sim-status-badge sim-status-failed">❌ Failed</span>
+                                            <div style="font-size:11px; color:var(--wp-text-muted); margin-top:2px;">Animated GIF not supported</div>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="sim-mgr-actions">Retry</a>
+                                            <a href="#" class="sim-mgr-actions remove">Remove</a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="sim-pagination">15 items</div>
+                            <div class="sim-pagination">
+                                <button class="sim-btn sim-btn-secondary" style="height:28px; line-height:26px; padding:0 12px;">←</button>
+                                <span>1 of 3</span>
+                                <button class="sim-btn sim-btn-secondary" style="height:28px; line-height:26px; padding:0 12px;">→</button>
+                                <span style="margin-left:15px;">156 items</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -937,9 +1124,53 @@
                 <h2>Install in 60 Seconds</h2>
             </div>
             <div class="install-steps">
-                <div class="step"><div class="step-number">1</div><h3>Download</h3><p>Get the ZIP file from our plugin page.</p></div>
-                <div class="step"><div class="step-number">2</div><h3>Upload</h3><p>Upload via WordPress Plugins → Add New.</p></div>
-                <div class="step"><div class="step-number">3</div><h3>Optimize</h3><p>Activate and click "Start Optimization".</p></div>
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>📥 Download</h3>
+                    <p>Get the ZIP file from our plugin page or GitHub.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>⬆️ Upload</h3>
+                    <p>Upload via WordPress Plugins → Add New → Upload Plugin.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>🚀 Optimize</h3>
+                    <p>Activate and click "Start Optimization" on the dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about OneWebP.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>Does this work with animated GIFs?</h3>
+                    <p>No. The GD library used for conversion does not support animated GIF conversion. Animated GIFs will be skipped and marked as failed.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Will this slow down my site?</h3>
+                    <p>The conversion process runs in the background via AJAX. Frontend lazy loading ensures optimal performance for your visitors.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What happens to my original images?</h3>
+                    <p>Original images are preserved unless you enable the "Delete Original After Conversion" option in settings.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Does this work with WooCommerce?</h3>
+                    <p>Yes! OneWebP converts all product images and thumbnails automatically. Works perfectly with WooCommerce.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is this really 100% free?</h3>
+                    <p>Yes! OneWebP is completely free, open-source (GPL-2.0+), and will always be free. No hidden costs, no premium versions.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -975,7 +1206,7 @@
                 </div>
                 
                 <div class="donate-footer">
-                    Thank you for keeping open source alive!
+                    Thank you for keeping open source alive! ❤️
                 </div>
             </div>
         </div>
@@ -992,6 +1223,7 @@
 
     <!-- JavaScript -->
     <script>
+        // ===== Mobile Menu =====
         document.addEventListener('DOMContentLoaded', function() {
             const burgerMenu = document.getElementById('burger-menu');
             const mainNav = document.getElementById('main-nav');
@@ -1007,26 +1239,72 @@
             });
         });
 
+        // ===== Tab Switching =====
         function switchSimTab(tabName) {
             document.querySelectorAll('.sim-content').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('.sim-tab').forEach(t => t.classList.remove('active'));
             document.getElementById('sim-' + tabName).classList.add('active');
-            const clickedTab = Array.from(document.querySelectorAll('.sim-tab')).find(t => t.getAttribute('onclick').includes(tabName));
+            const clickedTab = Array.from(document.querySelectorAll('.sim-tab')).find(t => 
+                t.getAttribute('onclick').includes(tabName)
+            );
             if(clickedTab) clickedTab.classList.add('active');
         }
 
+        // ===== Copy Wallet =====
         function copyWallet() {
             const walletText = document.getElementById('sol-wallet').innerText;
-            navigator.clipboard.writeText(walletText).then(() => {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(walletText).then(() => {
+                    const btn = document.getElementById('copy-btn');
+                    btn.innerText = '✅ Copied!';
+                    btn.classList.add('copied');
+                    setTimeout(() => {
+                        btn.innerText = 'Copy';
+                        btn.classList.remove('copied');
+                    }, 2000);
+                });
+            } else {
+                // Fallback
+                const input = document.createElement('input');
+                input.value = walletText;
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                document.body.removeChild(input);
                 const btn = document.getElementById('copy-btn');
-                btn.innerText = 'Copied!';
+                btn.innerText = '✅ Copied!';
                 btn.classList.add('copied');
                 setTimeout(() => {
                     btn.innerText = 'Copy';
                     btn.classList.remove('copied');
                 }, 2000);
-            });
+            }
         }
+
+        // ===== Simulate Dashboard Stats Animation =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const stats = [
+                { id: 'stat-total', target: 156 },
+                { id: 'stat-converted', target: 134 },
+                { id: 'stat-pending', target: 18 },
+                { id: 'stat-failed', target: 4 }
+            ];
+            
+            stats.forEach(stat => {
+                const el = document.getElementById(stat.id);
+                if (!el) return;
+                let current = 0;
+                const increment = Math.ceil(stat.target / 30);
+                const interval = setInterval(() => {
+                    current += increment;
+                    if (current >= stat.target) {
+                        current = stat.target;
+                        clearInterval(interval);
+                    }
+                    el.textContent = current;
+                }, 30);
+            });
+        });
     </script>
 </body>
 </html>
