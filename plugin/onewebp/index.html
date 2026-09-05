@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OneWebP - The Modern WebP Optimizer for WordPress</title>
-    <meta name="description" content="Boost WordPress SEO and Core Web Vitals with OneWebP. 100% free, open-source, zero API limits.">
+    <link rel="icon" type="image/webp" href="favicon.webp?v=3">
+    <link rel="apple-touch-icon" href="favicon.webp?v=3">
+    <title>OneWebP - 100% Free Local WebP Optimizer & SEO Booster for WordPress</title>
+    <meta name="description" content="Boost WordPress SEO and Core Web Vitals with OneWebP. 100% free, open-source, zero API limits. Smart lazy loading and local WebP conversion keep your site lightweight and fast.">
     <style>
         /* =========================================
            CSS Variables & Modern Reset
@@ -25,6 +27,17 @@
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
             --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
             --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            
+            /* WordPress Admin Colors */
+            --wp-blue: #2271b1;
+            --wp-blue-hover: #135e96;
+            --wp-bg: #f0f0f1;
+            --wp-border: #c3c4c7;
+            --wp-text: #1d2327;
+            --wp-text-muted: #646970;
+            --wp-teal: #008080;
+            --wp-yellow: #dba617;
+            --wp-red: #d63638;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -45,7 +58,7 @@
            Header & Navigation
            ========================================= */
         header { 
-            background-color: rgba(255, 255, 255, 0.8); 
+            background-color: rgba(255, 255, 255, 0.95); 
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-light); 
             padding: 16px 0; 
@@ -54,8 +67,23 @@
             z-index: 1000; 
         }
         .header-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 20px; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; letter-spacing: -0.5px; }
-        .logo span { background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Logo: One is black, WebP is gradient blue, no space */
+        .logo { 
+            font-size: 22px; 
+            font-weight: 800; 
+            color: var(--text-main); 
+            display: inline-flex; 
+            align-items: center; 
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+        .logo span { 
+            background: var(--gradient-main); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            margin-left: 0;
+        }
         
         .burger-menu { display: none; flex-direction: column; cursor: pointer; gap: 5px; padding: 5px; }
         .burger-menu span { width: 24px; height: 2px; background-color: var(--text-main); border-radius: 2px; transition: all 0.3s ease; }
@@ -213,55 +241,249 @@
         .metric-bar-fill.blue { background: var(--gradient-main); width: 95%; }
 
         /* =========================================
-           Interactive UI Preview (High Fidelity + Modern Style)
+           Interactive UI Preview (High Fidelity - WordPress Style)
            ========================================= */
         .plugin-preview { padding: 100px 0; background-color: #fff; }
         .wp-admin-simulator {
-            background-color: #f8fafc;
-            border: 1px solid var(--border-light);
-            border-radius: 20px;
+            background-color: var(--wp-bg);
+            border: 1px solid var(--wp-border);
+            border-radius: 4px;
             overflow: hidden;
             box-shadow: var(--shadow-xl);
             max-width: 1000px;
             margin: 0 auto;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
         }
-        .sim-tabs { background: #fff; border-bottom: 1px solid var(--border-light); padding: 0 20px; display: flex; gap: 5px; }
-        .sim-tab { padding: 16px 24px; cursor: pointer; font-weight: 600; color: var(--text-muted); border-bottom: 2px solid transparent; transition: all 0.2s; font-size: 14px; }
-        .sim-tab:hover { color: var(--text-main); }
-        .sim-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
-        .sim-body { padding: 40px; background: #fff; min-height: 450px; }
+        
+        /* Tabs */
+        .sim-tabs { 
+            background: #fff; 
+            border-bottom: 1px solid var(--wp-border); 
+            padding: 0 20px; 
+            display: flex; 
+            gap: 0;
+            margin-top: 10px;
+        }
+        .sim-tab { 
+            padding: 10px 20px; 
+            cursor: pointer; 
+            font-weight: 400; 
+            color: var(--wp-text-muted); 
+            border: 1px solid transparent;
+            border-bottom: none;
+            margin-bottom: -1px;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .sim-tab:hover { color: var(--wp-blue); }
+        .sim-tab.active { 
+            color: var(--wp-text); 
+            background: var(--wp-bg);
+            border-color: var(--wp-border);
+            border-bottom-color: var(--wp-bg);
+            font-weight: 600;
+        }
+        
+        .sim-body { padding: 20px; background: var(--wp-bg); min-height: 450px; }
         .sim-content { display: none; animation: fadeIn 0.3s ease; }
         .sim-content.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Dashboard Simulator */
-        .sim-dash-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
-        .sim-dash-box { background: #f8fafc; border: 1px solid var(--border-light); padding: 20px 16px; text-align: center; border-radius: 12px; }
-        .sim-dash-num { font-size: 28px; font-weight: 800; display: block; margin-bottom: 4px; }
-        .sim-dash-label { font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; }
-        .sim-progress-bg { background: #e2e8f0; border-radius: 6px; height: 32px; margin-bottom: 24px; position: relative; overflow: hidden; border: 1px solid var(--border-light); }
-        .sim-progress-fill { background: var(--accent); width: 100%; height: 100%; border-radius: 6px; }
-        .sim-progress-text { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 13px; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
-        .sim-dash-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-        .sim-btn { display: inline-block; padding: 10px 20px; background: var(--primary); color: #fff; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; font-size: 14px; }
+        /* Dashboard Simulator - Exact Match */
+        .sim-dash-grid { display: flex; gap: 15px; margin: 20px 0; flex-wrap: wrap; }
+        .sim-dash-box { 
+            flex: 1; 
+            min-width: 140px; 
+            background: #fff; 
+            border: 1px solid var(--wp-border); 
+            border-radius: 4px; 
+            padding: 20px 10px; 
+            text-align: center; 
+            box-shadow: 0 1px 1px rgba(0,0,0,.04); 
+        }
+        .sim-dash-num { display: block; font-size: 32px; font-weight: bold; color: var(--wp-text); line-height: 1.2; margin-bottom: 5px; }
+        .sim-dash-label { display: block; font-size: 12px; color: var(--wp-text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+        
+        .sim-progress-container { 
+            background: #f0f0f1; 
+            border-radius: 4px; 
+            height: 30px; 
+            margin: 20px 0; 
+            overflow: hidden; 
+            position: relative; 
+            border: 1px solid var(--wp-border); 
+        }
+        .sim-progress-fill { 
+            background: var(--wp-blue); 
+            height: 100%; 
+            width: 80%; 
+            transition: width 0.3s ease; 
+        }
+        .sim-progress-text { 
+            position: absolute; 
+            width: 100%; 
+            text-align: center; 
+            top: 0; 
+            line-height: 30px; 
+            font-size: 13px; 
+            font-weight: bold; 
+            color: var(--wp-text); 
+        }
+        
+        .sim-stats-box {
+            background: #f6f7f7; 
+            padding: 15px; 
+            border-radius: 4px; 
+            margin-bottom: 20px; 
+            border: 1px solid var(--wp-border);
+        }
+        .sim-stats-text { margin: 0; font-size: 15px; color: var(--wp-text); }
+        .sim-stats-num { color: var(--wp-teal); font-size: 18px; font-weight: bold; margin-left: 5px; }
+        
+        .sim-btn-row { display: flex; gap: 10px; align-items: center; margin-bottom: 40px; }
+        .sim-btn { 
+            display: inline-block; 
+            padding: 0 24px; 
+            height: 32px; 
+            line-height: 30px; 
+            border-radius: 3px; 
+            font-weight: 400; 
+            font-size: 13px; 
+            cursor: pointer; 
+            border: 1px solid transparent;
+            text-decoration: none;
+            text-align: center;
+        }
+        .sim-btn-primary { background: var(--wp-blue); color: #fff; border-color: var(--wp-blue); }
+        .sim-btn-primary:hover { background: var(--wp-blue-hover); border-color: var(--wp-blue-hover); color: #fff; }
+        .sim-btn-secondary { background: #f6f7f7; color: var(--wp-text); border-color: #2271b1; }
+        .sim-btn-secondary:hover { background: #f0f0f1; border-color: var(--wp-blue-hover); color: var(--wp-blue-hover); }
+        .sim-btn-disabled { background: #f6f7f7; color: #a7aaad; border-color: #c3c4c7; cursor: not-allowed; opacity: 0.6; }
+        
+        .sim-dash-footer { 
+            margin-top: 40px; 
+            padding: 20px; 
+            background: #fff; 
+            border: 1px solid var(--wp-border); 
+            border-left: 4px solid var(--wp-blue); 
+            text-align: center; 
+            border-radius: 4px; 
+        }
+        .sim-dash-footer p { font-size: 14px; color: #50575e; margin: 0 0 10px 0; }
+        .sim-coffee-btn { 
+            display: inline-block; 
+            margin-left: 10px; 
+            padding: 6px 12px; 
+            background: #ff8c00; 
+            color: #fff !important; 
+            border-radius: 3px; 
+            text-decoration: none !important; 
+            font-weight: bold; 
+            font-size: 13px; 
+        }
 
         /* Settings Simulator */
-        .sim-form-table { width: 100%; border-collapse: collapse; }
-        .sim-form-table th { text-align: left; padding: 20px 0; width: 30%; vertical-align: top; font-weight: 600; color: var(--text-main); font-size: 14px; border-bottom: 1px solid var(--border-light); }
-        .sim-form-table td { padding: 20px 0 20px 20px; vertical-align: top; border-bottom: 1px solid var(--border-light); font-size: 14px; color: var(--text-muted); }
+        .sim-form-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--wp-border); }
+        .sim-form-table th { 
+            text-align: left; 
+            padding: 20px 10px; 
+            width: 30%; 
+            vertical-align: top; 
+            font-weight: 600; 
+            color: var(--wp-text); 
+            font-size: 14px; 
+            border-bottom: 1px solid var(--wp-border);
+            background: #fff;
+        }
+        .sim-form-table td { 
+            padding: 20px 10px; 
+            vertical-align: top; 
+            border-bottom: 1px solid var(--wp-border); 
+            font-size: 14px; 
+            color: var(--wp-text); 
+            background: #fff;
+        }
         .sim-form-table tr:last-child th, .sim-form-table tr:last-child td { border-bottom: none; }
-        .sim-input-text { padding: 8px 12px; border: 1px solid var(--border-light); border-radius: 6px; width: 100px; font-size: 14px; }
-        .sim-format-notes { margin-top: 16px; padding: 16px; background: #fef2f2; border-left: 4px solid #ef4444; font-size: 13px; color: var(--text-main); border-radius: 6px; line-height: 1.6; }
-        .sim-format-notes strong { display: block; margin-bottom: 8px; color: #ef4444; }
+        .sim-input-text { padding: 0 8px; height: 30px; border: 1px solid #8c8f94; border-radius: 4px; width: 80px; font-size: 14px; }
+        .sim-desc { margin-top: 4px; font-size: 13px; color: var(--wp-text-muted); font-style: italic; }
+        
+        .sim-format-notes { 
+            margin-top: 10px; 
+            padding: 10px; 
+            background: #fcf0f1; 
+            border-left: 4px solid var(--wp-red); 
+            font-size: 13px; 
+            color: var(--wp-text); 
+            line-height: 1.6; 
+        }
+        .sim-format-notes strong { display: block; margin-bottom: 5px; color: var(--wp-text); }
+        
+        .sim-submit-btn { 
+            background: var(--wp-blue); 
+            color: #fff; 
+            border: 1px solid var(--wp-blue); 
+            padding: 0 24px; 
+            height: 32px; 
+            line-height: 30px; 
+            border-radius: 3px; 
+            font-weight: 400; 
+            margin-top: 20px; 
+            cursor: pointer; 
+            font-size: 13px; 
+        }
+        
+        .sim-reset-section { margin-top: 30px; border-top: 1px solid var(--wp-border); padding-top: 20px; }
+        .sim-reset-title { font-size: 18px; font-weight: 600; margin-bottom: 15px; color: var(--wp-text); }
 
         /* Manager Simulator */
+        .sim-manager-style { background: #fff; border: 1px solid var(--wp-border); }
         .sim-manager-style table { width: 100%; border-collapse: collapse; background: #fff; }
-        .sim-manager-style th { background: #f8fafc; text-align: left; padding: 12px; font-size: 12px; color: var(--text-muted); border-bottom: 1px solid var(--border-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-        .sim-manager-style td { padding: 16px 12px; border-bottom: 1px solid var(--border-light); font-size: 13px; vertical-align: middle; color: var(--text-main); }
-        .sim-mgr-img { width: 40px; height: 40px; border-radius: 6px; display: inline-block; background: #e2e8f0; }
-        .sim-mgr-save { color: var(--accent); font-weight: 700; font-size: 12px; background: #f0fdfa; padding: 2px 8px; border-radius: 12px; margin-left: 4px; }
-        .sim-mgr-actions a { color: var(--primary); margin-right: 8px; font-size: 13px; font-weight: 600; }
-        .sim-mgr-actions a.remove { color: #ef4444; }
+        .sim-manager-style th { 
+            background: #f6f7f7; 
+            text-align: left; 
+            padding: 8px 10px; 
+            font-size: 14px; 
+            color: var(--wp-text); 
+            border-bottom: 1px solid var(--wp-border); 
+            font-weight: 600; 
+        }
+        .sim-manager-style td { 
+            padding: 12px 10px; 
+            border-bottom: 1px solid var(--wp-border); 
+            font-size: 13px; 
+            vertical-align: middle; 
+            color: var(--wp-text); 
+        }
+        .sim-manager-style tr:last-child td { border-bottom: none; }
+        
+        .sim-mgr-img { width: 40px; height: 40px; border-radius: 4px; display: inline-block; background: #e2e8f0; border: 1px solid var(--wp-border); }
+        .sim-mgr-filename { font-weight: 600; color: var(--wp-blue); text-decoration: none; display: block; margin-bottom: 2px; }
+        .sim-mgr-filename:hover { color: var(--wp-blue-hover); text-decoration: underline; }
+        .sim-mgr-dims { font-size: 11px; color: var(--wp-text-muted); }
+        
+        .sim-mgr-link { color: var(--wp-text); text-decoration: underline; }
+        .sim-mgr-link:hover { color: var(--wp-blue); }
+        .sim-mgr-save { color: var(--wp-teal); font-weight: bold; font-size: 12px; margin-left: 4px; }
+        
+        .sim-mgr-actions { font-size: 13px; }
+        .sim-mgr-actions a { color: var(--wp-blue); margin-right: 6px; text-decoration: none; }
+        .sim-mgr-actions a:hover { color: var(--wp-blue-hover); text-decoration: underline; }
+        .sim-mgr-actions a.remove { color: var(--wp-red); }
+        .sim-mgr-actions a.remove:hover { color: #a00; }
+        
+        .sim-status-badge { 
+            display: inline-block; 
+            padding: 2px 8px; 
+            border-radius: 12px; 
+            font-size: 11px; 
+            font-weight: 600; 
+            border: 1px solid transparent;
+        }
+        .sim-status-pending { background: #fff8e5; color: #b45309; border-color: #fcd34d; }
+        .sim-status-failed { background: #fcf0f1; color: var(--wp-red); border-color: #fecaca; }
+
+        .sim-pagination { padding: 10px; text-align: right; font-size: 13px; color: var(--wp-text-muted); border-top: 1px solid var(--wp-border); background: #fff; }
 
         /* =========================================
            Installation Steps
@@ -362,8 +584,8 @@
             .burger-menu.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
             .sim-form-table, .sim-form-table tbody, .sim-form-table tr, .sim-form-table td, .sim-form-table th { display: block; width: 100%; text-align: left; }
-            .sim-form-table th { padding: 16px 0 8px; border-bottom: none; }
-            .sim-form-table td { padding: 0 0 16px; }
+            .sim-form-table th { padding: 16px 10px 8px; border-bottom: none; }
+            .sim-form-table td { padding: 0 10px 16px; }
             .sim-manager-style { overflow-x: auto; }
             .wallet-box { flex-direction: column; align-items: stretch; text-align: center; }
             .wallet-address { text-align: center; }
@@ -375,6 +597,7 @@
     <!-- Header -->
     <header>
         <div class="container header-content">
+            <!-- Logo: One is black, WebP is gradient blue, no space -->
             <a href="#" class="logo">One<span>WebP</span></a>
             <div class="burger-menu" id="burger-menu"><span></span><span></span><span></span></div>
             <nav id="main-nav">
@@ -394,12 +617,12 @@
         <div class="container">
             <div class="hero-badge">
                 <span style="width:6px; height:6px; background:#10b981; border-radius:50%;"></span>
-                100% Free & Open Source
+                100% Free & Open Source - Forever
             </div>
             <h1>Supercharge Your WordPress <span>SEO & Speed</span>.</h1>
             <p>The ultimate lightweight WebP optimizer. Convert images locally, protect your privacy, and boost Core Web Vitals without spending a dime.</p>
             <div class="cta-buttons">
-                <a href="https://jackerteo.com/plugin/onewebp" class="btn btn-primary">Download Plugin</a>
+                <a href="https://github.com/JackerArchitect/onewebp/releases/download/v1.0.0/onewenp.zip" class="btn btn-primary">Download Plugin</a>
                 <a href="https://github.com/JackerArchitect/onewebp" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View Source</a>
             </div>
         </div>
@@ -417,7 +640,7 @@
                     <h3>Traditional API Plugins</h3>
                     <ul class="compare-list">
                         <li><span>💸</span> Monthly limits & expensive subscriptions</li>
-                        <li><span>🔓</span> Privacy risks (images sent externally)</li>
+                        <li><span></span> Privacy risks (images sent externally)</li>
                         <li><span>🐢</span> Slow processing due to network latency</li>
                     </ul>
                 </div>
@@ -504,7 +727,7 @@
         </div>
     </section>
 
-    <!-- Interactive UI Preview (High Fidelity) -->
+    <!-- Interactive UI Preview -->
     <section class="plugin-preview" id="preview">
         <div class="container">
             <div class="section-header">
@@ -524,57 +747,98 @@
                     <div id="sim-dashboard" class="sim-content active">
                         <div class="sim-dash-grid">
                             <div class="sim-dash-box"><span class="sim-dash-num">15</span><span class="sim-dash-label">Total Images</span></div>
-                            <div class="sim-dash-box"><span class="sim-dash-num" style="color:var(--accent);">12</span><span class="sim-dash-label">Converted</span></div>
-                            <div class="sim-dash-box"><span class="sim-dash-num" style="color:#eab308;">2</span><span class="sim-dash-label">Pending</span></div>
-                            <div class="sim-dash-box"><span class="sim-dash-num" style="color:#ef4444;">1</span><span class="sim-dash-label">Failed</span></div>
+                            <div class="sim-dash-box"><span class="sim-dash-num" style="color:var(--wp-teal);">12</span><span class="sim-dash-label">Converted</span></div>
+                            <div class="sim-dash-box"><span class="sim-dash-num" style="color:var(--wp-yellow);">2</span><span class="sim-dash-label">Pending</span></div>
+                            <div class="sim-dash-box"><span class="sim-dash-num" style="color:var(--wp-red);">1</span><span class="sim-dash-label">Failed / Non-convertible</span></div>
                         </div>
-                        <div class="sim-progress-bg">
+                        
+                        <div class="sim-progress-container">
                             <div class="sim-progress-fill"></div>
-                            <div class="sim-progress-text">100% Complete</div>
+                            <div class="sim-progress-text">80%</div>
                         </div>
-                        <div class="sim-dash-actions">
-                            <button class="sim-btn">Start Optimization</button>
-                            <span style="color:var(--accent); font-weight:700; font-size:15px;">Total Saved: 2.45 MB</span>
+                        
+                        <div class="sim-stats-box">
+                            <p class="sim-stats-text">
+                                Total Space Saved: 
+                                <strong class="sim-stats-num">2.45 MB</strong>
+                            </p>
+                        </div>
+                        
+                        <div class="sim-btn-row">
+                            <button class="sim-btn sim-btn-primary">Start Optimization</button>
+                            <button class="sim-btn sim-btn-secondary" style="color:var(--wp-red); border-color:var(--wp-red);">Pause</button>
+                            <button class="sim-btn sim-btn-secondary">Rescan Library</button>
+                        </div>
+                        
+                        <div class="sim-dash-footer">
+                            <p>Support open source original creation. Create sustainable, high-tech plugins.<br>
+                            Buy me a coffee to keep this project alive! 
+                            <a href="#" class="sim-coffee-btn">☕ Buy me a coffee</a></p>
                         </div>
                     </div>
 
                     <!-- 2. Settings Preview -->
                     <div id="sim-settings" class="sim-content">
-                        <table class="sim-form-table">
-                            <tr>
-                                <th>WebP Quality</th>
-                                <td><input type="number" class="sim-input-text" value="82" min="50" max="100"><div style="margin-top:6px; font-size:12px;">(Recommended: 82). Range: 50-100.</div></td>
-                            </tr>
-                            <tr>
-                                <th>Max Resolution (px)</th>
-                                <td><input type="number" class="sim-input-text" value="3000" min="800"><div style="margin-top:6px; font-size:12px;">(Recommended: 3000). Images larger than this will be automatically downscaled.</div></td>
-                            </tr>
-                            <tr>
-                                <th>Conversion Scope</th>
-                                <td>
-                                    <label style="display:block; margin-bottom:8px;"><input type="radio" name="scope" checked> Original + All Thumbnails (Recommended)</label>
-                                    <label style="display:block;"><input type="radio" name="scope"> Original Image Only</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Image Types to Convert</th>
-                                <td>
-                                    <label style="display:block; margin-bottom:6px;"><input type="checkbox" checked> JPEG / JPG (Recommended)</label>
-                                    <label style="display:block; margin-bottom:6px;"><input type="checkbox" checked> PNG (Recommended - Transparency preserved)</label>
-                                    <label style="display:block; margin-bottom:12px;"><input type="checkbox"> GIF</label>
-                                    
-                                    <div class="sim-format-notes">
-                                        <strong>Format Support Notes:</strong>
-                                        ✅ <strong>JPEG/JPG → WebP:</strong> Fully supported. Best compression results.<br>
-                                        ✅ <strong>PNG → WebP:</strong> Fully supported. Transparent background is preserved.<br>
-                                        ⚠️ <strong>GIF → WebP:</strong> Static GIF only. Animated GIFs will become static (first frame only). GD library does not support GIF animation.<br>
-                                        ❌ <strong>SVG:</strong> Not supported. SVG is a vector format and cannot be converted by GD library.<br>
-                                        ❌ <strong>BMP/TIFF:</strong> Not recommended. Very large file sizes may cause memory issues.<br>
-                                        ❌ <strong>WebP:</strong> Already WebP. No conversion needed.
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                        <form onsubmit="return false;">
+                            <table class="sim-form-table">
+                                <tr>
+                                    <th>WebP Quality</th>
+                                    <td><input type="number" class="sim-input-text" value="82" min="50" max="100"><div class="sim-desc">(Recommended: 82). Range: 50-100.</div></td>
+                                </tr>
+                                <tr>
+                                    <th>Max Resolution (px)</th>
+                                    <td><input type="number" class="sim-input-text" value="3000" min="800"><div class="sim-desc">(Recommended: 3000).</div></td>
+                                </tr>
+                                <tr>
+                                    <th>Allow Oversized Images</th>
+                                    <td><label><input type="checkbox"> Disable automatic downscaling.</label></td>
+                                </tr>
+                                <tr>
+                                    <th>First N Direct Load</th>
+                                    <td><input type="number" class="sim-input-text" value="3" min="0" max="10"><div class="sim-desc">(Recommended: 3).</div></td>
+                                </tr>
+                                <tr>
+                                    <th>Conversion Scope</th>
+                                    <td>
+                                        <label style="display:block; margin-bottom:8px;"><input type="radio" name="scope" checked> Original + All Thumbnails (Recommended)</label>
+                                        <label style="display:block;"><input type="radio" name="scope"> Original Image Only</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Image Types to Convert</th>
+                                    <td>
+                                        <label style="display:block; margin-bottom:6px;"><input type="checkbox" checked> JPEG / JPG</label>
+                                        <label style="display:block; margin-bottom:6px;"><input type="checkbox" checked> PNG</label>
+                                        <label style="display:block; margin-bottom:12px;"><input type="checkbox"> GIF</label>
+                                        
+                                        <div class="sim-format-notes">
+                                            <strong>Format Support Notes:</strong>
+                                            ✅ <strong>JPEG/JPG → WebP:</strong> Fully supported. Best compression results.<br>
+                                            ✅ <strong>PNG → WebP:</strong> Fully supported. Transparent background is preserved.<br>
+                                            ⚠️ <strong>GIF → WebP:</strong> Static GIF only. Animated GIFs will become static (first frame only). GD library does not support GIF animation.<br>
+                                             <strong>SVG:</strong> Not supported. SVG is a vector format and cannot be converted by GD library.<br>
+                                            ❌ <strong>BMP/TIFF:</strong> Not recommended. Very large file sizes may cause memory issues.<br>
+                                            ❌ <strong>WebP:</strong> Already WebP. No conversion needed.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Smart Lazy Load</th>
+                                    <td><label><input type="checkbox" checked> Enable queue-based lazy loading.</label></td>
+                                </tr>
+                                <tr>
+                                    <th>External Images</th>
+                                    <td><label><input type="checkbox"> Download and convert external images.</label></td>
+                                </tr>
+                            </table>
+                            <button class="sim-submit-btn">Save Settings</button>
+                            
+                            <div class="sim-reset-section">
+                                <h3 class="sim-reset-title">Reset Options</h3>
+                                <button class="sim-btn sim-btn-secondary" style="margin-right:10px;">Reset to Default Settings</button>
+                                <button class="sim-btn sim-btn-secondary" style="color:var(--wp-red); border-color:var(--wp-red);">Clear All Data & WebP Files</button>
+                            </div>
+                        </form>
                     </div>
 
                     <!-- 3. Image Manager Preview -->
@@ -584,37 +848,67 @@
                                 <thead>
                                     <tr>
                                         <th style="width:60px;">Preview</th>
-                                        <th>Size</th>
-                                        <th>Original</th>
-                                        <th>WebP</th>
+                                        <th style="width:200px;">Size</th>
+                                        <th style="width:120px;">Original</th>
+                                        <th style="width:150px;">WebP</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <!-- Success Row 1 -->
                                     <tr>
                                         <td><div class="sim-mgr-img" style="background:#334155;"></div></td>
-                                        <td><strong style="display:block;">Original</strong><span style="font-size:11px; color:var(--text-muted);">1920x1080</span></td>
+                                        <td><a href="#" class="sim-mgr-filename">hero-banner.jpg</a><span class="sim-mgr-dims">1920x1080</span></td>
                                         <td>2.36 MB</td>
-                                        <td>306.58 KB <span class="sim-mgr-save">-87.3%</span></td>
+                                        <td><a href="#" class="sim-mgr-link">306.58 KB</a> <span class="sim-mgr-save">-87.3%</span></td>
                                         <td class="sim-mgr-actions"><a href="#">Edit</a> <a href="#">Reoptimize</a> <a href="#" class="remove">Remove</a> <a href="#">Copy URL</a></td>
                                     </tr>
+                                    <!-- Success Row 2 -->
                                     <tr>
                                         <td><div class="sim-mgr-img" style="background:#475569;"></div></td>
-                                        <td><strong style="display:block;">Medium large</strong><span style="font-size:11px; color:var(--text-muted);">768x1108</span></td>
-                                        <td>1.05 MB</td>
-                                        <td>190.98 KB <span class="sim-mgr-save">-82.2%</span></td>
+                                        <td><a href="#" class="sim-mgr-filename">product-showcase.png</a><span class="sim-mgr-dims">980x980</span></td>
+                                        <td>608.15 KB</td>
+                                        <td><a href="#" class="sim-mgr-link">174.36 KB</a> <span class="sim-mgr-save">-71.3%</span></td>
                                         <td class="sim-mgr-actions"><a href="#">Edit</a> <a href="#">Reoptimize</a> <a href="#" class="remove">Remove</a> <a href="#">Copy URL</a></td>
                                     </tr>
+                                    <!-- Success Row 3 -->
                                     <tr>
                                         <td><div class="sim-mgr-img" style="background:#64748b;"></div></td>
-                                        <td><strong style="display:block;">Thumbnail</strong><span style="font-size:11px; color:var(--text-muted);">150x150</span></td>
-                                        <td>28.29 KB</td>
-                                        <td>5.60 KB <span class="sim-mgr-save">-80.2%</span></td>
+                                        <td><a href="#" class="sim-mgr-filename">team-photo.jpg</a><span class="sim-mgr-dims">864x1247</span></td>
+                                        <td>2.36 MB</td>
+                                        <td><a href="#" class="sim-mgr-link">306.58 KB</a> <span class="sim-mgr-save">-87.3%</span></td>
                                         <td class="sim-mgr-actions"><a href="#">Edit</a> <a href="#">Reoptimize</a> <a href="#" class="remove">Remove</a> <a href="#">Copy URL</a></td>
+                                    </tr>
+                                    
+                                    <!-- Pending Row 1 -->
+                                    <tr>
+                                        <td><div class="sim-mgr-img" style="background:#94a3b8;"></div></td>
+                                        <td><a href="#" class="sim-mgr-filename">gallery-image-1.png</a><span class="sim-mgr-dims">1536x864</span></td>
+                                        <td>795.83 KB</td>
+                                        <td><span class="sim-status-badge sim-status-pending">Pending</span></td>
+                                        <td></td>
+                                    </tr>
+                                    
+                                    <!-- Pending Row 2 -->
+                                    <tr>
+                                        <td><div class="sim-mgr-img" style="background:#94a3b8;"></div></td>
+                                        <td><a href="#" class="sim-mgr-filename">gallery-image-2.png</a><span class="sim-mgr-dims">768x1108</span></td>
+                                        <td>1.05 MB</td>
+                                        <td><span class="sim-status-badge sim-status-pending">Pending</span></td>
+                                        <td></td>
+                                    </tr>
+
+                                    <!-- Failed Row -->
+                                    <tr>
+                                        <td><div class="sim-mgr-img" style="background:#94a3b8;"></div></td>
+                                        <td><a href="#" class="sim-mgr-filename">gallery-image-3.png</a><span class="sim-mgr-dims">709x1024</span></td>
+                                        <td>921.85 KB</td>
+                                        <td><span class="sim-status-badge sim-status-failed">Failed</span></td>
+                                        <td></td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <div style="margin-top:16px; text-align:right; font-size:12px; color:var(--text-muted);">3 items</div>
+                            <div class="sim-pagination">15 items</div>
                         </div>
                     </div>
                 </div>
@@ -676,8 +970,9 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 OneWebP by Jacker Architect. Licensed under GPL-2.0+.</p>
-            <p><a href="https://github.com/JackerArchitect/onewebp" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+            <p>&copy; 2026 Jacker Architect. All rights reserved.</p>
+            <p>Check out the full source code: <a href="https://github.com/JackerArchitect/onewebp" target="_blank" rel="noopener noreferrer">github.com/JackerArchitect/onewebp</a></p>
+            <p>Feedback? Email us at <a href="mailto:support@jackerteo.com">support@jackerteo.com</a></p>
         </div>
     </footer>
 
