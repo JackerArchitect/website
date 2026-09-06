@@ -27,7 +27,7 @@
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
             --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
             --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            
+
             /* WordPress Admin Colors */
             --wp-blue: #2271b1;
             --wp-blue-hover: #135e96;
@@ -42,12 +42,12 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { 
-            font-family: var(--font-stack); 
-            line-height: 1.6; 
-            color: var(--text-main); 
-            background-color: var(--bg-body); 
-            overflow-x: hidden; 
+        body {
+            font-family: var(--font-stack);
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
         a { text-decoration: none; color: var(--primary); transition: all 0.2s; }
@@ -57,44 +57,44 @@
         /* =========================================
            Header & Navigation
            ========================================= */
-        header { 
-            background-color: rgba(255, 255, 255, 0.95); 
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-light); 
-            padding: 16px 0; 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
+            border-bottom: 1px solid var(--border-light);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         .header-content { display: flex; justify-content: space-between; align-items: center; }
-        
-        .logo { 
-            font-size: 22px; 
-            font-weight: 800; 
-            color: var(--text-main); 
-            display: inline-flex; 
-            align-items: center; 
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-main);
+            display: inline-flex;
+            align-items: center;
             letter-spacing: -0.5px;
             text-decoration: none;
         }
-        .logo span { 
-            background: var(--gradient-main); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
+        .logo span {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-left: 0;
         }
-        
+
         .burger-menu { display: none; flex-direction: column; cursor: pointer; gap: 5px; padding: 5px; }
         .burger-menu span { width: 24px; height: 2px; background-color: var(--text-main); border-radius: 2px; transition: all 0.3s ease; }
-        
+
         nav ul { display: flex; list-style: none; gap: 32px; }
         nav a { color: var(--text-muted); font-weight: 500; font-size: 14px; transition: color 0.2s; }
         nav a:hover { color: var(--text-main); }
-        .nav-cta { 
-            background: var(--text-main); 
-            color: #fff !important; 
-            padding: 8px 16px; 
-            border-radius: 20px; 
+        .nav-cta {
+            background: var(--text-main);
+            color: #fff !important;
+            padding: 8px 16px;
+            border-radius: 20px;
             font-size: 13px;
         }
         .nav-cta:hover { background: #334155; color: #fff !important; }
@@ -102,63 +102,63 @@
         /* =========================================
            Hero Section
            ========================================= */
-        .hero { 
-            padding: 120px 0 100px; 
-            text-align: center; 
+        .hero {
+            padding: 120px 0 100px;
+            text-align: center;
             position: relative;
             background: radial-gradient(circle at 50% 0%, #e0e7ff 0%, #f8fafc 60%);
         }
-        .hero-badge { 
-            display: inline-flex; 
+        .hero-badge {
+            display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: #fff; 
+            background: #fff;
             border: 1px solid var(--border-light);
-            color: var(--text-muted); 
-            padding: 6px 16px; 
-            border-radius: 30px; 
-            font-size: 12px; 
-            font-weight: 600; 
-            margin-bottom: 32px; 
+            color: var(--text-muted);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 32px;
             box-shadow: var(--shadow-sm);
         }
-        .hero h1 { 
-            font-size: 64px; 
-            font-weight: 800; 
-            margin-bottom: 24px; 
-            color: var(--text-main); 
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: var(--text-main);
             line-height: 1.1;
             letter-spacing: -2px;
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
         }
-        .hero h1 span { 
-            background: var(--gradient-main); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
+        .hero h1 span {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .hero p { 
-            font-size: 20px; 
-            color: var(--text-muted); 
-            margin-bottom: 48px; 
-            max-width: 600px; 
-            margin-left: auto; 
-            margin-right: auto; 
+        .hero p {
+            font-size: 20px;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
             font-weight: 400;
         }
         .cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
-        .btn { 
-            display: inline-flex; 
-            align-items: center; 
+        .btn {
+            display: inline-flex;
+            align-items: center;
             gap: 8px;
-            padding: 14px 28px; 
-            border-radius: 30px; 
-            font-weight: 600; 
-            font-size: 15px; 
-            transition: all 0.2s ease; 
-            cursor: pointer; 
-            border: none; 
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
         }
         .btn-primary { background: var(--gradient-main); color: #ffffff; box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39); }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.23); color: #fff; }
@@ -166,13 +166,13 @@
         .btn-secondary:hover { background: #f1f5f9; border-color: #cbd5e1; transform: translateY(-2px); }
 
         /* =========================================
-           Problem vs Solution
+           Comparison
            ========================================= */
         .comparison { padding: 100px 0; background-color: var(--bg-body); }
         .section-header { text-align: center; margin-bottom: 64px; }
         .section-header h2 { font-size: 36px; font-weight: 700; margin-bottom: 16px; letter-spacing: -1px; }
         .section-header p { font-size: 18px; color: var(--text-muted); max-width: 500px; margin: 0 auto; }
-        
+
         .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 900px; margin: 0 auto; }
         .compare-card { padding: 40px; border-radius: 24px; border: 1px solid var(--border-light); background: var(--bg-card); transition: transform 0.3s; }
         .compare-card:hover { transform: translateY(-5px); }
@@ -186,25 +186,25 @@
         .compare-list li span { font-size: 18px; line-height: 1; }
 
         /* =========================================
-           Core Features
+           Features
            ========================================= */
         .features { padding: 100px 0; background-color: #fff; }
         .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
-        .feature-card { 
-            background-color: var(--bg-card); 
-            border: 1px solid var(--border-light); 
-            border-radius: 24px; 
-            padding: 40px 32px; 
-            transition: all 0.3s ease; 
+        .feature-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 40px 32px;
+            transition: all 0.3s ease;
         }
         .feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-xl); border-color: transparent; }
-        .feature-icon { 
-            width: 48px; height: 48px; 
-            background: #f1f5f9; 
-            color: var(--primary); 
-            border-radius: 12px; 
-            display: flex; align-items: center; justify-content: center; 
-            margin-bottom: 24px; 
+        .feature-icon {
+            width: 48px; height: 48px;
+            background: #f1f5f9;
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 24px;
             transition: all 0.3s;
         }
         .feature-card:hover .feature-icon { background: var(--gradient-main); color: #fff; }
@@ -222,25 +222,25 @@
         .seo-text p { margin-bottom: 20px; color: var(--text-muted); font-size: 17px; }
         .seo-checklist { list-style: none; margin-top: 32px; }
         .seo-checklist li { margin-bottom: 16px; font-size: 16px; font-weight: 500; display: flex; align-items: center; gap: 12px; color: var(--text-main); }
-        .seo-checklist li::before { 
-            content: ''; 
+        .seo-checklist li::before {
+            content: '';
             display: inline-block;
-            width: 20px; 
-            height: 20px; 
-            background-color: var(--accent); 
-            border-radius: 50%; 
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent);
+            border-radius: 50%;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
             background-size: 12px;
             background-position: center;
             background-repeat: no-repeat;
             flex-shrink: 0;
         }
-        .seo-visual { 
-            flex: 1; min-width: 300px; 
-            background: #fff; 
-            border: 1px solid var(--border-light); 
-            border-radius: 24px; 
-            padding: 40px; 
+        .seo-visual {
+            flex: 1; min-width: 300px;
+            background: #fff;
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 40px;
             box-shadow: var(--shadow-lg);
         }
         .metric-box { background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 16px; border: 1px solid var(--border-light); text-align: left; }
@@ -251,7 +251,7 @@
         .metric-bar-fill.blue { background: var(--gradient-main); width: 95%; }
 
         /* =========================================
-           Interactive UI Preview - UPDATED to match latest plugin
+           Interactive UI Preview - 100% WordPress Style
            ========================================= */
         .plugin-preview { padding: 100px 0; background-color: #fff; }
         .wp-admin-simulator {
@@ -264,21 +264,21 @@
             margin: 0 auto;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
         }
-        
+
         /* Tabs */
-        .sim-tabs { 
-            background: #fff; 
-            border-bottom: 1px solid var(--wp-border); 
-            padding: 0 20px; 
-            display: flex; 
+        .sim-tabs {
+            background: #fff;
+            border-bottom: 1px solid var(--wp-border);
+            padding: 0 20px;
+            display: flex;
             gap: 0;
             margin-top: 10px;
         }
-        .sim-tab { 
-            padding: 10px 20px; 
-            cursor: pointer; 
-            font-weight: 400; 
-            color: var(--wp-text-muted); 
+        .sim-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 400;
+            color: var(--wp-text-muted);
             border: 1px solid transparent;
             border-bottom: none;
             margin-bottom: -1px;
@@ -287,82 +287,82 @@
             display: inline-block;
         }
         .sim-tab:hover { color: var(--wp-blue); }
-        .sim-tab.active { 
-            color: var(--wp-text); 
+        .sim-tab.active {
+            color: var(--wp-text);
             background: var(--wp-bg);
             border-color: var(--wp-border);
             border-bottom-color: var(--wp-bg);
             font-weight: 600;
         }
-        
-        .sim-body { padding: 20px; background: var(--wp-bg); min-height: 480px; }
+
+        .sim-body { padding: 20px; background: var(--wp-bg); min-height: 520px; }
         .sim-content { display: none; animation: fadeIn 0.3s ease; }
         .sim-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Dashboard */
+        /* ===== Dashboard ===== */
         .sim-dash-grid { display: flex; gap: 15px; margin: 20px 0; flex-wrap: wrap; }
-        .sim-dash-box { 
-            flex: 1; 
-            min-width: 140px; 
-            background: #fff; 
-            border: 1px solid var(--wp-border); 
-            border-radius: 4px; 
-            padding: 20px 10px; 
-            text-align: center; 
-            box-shadow: 0 1px 1px rgba(0,0,0,.04); 
+        .sim-dash-box {
+            flex: 1;
+            min-width: 140px;
+            background: #fff;
+            border: 1px solid var(--wp-border);
+            border-radius: 4px;
+            padding: 20px 10px;
+            text-align: center;
+            box-shadow: 0 1px 1px rgba(0,0,0,.04);
         }
         .sim-dash-num { display: block; font-size: 32px; font-weight: bold; color: var(--wp-text); line-height: 1.2; margin-bottom: 5px; }
         .sim-dash-label { display: block; font-size: 12px; color: var(--wp-text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
-        
-        .sim-progress-container { 
-            background: #f0f0f1; 
-            border-radius: 4px; 
-            height: 30px; 
-            margin: 20px 0; 
-            overflow: hidden; 
-            position: relative; 
-            border: 1px solid var(--wp-border); 
+
+        .sim-progress-container {
+            background: #f0f0f1;
+            border-radius: 4px;
+            height: 30px;
+            margin: 20px 0;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--wp-border);
         }
-        .sim-progress-fill { 
-            background: var(--wp-blue); 
-            height: 100%; 
-            width: 80%; 
-            transition: width 0.3s ease; 
+        .sim-progress-fill {
+            background: var(--wp-blue);
+            height: 100%;
+            width: 86%;
+            transition: width 0.3s ease;
         }
         .sim-progress-fill.completed { background: var(--wp-teal) !important; }
-        .sim-progress-text { 
-            position: absolute; 
-            width: 100%; 
-            text-align: center; 
-            top: 0; 
-            line-height: 30px; 
-            font-size: 13px; 
-            font-weight: bold; 
-            color: var(--wp-text); 
+        .sim-progress-text {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 0;
+            line-height: 30px;
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--wp-text);
         }
         .sim-progress-text.completed { color: #ffffff !important; }
-        
+
         .sim-stats-box {
-            background: #f6f7f7; 
-            padding: 15px; 
-            border-radius: 4px; 
-            margin-bottom: 20px; 
+            background: #f6f7f7;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
             border: 1px solid var(--wp-border);
         }
         .sim-stats-text { margin: 0; font-size: 15px; color: var(--wp-text); }
         .sim-stats-num { color: var(--wp-teal); font-size: 18px; font-weight: bold; margin-left: 5px; }
-        
+
         .sim-btn-row { display: flex; gap: 10px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
-        .sim-btn { 
-            display: inline-block; 
-            padding: 0 24px; 
-            height: 32px; 
-            line-height: 30px; 
-            border-radius: 3px; 
-            font-weight: 400; 
-            font-size: 13px; 
-            cursor: pointer; 
+        .sim-btn {
+            display: inline-block;
+            padding: 0 24px;
+            height: 32px;
+            line-height: 30px;
+            border-radius: 3px;
+            font-weight: 400;
+            font-size: 13px;
+            cursor: pointer;
             border: 1px solid transparent;
             text-decoration: none;
             text-align: center;
@@ -373,66 +373,65 @@
         .sim-btn-secondary:hover { background: #f0f0f1; border-color: var(--wp-blue-hover); color: var(--wp-blue-hover); }
         .sim-btn-danger { background: #fcf0f1; color: var(--wp-red); border-color: var(--wp-red); }
         .sim-btn-danger:hover { background: #fef2f2; border-color: #a00; color: #a00; }
-        .sim-btn-disabled { background: #f6f7f7; color: #a7aaad; border-color: #c3c4c7; cursor: not-allowed; opacity: 0.6; }
-        
-        .sim-dash-footer { 
-            margin-top: 20px; 
-            padding: 20px; 
-            background: #fff; 
-            border: 1px solid var(--wp-border); 
-            border-left: 4px solid var(--wp-blue); 
-            text-align: center; 
-            border-radius: 4px; 
+
+        .sim-dash-footer {
+            margin-top: 20px;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid var(--wp-border);
+            border-left: 4px solid var(--wp-blue);
+            text-align: center;
+            border-radius: 4px;
         }
         .sim-dash-footer p { font-size: 14px; color: #50575e; margin: 0 0 10px 0; }
-        .sim-coffee-btn { 
-            display: inline-block; 
-            margin-left: 10px; 
-            padding: 6px 12px; 
-            background: #ff8c00; 
-            color: #fff !important; 
-            border-radius: 3px; 
-            text-decoration: none !important; 
-            font-weight: bold; 
-            font-size: 13px; 
+        .sim-coffee-btn {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 6px 12px;
+            background: #ff8c00;
+            color: #fff !important;
+            border-radius: 3px;
+            text-decoration: none !important;
+            font-weight: bold;
+            font-size: 13px;
         }
 
-        /* Settings - Updated with deletion mode options */
+        /* ===== Settings ===== */
         .sim-form-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--wp-border); }
-        .sim-form-table th { 
-            text-align: left; 
-            padding: 20px 10px; 
-            width: 30%; 
-            vertical-align: top; 
-            font-weight: 600; 
-            color: var(--wp-text); 
-            font-size: 14px; 
+        .sim-form-table th {
+            text-align: left;
+            padding: 20px 10px;
+            width: 30%;
+            vertical-align: top;
+            font-weight: 600;
+            color: var(--wp-text);
+            font-size: 14px;
             border-bottom: 1px solid var(--wp-border);
             background: #fff;
         }
-        .sim-form-table td { 
-            padding: 20px 10px; 
-            vertical-align: top; 
-            border-bottom: 1px solid var(--wp-border); 
-            font-size: 14px; 
-            color: var(--wp-text); 
+        .sim-form-table td {
+            padding: 20px 10px;
+            vertical-align: top;
+            border-bottom: 1px solid var(--wp-border);
+            font-size: 14px;
+            color: var(--wp-text);
             background: #fff;
         }
         .sim-form-table tr:last-child th, .sim-form-table tr:last-child td { border-bottom: none; }
         .sim-input-text { padding: 0 8px; height: 30px; border: 1px solid #8c8f94; border-radius: 4px; width: 80px; font-size: 14px; }
         .sim-desc { margin-top: 4px; font-size: 13px; color: var(--wp-text-muted); font-style: italic; }
-        
-        .sim-format-notes { 
-            margin-top: 10px; 
-            padding: 10px; 
-            background: #fcf0f1; 
-            border-left: 4px solid var(--wp-red); 
-            font-size: 13px; 
-            color: var(--wp-text); 
-            line-height: 1.6; 
+
+        .sim-format-notes {
+            margin-top: 10px;
+            padding: 10px;
+            background: #fcf0f1;
+            border-left: 4px solid var(--wp-red);
+            font-size: 13px;
+            color: var(--wp-text);
+            line-height: 1.6;
         }
         .sim-format-notes strong { display: block; margin-bottom: 5px; color: var(--wp-text); }
-        
+
         .sim-deletion-option {
             display: block;
             padding: 12px 15px;
@@ -448,69 +447,83 @@
         .sim-deletion-option .option-title { font-weight: 600; display: block; }
         .sim-deletion-option .option-desc { font-size: 13px; color: var(--wp-text-muted); margin-top: 4px; display: block; margin-left: 26px; }
         .sim-deletion-option input[type="radio"] { margin-right: 10px; margin-top: 3px; }
-        
-        .sim-submit-btn { 
-            background: var(--wp-blue); 
-            color: #fff; 
-            border: 1px solid var(--wp-blue); 
-            padding: 0 24px; 
-            height: 32px; 
-            line-height: 30px; 
-            border-radius: 3px; 
-            font-weight: 400; 
-            margin-top: 20px; 
-            cursor: pointer; 
-            font-size: 13px; 
+
+        .sim-submit-btn {
+            background: var(--wp-blue);
+            color: #fff;
+            border: 1px solid var(--wp-blue);
+            padding: 0 24px;
+            height: 32px;
+            line-height: 30px;
+            border-radius: 3px;
+            font-weight: 400;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 13px;
         }
         .sim-submit-btn:hover { background: var(--wp-blue-hover); border-color: var(--wp-blue-hover); }
-        
+
         .sim-reset-section { margin-top: 30px; border-top: 1px solid var(--wp-border); padding-top: 20px; }
         .sim-reset-title { font-size: 18px; font-weight: 600; margin-bottom: 15px; color: var(--wp-text); }
 
-        /* Manager - Updated with better styling */
+        /* Settings info boxes */
+        .sim-info-box {
+            margin-top: 12px;
+            padding: 12px 16px;
+            border-radius: 3px;
+            font-size: 13px;
+        }
+        .sim-info-box.blue { background: #f0f6fc; border-left: 4px solid #2271b1; }
+        .sim-info-box.gray { background: #f6f7f7; border-left: 4px solid #646970; }
+        .sim-info-box.yellow { background: #fff8e5; border-left: 4px solid #f5a623; }
+        .sim-info-box.red { background: #fcf0f1; border-left: 4px solid #d63638; }
+        .sim-info-box p { margin: 0 0 4px 0; }
+        .sim-info-box ul { margin: 4px 0 0 20px; list-style: disc; }
+
+        /* ===== Manager ===== */
         .sim-manager-style { background: #fff; border: 1px solid var(--wp-border); overflow-x: auto; }
         .sim-manager-style table { width: 100%; border-collapse: collapse; background: #fff; }
-        .sim-manager-style th { 
-            background: #f6f7f7; 
-            text-align: left; 
-            padding: 8px 10px; 
-            font-size: 14px; 
-            color: var(--wp-text); 
-            border-bottom: 1px solid var(--wp-border); 
-            font-weight: 600; 
+        .sim-manager-style th {
+            background: #f6f7f7;
+            text-align: left;
+            padding: 8px 10px;
+            font-size: 14px;
+            color: var(--wp-text);
+            border-bottom: 1px solid var(--wp-border);
+            font-weight: 600;
         }
-        .sim-manager-style td { 
-            padding: 12px 10px; 
-            border-bottom: 1px solid var(--wp-border); 
-            font-size: 13px; 
-            vertical-align: middle; 
-            color: var(--wp-text); 
+        .sim-manager-style td {
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--wp-border);
+            font-size: 13px;
+            vertical-align: middle;
+            color: var(--wp-text);
         }
         .sim-manager-style tr:last-child td { border-bottom: none; }
         .sim-manager-style .column-cb { width: 30px; text-align: center; }
-        
+
         .sim-mgr-img { width: 40px; height: 40px; border-radius: 4px; display: inline-block; background: #e2e8f0; border: 1px solid var(--wp-border); object-fit: cover; }
         .sim-mgr-filename { font-weight: 600; color: var(--wp-blue); text-decoration: none; display: block; margin-bottom: 2px; }
         .sim-mgr-filename:hover { color: var(--wp-blue-hover); text-decoration: underline; }
         .sim-mgr-dims { font-size: 11px; color: var(--wp-text-muted); }
-        
+
         .sim-mgr-link { color: var(--wp-text); text-decoration: underline; }
         .sim-mgr-link:hover { color: var(--wp-blue); }
         .sim-mgr-save { color: var(--wp-teal); font-weight: bold; font-size: 12px; margin-left: 4px; }
         .sim-mgr-save.negative { color: var(--wp-red); }
-        
+
         .sim-mgr-actions { font-size: 13px; white-space: nowrap; }
         .sim-mgr-actions a { color: var(--wp-blue); margin-right: 6px; text-decoration: none; }
         .sim-mgr-actions a:hover { color: var(--wp-blue-hover); text-decoration: underline; }
         .sim-mgr-actions a.remove { color: var(--wp-red); }
         .sim-mgr-actions a.remove:hover { color: #a00; }
-        
-        .sim-status-badge { 
-            display: inline-block; 
-            padding: 2px 8px; 
-            border-radius: 12px; 
-            font-size: 11px; 
-            font-weight: 600; 
+
+        .sim-status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
             border: 1px solid transparent;
         }
         .sim-status-success { background: #ecfdf5; color: var(--wp-teal); border-color: #a7f3d0; }
@@ -524,10 +537,9 @@
         .sim-search-box { display: flex; gap: 10px; align-items: center; margin-left: auto; }
         .sim-search-box input { height: 30px; border: 1px solid var(--wp-border); border-radius: 3px; padding: 0 8px; font-size: 13px; width: 200px; }
         .sim-pagination { padding: 10px; text-align: right; font-size: 13px; color: var(--wp-text-muted); border-top: 1px solid var(--wp-border); background: #fff; }
-        .sim-pagination span { margin: 0 10px; }
 
         /* =========================================
-           Installation Steps
+           Installation
            ========================================= */
         .install { padding: 100px 0; background-color: var(--bg-body); }
         .install-steps { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
@@ -538,7 +550,7 @@
         .step p { color: var(--text-muted); font-size: 14px; }
 
         /* =========================================
-           FAQ Section
+           FAQ
            ========================================= */
         .faq { padding: 100px 0; background-color: #fff; }
         .faq-list { max-width: 700px; margin: 0 auto; }
@@ -548,20 +560,20 @@
         .faq-item p { color: var(--text-muted); font-size: 15px; }
 
         /* =========================================
-           Support & Solana Donation
+           Support
            ========================================= */
         .support { padding: 120px 0; text-align: center; background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%); color: #ffffff; position: relative; overflow: hidden; }
         .support::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 50%); pointer-events: none; }
         .support h2 { font-size: 36px; margin-bottom: 16px; font-weight: 800; letter-spacing: -1px; position: relative; z-index: 1; }
         .support > .container > p { font-size: 18px; color: #94a3b8; margin-bottom: 48px; max-width: 500px; margin-left: auto; margin-right: auto; position: relative; z-index: 1; }
-        
-        .donate-card { 
-            background: rgba(255,255,255,0.03); 
-            border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 24px; 
-            padding: 40px; 
-            max-width: 480px; 
-            margin: 0 auto; 
+
+        .donate-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 480px;
+            margin: 0 auto;
             backdrop-filter: blur(10px);
             position: relative;
             z-index: 1;
@@ -570,15 +582,15 @@
         .sol-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
         .donate-title { font-size: 18px; font-weight: 700; text-align: left; }
         .donate-subtitle { font-size: 12px; color: #94a3b8; margin-top: 4px; text-align: left; }
-        
-        .wallet-box { 
-            background: rgba(0,0,0,0.3); 
-            border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 12px; 
-            padding: 16px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
+
+        .wallet-box {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             gap: 12px;
             margin-bottom: 24px;
         }
@@ -586,7 +598,7 @@
         .copy-btn { background: var(--gradient-main); color: #fff; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; font-size: 13px; }
         .copy-btn:hover { opacity: 0.9; transform: scale(1.02); }
         .copy-btn.copied { background: var(--accent); }
-        
+
         .donate-footer { font-size: 13px; color: #64748b; }
 
         /* =========================================
@@ -598,7 +610,7 @@
         footer a:hover { color: #fff; }
 
         /* =========================================
-           Responsive Design
+           Responsive
            ========================================= */
         @media (max-width: 900px) {
             .hero h1 { font-size: 48px; }
@@ -614,14 +626,14 @@
             .hero h1 { font-size: 36px; letter-spacing: -1px; }
             .hero p { font-size: 16px; }
             .section-header h2 { font-size: 28px; }
-            
+
             .burger-menu { display: flex; }
             nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff; border-bottom: 1px solid var(--border-light); box-shadow: var(--shadow-lg); padding: 20px; }
             nav.active { display: block; }
             nav ul { flex-direction: column; gap: 16px; }
             nav a { display: block; padding: 8px 0; font-size: 16px; }
             .nav-cta { text-align: center; margin-top: 10px; display: block; }
-            
+
             .burger-menu.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
             .burger-menu.active span:nth-child(2) { opacity: 0; }
             .burger-menu.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
@@ -638,7 +650,7 @@
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- ===== Header ===== -->
     <header>
         <div class="container header-content">
             <a href="#" class="logo">One<span>WebP</span></a>
@@ -656,7 +668,7 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- ===== Hero ===== -->
     <section class="hero">
         <div class="container">
             <div class="hero-badge">
@@ -672,7 +684,7 @@
         </div>
     </section>
 
-    <!-- Problem vs Solution -->
+    <!-- ===== Comparison ===== -->
     <section class="comparison">
         <div class="container">
             <div class="section-header">
@@ -700,7 +712,7 @@
         </div>
     </section>
 
-    <!-- Core Features -->
+    <!-- ===== Features ===== -->
     <section class="features" id="features">
         <div class="container">
             <div class="section-header">
@@ -714,6 +726,11 @@
                     <p>No third-party APIs. Your images are processed directly on your server using native PHP GD. Maximum privacy.</p>
                 </div>
                 <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2z"/></svg></div>
+                    <h3>Smart Memory Engine</h3>
+                    <p>Dynamically calculates memory requirements and adjusts batch sizes. Prevents 502 errors on shared hosting.</p>
+                </div>
+                <div class="feature-card">
                     <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
                     <h3>Smart Queue Lazy Load</h3>
                     <p>Boosts LCP scores. Critical images load instantly with fetchpriority="high", others lazy-load via smart queue.</p>
@@ -721,7 +738,7 @@
                 <div class="feature-card">
                     <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg></div>
                     <h3>Auto Downscaling</h3>
-                    <p>Automatically resizes massive images (e.g., >3000px) during conversion. Saves bandwidth and improves load times.</p>
+                    <p>Automatically resizes massive images (e.g., >3000px) during conversion. Saves bandwidth effortlessly.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
@@ -733,16 +750,11 @@
                     <h3>Server Health Monitor</h3>
                     <p>Proactive warnings for low disk space (<500MB) and RAM (<64MB). Prevents disasters before they happen.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
-                    <h3>Smart Memory Engine</h3>
-                    <p>Dynamically calculates memory requirements and adjusts batch sizes. Prevents 502 errors on shared hosting.</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- SEO & Performance Focus -->
+    <!-- ===== SEO ===== -->
     <section class="seo-focus" id="seo">
         <div class="container">
             <div class="seo-content">
@@ -753,6 +765,7 @@
                         <li>Converts heavy JPG/PNG to next-gen WebP (up to 80% smaller).</li>
                         <li>Smart Lazy Loading ensures above-the-fold images load instantly.</li>
                         <li>Zero external scripts means no render-blocking resources.</li>
+                        <li><strong>Progressive Loading:</strong> Blurry preview → sharp image in under 500ms.</li>
                     </ul>
                 </div>
                 <div class="seo-visual">
@@ -771,14 +784,14 @@
         </div>
     </section>
 
-    <!-- Interactive UI Preview - UPDATED -->
+    <!-- ===== Plugin Interface Preview ===== -->
     <section class="plugin-preview" id="preview">
         <div class="container">
             <div class="section-header">
                 <h2>Experience the Interface</h2>
                 <p>Native WordPress design. Click the tabs to explore the actual plugin pages.</p>
             </div>
-            
+
             <div class="wp-admin-simulator">
                 <div class="sim-tabs">
                     <div class="sim-tab active" onclick="switchSimTab('dashboard')">📊 Dashboard</div>
@@ -807,28 +820,28 @@
                                 <span class="sim-dash-label">Failed</span>
                             </div>
                         </div>
-                        
+
                         <div class="sim-progress-container">
                             <div class="sim-progress-fill" id="main-progress-bar" style="width:86%;"></div>
                             <div class="sim-progress-text" id="main-progress-text">86%</div>
                         </div>
-                        
+
                         <div class="sim-stats-box">
                             <p class="sim-stats-text">
-                                Total Space Saved: 
+                                Total Space Saved:
                                 <strong class="sim-stats-num" id="saved-space">42.8 MB</strong>
                             </p>
                         </div>
-                        
+
                         <div class="sim-btn-row">
                             <button class="sim-btn sim-btn-primary" id="start-optimize-btn">🚀 Start Optimization</button>
                             <button class="sim-btn sim-btn-danger" id="stop-optimize-btn" style="display:none;">⏸️ Pause</button>
                             <button class="sim-btn sim-btn-secondary" id="rescan-btn">🔄 Rescan Library</button>
                         </div>
-                        
+
                         <div class="sim-dash-footer">
                             <p>Support open source original creation. Create sustainable, high-tech plugins.<br>
-                            Buy me a coffee to keep this project alive! 
+                            Buy me a coffee to keep this project alive!
                             <a href="#" class="sim-coffee-btn">☕ Buy me a coffee</a></p>
                         </div>
                     </div>
@@ -868,11 +881,11 @@
                                     <th>Conversion Scope</th>
                                     <td>
                                         <label style="display:block; margin-bottom:8px;">
-                                            <input type="radio" name="scope" checked> 
+                                            <input type="radio" name="scope" checked>
                                             Original + All Thumbnails (Recommended)
                                         </label>
                                         <label style="display:block;">
-                                            <input type="radio" name="scope"> 
+                                            <input type="radio" name="scope">
                                             Original Image Only
                                         </label>
                                     </td>
@@ -889,7 +902,7 @@
                                         <label style="display:block; margin-bottom:12px;">
                                             <input type="checkbox"> GIF (Static only)
                                         </label>
-                                        
+
                                         <div class="sim-format-notes">
                                             <strong>📋 Format Support Notes:</strong>
                                             ✅ <strong>JPEG/JPG → WebP:</strong> Fully supported. Best compression results.<br>
@@ -904,6 +917,56 @@
                                     <th>Smart Lazy Load</th>
                                     <td>
                                         <label><input type="checkbox" checked> Enable queue-based lazy loading.</label>
+                                        <div class="sim-desc">Images load with 1x1 placeholder → 3 concurrent → smart queue.</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Global &lt;picture&gt; Wrapper</th>
+                                    <td>
+                                        <label><input type="checkbox" checked> Enable automatic &lt;picture&gt; wrapper for all images</label>
+
+                                        <div class="sim-info-box blue">
+                                            <p><strong>What does this do?</strong></p>
+                                            <p style="margin-bottom:4px;">Wraps every image in a &lt;picture&gt; tag and adds a WebP &lt;source&gt;. Browsers automatically load the WebP version if supported.</p>
+                                            <p><strong style="color:#2271b1;">✅ Recommended:</strong> Always keep enabled for maximum browser compatibility.</p>
+                                        </div>
+
+                                        <div class="sim-info-box gray">
+                                            <strong>Technical Details:</strong>
+                                            <ul>
+                                                <li>Works with both &lt;img&gt; and existing &lt;picture&gt; tags</li>
+                                                <li>Supports srcset for responsive images</li>
+                                                <li>Graceful fallback for browsers without WebP support</li>
+                                                <li>Compatible with Elementor, Gutenberg, WPBakery, etc.</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Progressive Loading</th>
+                                    <td>
+                                        <label><input type="checkbox" checked> Enable blur-to-sharp progressive image loading</label>
+
+                                        <div class="sim-info-box blue">
+                                            <p><strong>What does this do?</strong></p>
+                                            <p style="margin-bottom:4px;">Generates a tiny placeholder (12px max, 3-6KB) that loads instantly, then smoothly transitions to the full-quality WebP in under 500ms.</p>
+                                            <p><strong style="color:#2271b1;">✅ Recommended:</strong> Always keep enabled. Improves perceived performance and helps achieve better Core Web Vitals (LCP, CLS).</p>
+                                        </div>
+
+                                        <div class="sim-info-box gray">
+                                            <strong>How it improves loading experience:</strong>
+                                            <ul>
+                                                <li>Users see a blurry but recognizable preview instantly</li>
+                                                <li><strong>Blur → Sharp transition in under 500ms</strong></li>
+                                                <li>Reduces perceived loading time by up to 60%</li>
+                                                <li>Improves Largest Contentful Paint (LCP) scores</li>
+                                                <li>Prevents Cumulative Layout Shift (CLS) with fixed dimensions</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="sim-info-box yellow">
+                                            <strong>Note:</strong> Creates a small .lqip.webp file (~3-6KB) per image. Works best with JPEG and PNG. Disable only if you have very limited storage or thousands of images.
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -921,19 +984,19 @@
                                             <span class="option-title">✅ Sync Delete (Recommended)</span>
                                             <span class="option-desc">When original images are deleted, WebP files are automatically deleted too.</span>
                                         </label>
-                                        
+
                                         <label class="sim-deletion-option">
                                             <input type="radio" name="deletion_mode">
                                             <span class="option-title">💾 Keep WebP After Deletion</span>
                                             <span class="option-desc">WebP files remain on server even when original images are deleted.</span>
                                         </label>
-                                        
+
                                         <label class="sim-deletion-option" style="border-color: var(--wp-red);">
                                             <input type="radio" name="deletion_mode">
                                             <span class="option-title" style="color: var(--wp-red);">⚠️ Delete Original After Conversion</span>
                                             <span class="option-desc">Automatically delete original images after WebP conversion. Cannot re-convert!</span>
                                         </label>
-                                        
+
                                         <div class="sim-desc" style="margin-top: 10px; padding: 10px; background: #f0f0f1; border-left: 4px solid var(--wp-blue); border-radius: 3px;">
                                             <strong>Note:</strong> These options only apply to images deleted from WordPress Media Library. Manual FTP deletions are not affected.
                                         </div>
@@ -941,7 +1004,7 @@
                                 </tr>
                             </table>
                             <button class="sim-submit-btn">💾 Save Settings</button>
-                            
+
                             <div class="sim-reset-section">
                                 <h3 class="sim-reset-title">🔄 Reset Options</h3>
                                 <button class="sim-btn sim-btn-secondary" style="margin-right:10px;">Reset to Default Settings</button>
@@ -959,13 +1022,13 @@
                                 <option value="reoptimize">Reoptimize</option>
                             </select>
                             <button class="sim-btn sim-btn-secondary">Apply</button>
-                            
+
                             <div class="sim-search-box">
                                 <input type="text" placeholder="Search images...">
                                 <button class="sim-btn sim-btn-secondary">Search</button>
                             </div>
                         </div>
-                        
+
                         <div class="sim-manager-style">
                             <table>
                                 <thead>
@@ -979,7 +1042,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Converted -->
                                     <tr>
                                         <td><input type="checkbox"></td>
                                         <td><div class="sim-mgr-img" style="background:#334155;"></div></td>
@@ -1037,7 +1099,6 @@
                                             <a href="#">Copy URL</a>
                                         </td>
                                     </tr>
-                                    <!-- Already WebP -->
                                     <tr>
                                         <td><input type="checkbox"></td>
                                         <td><div class="sim-mgr-img" style="background:#2563eb;"></div></td>
@@ -1057,7 +1118,6 @@
                                             <a href="#">Copy URL</a>
                                         </td>
                                     </tr>
-                                    <!-- Pending -->
                                     <tr>
                                         <td><input type="checkbox"></td>
                                         <td><div class="sim-mgr-img" style="background:#94a3b8;"></div></td>
@@ -1084,7 +1144,6 @@
                                         </td>
                                         <td></td>
                                     </tr>
-                                    <!-- Failed -->
                                     <tr>
                                         <td><input type="checkbox"></td>
                                         <td><div class="sim-mgr-img" style="background:#94a3b8;"></div></td>
@@ -1117,7 +1176,7 @@
         </div>
     </section>
 
-    <!-- Installation -->
+    <!-- ===== Installation ===== -->
     <section class="install" id="install">
         <div class="container">
             <div class="section-header">
@@ -1143,7 +1202,7 @@
         </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- ===== FAQ ===== -->
     <section class="faq" id="faq">
         <div class="container">
             <div class="section-header">
@@ -1171,16 +1230,20 @@
                     <h3>Is this really 100% free?</h3>
                     <p>Yes! OneWebP is completely free, open-source (GPL-2.0+), and will always be free. No hidden costs, no premium versions.</p>
                 </div>
+                <div class="faq-item">
+                    <h3>What is Progressive Loading?</h3>
+                    <p>OneWebP generates a tiny placeholder (12px, 3-6KB) that loads instantly, then smoothly transitions to the full-quality WebP in under 500ms. This dramatically improves perceived performance and LCP scores.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Support / Solana Donation -->
+    <!-- ===== Support ===== -->
     <section class="support" id="support">
         <div class="container">
             <h2>Support Open Source</h2>
             <p>OneWebP is built with passion. If it helps your business, consider supporting sustainable development.</p>
-            
+
             <div class="donate-card">
                 <div class="donate-header">
                     <div class="sol-icon">
@@ -1199,12 +1262,12 @@
                         <div class="donate-subtitle">Solana Mainnet</div>
                     </div>
                 </div>
-                
+
                 <div class="wallet-box">
                     <div class="wallet-address" id="sol-wallet">EHHPsci6pKbfL71t73KNCXrtanM1TWPrWYJZ1ik1b5FH</div>
                     <button class="copy-btn" id="copy-btn" onclick="copyWallet()">Copy</button>
                 </div>
-                
+
                 <div class="donate-footer">
                     Thank you for keeping open source alive! ❤️
                 </div>
@@ -1212,7 +1275,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ===== Footer ===== -->
     <footer>
         <div class="container">
             <p>&copy; 2026 Jacker Architect. All rights reserved.</p>
@@ -1221,81 +1284,84 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- ===== JavaScript ===== -->
     <script>
-        // ===== Mobile Menu =====
+        // Mobile menu
         document.addEventListener('DOMContentLoaded', function() {
-            const burgerMenu = document.getElementById('burger-menu');
-            const mainNav = document.getElementById('main-nav');
+            var burgerMenu = document.getElementById('burger-menu');
+            var mainNav = document.getElementById('main-nav');
             burgerMenu.addEventListener('click', function() {
                 this.classList.toggle('active');
                 mainNav.classList.toggle('active');
             });
-            document.querySelectorAll('#main-nav a').forEach(link => {
-                link.addEventListener('click', () => {
+            document.querySelectorAll('#main-nav a').forEach(function(link) {
+                link.addEventListener('click', function() {
                     burgerMenu.classList.remove('active');
                     mainNav.classList.remove('active');
                 });
             });
         });
 
-        // ===== Tab Switching =====
+        // Tab switching
         function switchSimTab(tabName) {
-            document.querySelectorAll('.sim-content').forEach(c => c.classList.remove('active'));
-            document.querySelectorAll('.sim-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.sim-content').forEach(function(c) {
+                c.classList.remove('active');
+            });
+            document.querySelectorAll('.sim-tab').forEach(function(t) {
+                t.classList.remove('active');
+            });
             document.getElementById('sim-' + tabName).classList.add('active');
-            const clickedTab = Array.from(document.querySelectorAll('.sim-tab')).find(t => 
-                t.getAttribute('onclick').includes(tabName)
-            );
-            if(clickedTab) clickedTab.classList.add('active');
+            var clickedTab = Array.from(document.querySelectorAll('.sim-tab')).find(function(t) {
+                return t.getAttribute('onclick').includes(tabName);
+            });
+            if (clickedTab) clickedTab.classList.add('active');
         }
 
-        // ===== Copy Wallet =====
+        // Copy wallet
         function copyWallet() {
-            const walletText = document.getElementById('sol-wallet').innerText;
+            var walletText = document.getElementById('sol-wallet').innerText;
             if (navigator.clipboard) {
-                navigator.clipboard.writeText(walletText).then(() => {
-                    const btn = document.getElementById('copy-btn');
+                navigator.clipboard.writeText(walletText).then(function() {
+                    var btn = document.getElementById('copy-btn');
                     btn.innerText = '✅ Copied!';
                     btn.classList.add('copied');
-                    setTimeout(() => {
+                    setTimeout(function() {
                         btn.innerText = 'Copy';
                         btn.classList.remove('copied');
                     }, 2000);
                 });
             } else {
-                // Fallback
-                const input = document.createElement('input');
+                var input = document.createElement('input');
                 input.value = walletText;
                 document.body.appendChild(input);
                 input.select();
                 document.execCommand('copy');
                 document.body.removeChild(input);
-                const btn = document.getElementById('copy-btn');
+                var btn = document.getElementById('copy-btn');
                 btn.innerText = '✅ Copied!';
                 btn.classList.add('copied');
-                setTimeout(() => {
+                setTimeout(function() {
                     btn.innerText = 'Copy';
                     btn.classList.remove('copied');
                 }, 2000);
             }
         }
 
-        // ===== Simulate Dashboard Stats Animation =====
+        // Animate stats on load
         document.addEventListener('DOMContentLoaded', function() {
-            const stats = [
+            var stats = [
                 { id: 'stat-total', target: 156 },
                 { id: 'stat-converted', target: 134 },
                 { id: 'stat-pending', target: 18 },
                 { id: 'stat-failed', target: 4 }
             ];
-            
-            stats.forEach(stat => {
-                const el = document.getElementById(stat.id);
+
+            stats.forEach(function(stat) {
+                var el = document.getElementById(stat.id);
                 if (!el) return;
-                let current = 0;
-                const increment = Math.ceil(stat.target / 30);
-                const interval = setInterval(() => {
+                var current = 0;
+                var increment = Math.ceil(stat.target / 30);
+                var interval = setInterval(function() {
                     current += increment;
                     if (current >= stat.target) {
                         current = stat.target;
