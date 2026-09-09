@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hide Login Secure – WordPress Login Protection | by Jacker Architect</title>
+    <title>Jacker Login Guard – WordPress Login Protection | by Jacker Architect</title>
     <meta name="description" content="Lightweight, brute-force-proof WordPress login security plugin. Hide your login page, block unauthorized access, and protect your site without slowing it down.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -33,7 +33,7 @@
         }
         .animate-blob { animation: blob 7s infinite; }
         .animation-delay-2000 { animation-delay: 2s; }
-        
+
         .tab-btn.active {
             background: white;
             border-bottom-color: white;
@@ -42,11 +42,27 @@
         }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
-        
+
         .sample-note {
             color: #9ca3af;
             font-style: italic;
             font-size: 11px;
+        }
+
+        /* Mobile menu styles */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            opacity: 0;
+        }
+        #mobile-menu.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+        .menu-icon {
+            cursor: pointer;
+            user-select: none;
         }
     </style>
 </head>
@@ -56,15 +72,18 @@
     <nav class="fixed w-full z-50 glass-panel border-b border-slate-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-orange-500 via-red-500 to-blue-500 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/30">
+                <!-- Logo -->
+                <a href="/" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 bg-gradient-to-br from-orange-500 via-red-500 to-blue-500 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/30 group-hover:scale-105 transition-transform">
                         <i class="fa-solid fa-shield-virus text-white text-xl"></i>
                     </div>
                     <div>
-                        <span class="font-black text-xl text-white tracking-tight block leading-none">Hide Login Secure</span>
+                        <span class="font-black text-xl text-white tracking-tight block leading-none">Jacker Login Guard</span>
                         <span class="text-[10px] text-slate-400 tracking-widest uppercase">by Jacker Architect</span>
                     </div>
-                </div>
+                </a>
+
+                <!-- Desktop Menu -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="#features" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Features</a>
@@ -74,19 +93,39 @@
                         <a href="#support" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all">Support Dev</a>
                     </div>
                 </div>
+
+                <!-- Mobile Menu Toggle -->
+                <div class="md:hidden menu-icon" onclick="toggleMobileMenu()" aria-label="Toggle menu" role="button" tabindex="0">
+                    <div id="hamburger-icon" class="flex flex-col gap-1.5 p-2">
+                        <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="bar1"></span>
+                        <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="bar2"></span>
+                        <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="bar3"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu" class="md:hidden pb-4">
+                <div class="flex flex-col space-y-3 pt-2 border-t border-slate-700">
+                    <a href="#features" class="text-slate-300 hover:text-white hover:bg-slate-700/50 px-3 py-2 rounded-md text-sm font-medium transition-colors" onclick="closeMobileMenu()">Features</a>
+                    <a href="#preview" class="text-slate-300 hover:text-white hover:bg-slate-700/50 px-3 py-2 rounded-md text-sm font-medium transition-colors" onclick="closeMobileMenu()">Interface</a>
+                    <a href="#story" class="text-slate-300 hover:text-white hover:bg-slate-700/50 px-3 py-2 rounded-md text-sm font-medium transition-colors" onclick="closeMobileMenu()">Story</a>
+                    <a href="#pro" class="text-slate-300 hover:text-yellow-400 hover:bg-slate-700/50 px-3 py-2 rounded-md text-sm font-medium transition-colors" onclick="closeMobileMenu()">Pro (Soon)</a>
+                    <a href="#support" class="bg-blue-600 hover:bg-blue-700 text-white text-center px-4 py-2 rounded-full text-sm font-medium transition-all" onclick="closeMobileMenu()">Support Dev</a>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+    <section id="home" class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             
             <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-orange-500/10 via-red-500/10 to-blue-500/10 border border-orange-500/30 mb-8">
                 <div class="w-6 h-6 bg-gradient-to-br from-orange-500 to-blue-500 rounded-md flex items-center justify-center">
                     <i class="fa-solid fa-shield-virus text-white text-xs"></i>
                 </div>
-                <span class="text-sm font-semibold text-white">Hide Login Secure</span>
+                <span class="text-sm font-semibold text-white">Jacker Login Guard</span>
                 <span class="text-xs text-slate-400">·</span>
                 <span class="text-xs text-slate-300">v1.0.0 Submitted to WordPress.org</span>
             </div>
@@ -100,14 +139,14 @@
             </p>
             
             <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://github.com/JackerArchitect/hide-login-secure/releases/download/v1.0.0/hide-login-secure.zip" class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2">
+                <a href="https://github.com/JackerArchitect/jacker-login-guard/releases/download/v1.0.0/jacker-login-guard.zip" class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-download text-xl"></i> 
                     <div class="flex flex-col items-start">
                         <span>Download Plugin v1.0.0</span>
                         <span class="text-xs opacity-75 font-normal">.zip file · 22.5 KB</span>
                     </div>
                 </a>
-                <a href="https://github.com/JackerArchitect/hide-login-secure" target="_blank" class="glass-panel hover:bg-slate-800 text-white font-semibold py-3 px-8 rounded-lg transition-all flex items-center justify-center gap-2">
+                <a href="https://github.com/JackerArchitect/jacker-login-guard" target="_blank" class="glass-panel hover:bg-slate-800 text-white font-semibold py-3 px-8 rounded-lg transition-all flex items-center justify-center gap-2">
                     <i class="fa-brands fa-github text-xl"></i> View Source on GitHub
                 </a>
             </div>
@@ -122,7 +161,7 @@
                     <li>Go to your WordPress Dashboard → <strong>Plugins</strong> → <strong>Add New Plugin</strong>.</li>
                     <li>Click <strong>Upload Plugin</strong> at the top, choose the downloaded .zip file, and click "Install Now".</li>
                     <li>Activate the plugin.</li>
-                    <li><strong>Configure:</strong> Go to <strong>Settings → Hide Login</strong> in your WordPress admin menu to set your secret URL and security options.</li>
+                    <li><strong>Configure:</strong> Go to <strong>Settings → Jacker Login Guard</strong> in your WordPress admin menu to set your secret URL and security options.</li>
                 </ol>
             </div>
         </div>
@@ -138,7 +177,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-bold uppercase tracking-wider mb-4">
-                    <i class="fa-solid fa-shield-virus"></i> Hide Login Secure Features
+                    <i class="fa-solid fa-shield-virus"></i> Jacker Login Guard Features
                 </div>
                 <h2 class="text-3xl font-bold text-white">Why Choose This Plugin?</h2>
                 <p class="mt-4 text-slate-400">Built from the ground up to solve real security problems without slowing down your site.</p>
@@ -211,8 +250,8 @@
                             <i class="fa-solid fa-shield-virus text-white text-lg"></i>
                         </div>
                         <div>
-                            <h1 class="text-[23px] font-normal text-[#1d2327] leading-tight">Hide Login Settings</h1>
-                            <p class="text-[11px] text-[#50575e]">by <span class="font-semibold">Hide Login Secure</span> · Jacker Architect</p>
+                            <h1 class="text-[23px] font-normal text-[#1d2327] leading-tight">Jacker Login Guard Settings</h1>
+                            <p class="text-[11px] text-[#50575e]">by <span class="font-semibold">Jacker Login Guard</span> · Jacker Architect</p>
                         </div>
                     </div>
                     
@@ -494,7 +533,7 @@
             </div>
             
             <p class="text-center text-slate-500 text-sm mt-8">
-                <i class="fa-solid fa-eye mr-2"></i> A preview of the actual <span class="font-semibold text-white">Hide Login Secure</span> settings page inside WordPress.
+                <i class="fa-solid fa-eye mr-2"></i> A preview of the actual <span class="font-semibold text-white">Jacker Login Guard</span> settings page inside WordPress.
             </p>
         </div>
     </section>
@@ -654,8 +693,8 @@
                 
                 <div class="mt-6 flex flex-col sm:flex-row justify-center items-center gap-4 text-sm text-slate-400">
                     <span>Check out the full source code:</span>
-                    <a href="https://github.com/JackerArchitect/hide-login-secure" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold flex items-center gap-1">
-                        <i class="fa-brands fa-github"></i> github.com/JackerArchitect/hide-login-secure
+                    <a href="https://github.com/JackerArchitect/jacker-login-guard" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold flex items-center gap-1">
+                        <i class="fa-brands fa-github"></i> github.com/JackerArchitect/jacker-login-guard
                     </a>
                 </div>
 
@@ -674,7 +713,7 @@
                     <i class="fa-solid fa-shield-virus text-white text-sm"></i>
                 </div>
                 <div>
-                    <span class="font-black text-lg text-white block leading-none">Hide Login Secure</span>
+                    <span class="font-black text-lg text-white block leading-none">Jacker Login Guard</span>
                     <span class="text-[10px] text-slate-500 tracking-widest uppercase">by Jacker Architect</span>
                 </div>
             </div>
@@ -715,6 +754,58 @@
             btn.classList.add('active', 'border-[#c3c4c7]', 'border-b-white');
             btn.classList.remove('bg-transparent', 'border-transparent');
         }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const bar1 = document.getElementById('bar1');
+            const bar2 = document.getElementById('bar2');
+            const bar3 = document.getElementById('bar3');
+            
+            menu.classList.toggle('open');
+            
+            // Hamburger to X animation
+            if (menu.classList.contains('open')) {
+                bar1.classList.add('rotate-45', 'translate-y-2');
+                bar2.classList.add('opacity-0');
+                bar3.classList.add('-rotate-45', '-translate-y-2');
+            } else {
+                bar1.classList.remove('rotate-45', 'translate-y-2');
+                bar2.classList.remove('opacity-0');
+                bar3.classList.remove('-rotate-45', '-translate-y-2');
+            }
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const bar1 = document.getElementById('bar1');
+            const bar2 = document.getElementById('bar2');
+            const bar3 = document.getElementById('bar3');
+            
+            if (menu.classList.contains('open')) {
+                menu.classList.remove('open');
+                bar1.classList.remove('rotate-45', 'translate-y-2');
+                bar2.classList.remove('opacity-0');
+                bar3.classList.remove('-rotate-45', '-translate-y-2');
+            }
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const menu = document.getElementById('mobile-menu');
+            const toggle = document.querySelector('.menu-icon');
+            
+            if (menu.classList.contains('open') && !nav.contains(event.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close mobile menu on window resize (back to desktop)
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                closeMobileMenu();
+            }
+        });
     </script>
 </body>
 </html>
