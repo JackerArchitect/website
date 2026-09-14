@@ -1,1 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacker CSS Merges Manager - Free WordPress CSS Merger for Core Web Vitals</title>
+    <meta name="description" content="Merge 20+ WordPress CSS files into one request with Jacker CSS Merges Manager. 100% free, open-source, per-page cache, icon-safe, OneWebP-aware. No API, no server changes.">
+    <style>
+        /* =========================================
+           CSS Variables & Modern Reset
+           ========================================= */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --accent: #0d9488;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --border-light: #e2e8f0;
+            --gradient-main: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            --gradient-accent: linear-gradient(135deg, #0d9488 0%, #2563eb 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
+            /* WordPress Admin Colors */
+            --wp-blue: #2271b1;
+            --wp-blue-hover: #135e96;
+            --wp-bg: #f0f0f1;
+            --wp-border: #c3c4c7;
+            --wp-text: #1d2327;
+            --wp-text-muted: #646970;
+            --wp-teal: #008080;
+            --wp-yellow: #dba617;
+            --wp-red: #d63638;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-stack);
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; color: var(--primary); transition: all 0.2s; }
+        a:hover { color: var(--primary-dark); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* =========================================
+           Header & Navigation
+           ========================================= */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-main);
+            display: inline-flex;
+            align-items: center;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+        .logo span {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-left: 0;
+        }
+
+        .burger-menu { display: none; flex-direction: column; cursor: pointer; gap: 5px; padding: 5px; }
+        .burger-menu span { width: 24px; height: 2px; background-color: var(--text-main); border-radius: 2px; transition: all 0.3s ease; }
+
+        nav ul { display: flex; list-style: none; gap: 32px; }
+        nav a { color: var(--text-muted); font-weight: 500; font-size: 14px; transition: color 0.2s; }
+        nav a:hover { color: var(--text-main); }
+        .nav-cta {
+            background: var(--text-main);
+            color: #fff !important;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+        .nav-cta:hover { background: #334155; color: #fff !important; }
+
+        /* =========================================
+           Hero Section
+           ========================================= */
+        .hero {
+            padding: 120px 0 100px;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at 50% 0%, #dbeafe 0%, #f8fafc 60%);
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #fff;
+            border: 1px solid var(--border-light);
+            color: var(--text-muted);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-sm);
+        }
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: var(--text-main);
+            line-height: 1.1;
+            letter-spacing: -2px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero h1 span {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 20px;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+        .cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary { background: var(--gradient-main); color: #ffffff; box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.23); color: #fff; }
+        .btn-secondary { background: #fff; color: var(--text-main); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); }
+        .btn-secondary:hover { background: #f1f5f9; border-color: #cbd5e1; transform: translateY(-2px); }
+
+        /* =========================================
+           Comparison
+           ========================================= */
+        .comparison { padding: 100px 0; background-color: var(--bg-body); }
+        .section-header { text-align: center; margin-bottom: 64px; }
+        .section-header h2 { font-size: 36px; font-weight: 700; margin-bottom: 16px; letter-spacing: -1px; }
+        .section-header p { font-size: 18px; color: var(--text-muted); max-width: 560px; margin: 0 auto; }
+
+        .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 900px; margin: 0 auto; }
+        .compare-card { padding: 40px; border-radius: 24px; border: 1px solid var(--border-light); background: var(--bg-card); transition: transform 0.3s; }
+        .compare-card:hover { transform: translateY(-5px); }
+        .compare-card.bad { border-color: #fecaca; background: #fef2f2; }
+        .compare-card.good { border-color: #a7f3d0; background: #ecfdf5; box-shadow: var(--shadow-lg); }
+        .compare-card h3 { font-size: 20px; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; font-weight: 700; }
+        .compare-card.bad h3 { color: #ef4444; }
+        .compare-card.good h3 { color: #059669; }
+        .compare-list { list-style: none; }
+        .compare-list li { margin-bottom: 16px; font-size: 15px; display: flex; align-items: flex-start; gap: 12px; color: var(--text-main); }
+        .compare-list li span { font-size: 18px; line-height: 1; }
+
+        /* =========================================
+           Features
+           ========================================= */
+        .features { padding: 100px 0; background-color: #fff; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+        .feature-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 40px 32px;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-xl); border-color: transparent; }
+        .feature-icon {
+            width: 48px; height: 48px;
+            background: #eff6ff;
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 24px;
+            transition: all 0.3s;
+        }
+        .feature-card:hover .feature-icon { background: var(--gradient-main); color: #fff; }
+        .feature-icon svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .feature-card h3 { font-size: 18px; margin-bottom: 12px; font-weight: 700; color: var(--text-main); }
+        .feature-card p { color: var(--text-muted); font-size: 15px; line-height: 1.6; }
+
+        /* =========================================
+           SEO & Performance
+           ========================================= */
+        .seo-focus { padding: 100px 0; background-color: var(--bg-body); }
+        .seo-content { display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
+        .seo-text { flex: 1; min-width: 300px; }
+        .seo-text h2 { font-size: 36px; margin-bottom: 24px; line-height: 1.2; letter-spacing: -1px; }
+        .seo-text p { margin-bottom: 20px; color: var(--text-muted); font-size: 17px; }
+        .seo-checklist { list-style: none; margin-top: 32px; }
+        .seo-checklist li { margin-bottom: 16px; font-size: 16px; font-weight: 500; display: flex; align-items: center; gap: 12px; color: var(--text-main); }
+        .seo-checklist li::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+            background-size: 12px;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex-shrink: 0;
+        }
+        .seo-visual {
+            flex: 1; min-width: 300px;
+            background: #fff;
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+        }
+        .metric-box { background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 16px; border: 1px solid var(--border-light); text-align: left; }
+        .metric-label { font-size: 12px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 12px; letter-spacing: 0.5px; }
+        .metric-bar-bg { background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden; }
+        .metric-bar-fill { height: 100%; border-radius: 4px; }
+        .metric-bar-fill.green { background: var(--gradient-accent); width: 98%; }
+        .metric-bar-fill.blue { background: var(--gradient-main); width: 95%; }
+
+        /* =========================================
+           Interactive UI Preview
+           ========================================= */
+        .plugin-preview { padding: 100px 0; background-color: #fff; }
+        .wp-admin-simulator {
+            background-color: var(--wp-bg);
+            border: 1px solid var(--wp-border);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            max-width: 1000px;
+            margin: 0 auto;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+        }
+
+        /* Admin bar simulator */
+        .sim-admin-bar {
+            background: #1d2327;
+            color: #c3c4c7;
+            padding: 0 15px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            gap: 18px;
+        }
+        .sim-admin-bar .ab-item { color: #c3c4c7; display: inline-flex; align-items: center; gap: 6px; }
+        .sim-admin-bar .ab-item.active { color: #72aee6; }
+        .sim-admin-bar .ab-right { margin-left: auto; }
+        .sim-admin-bar .ab-dropdown {
+            position: absolute;
+            background: #1d2327;
+            border: 1px solid #3c434a;
+            border-radius: 3px;
+            padding: 6px 0;
+            font-size: 13px;
+            min-width: 180px;
+            z-index: 10;
+        }
+        .sim-admin-bar .ab-dropdown .ab-item { display: block; padding: 6px 14px; color: #c3c4c7; }
+
+        /* Tabs */
+        .sim-tabs {
+            background: #fff;
+            border-bottom: 1px solid var(--wp-border);
+            padding: 0 20px;
+            display: flex;
+            gap: 0;
+            margin-top: 10px;
+        }
+        .sim-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 400;
+            color: var(--wp-text-muted);
+            border: 1px solid transparent;
+            border-bottom: none;
+            margin-bottom: -1px;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .sim-tab:hover { color: var(--wp-blue); }
+        .sim-tab.active {
+            color: var(--wp-text);
+            background: var(--wp-bg);
+            border-color: var(--wp-border);
+            border-bottom-color: var(--wp-bg);
+            font-weight: 600;
+        }
+
+        .sim-body { padding: 20px; background: var(--wp-bg); min-height: 520px; }
+        .sim-content { display: none; animation: fadeIn 0.3s ease; }
+        .sim-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* ===== Dashboard ===== */
+        .sim-dash-grid { display: flex; gap: 15px; margin: 20px 0; flex-wrap: wrap; }
+        .sim-dash-box {
+            flex: 1;
+            min-width: 140px;
+            background: #fff;
+            border: 1px solid var(--wp-border);
+            border-radius: 4px;
+            padding: 20px 10px;
+            text-align: center;
+            box-shadow: 0 1px 1px rgba(0,0,0,.04);
+        }
+        .sim-dash-num { display: block; font-size: 32px; font-weight: bold; color: var(--wp-text); line-height: 1.2; margin-bottom: 5px; }
+        .sim-dash-label { display: block; font-size: 12px; color: var(--wp-text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+
+        .sim-stats-box {
+            background: #f6f7f7;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border: 1px solid var(--wp-border);
+        }
+        .sim-stats-text { margin: 0; font-size: 15px; color: var(--wp-text); }
+        .sim-stats-num { color: var(--wp-teal); font-size: 18px; font-weight: bold; margin-left: 5px; }
+
+        .sim-btn-row { display: flex; gap: 10px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+        .sim-btn {
+            display: inline-block;
+            padding: 0 24px;
+            height: 32px;
+            line-height: 30px;
+            border-radius: 3px;
+            font-weight: 400;
+            font-size: 13px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            text-decoration: none;
+            text-align: center;
+        }
+        .sim-btn-primary { background: var(--wp-blue); color: #fff; border-color: var(--wp-blue); }
+        .sim-btn-primary:hover { background: var(--wp-blue-hover); border-color: var(--wp-blue-hover); color: #fff; }
+        .sim-btn-secondary { background: #f6f7f7; color: var(--wp-text); border-color: #2271b1; }
+        .sim-btn-secondary:hover { background: #f0f0f1; border-color: var(--wp-blue-hover); color: var(--wp-blue-hover); }
+        .sim-btn-danger { background: #fcf0f1; color: var(--wp-red); border-color: var(--wp-red); }
+        .sim-btn-danger:hover { background: #fef2f2; border-color: #a00; color: #a00; }
+
+        .sim-dash-footer {
+            margin-top: 20px;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid var(--wp-border);
+            border-left: 4px solid var(--wp-blue);
+            text-align: center;
+            border-radius: 4px;
+        }
+        .sim-dash-footer p { font-size: 14px; color: #50575e; margin: 0 0 10px 0; }
+        .sim-coffee-btn {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 6px 12px;
+            background: #ff8c00;
+            color: #fff !important;
+            border-radius: 3px;
+            text-decoration: none !important;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        /* ===== Settings ===== */
+        .sim-form-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--wp-border); }
+        .sim-form-table th {
+            text-align: left;
+            padding: 20px 10px;
+            width: 30%;
+            vertical-align: top;
+            font-weight: 600;
+            color: var(--wp-text);
+            font-size: 14px;
+            border-bottom: 1px solid var(--wp-border);
+            background: #fff;
+        }
+        .sim-form-table td {
+            padding: 20px 10px;
+            vertical-align: top;
+            border-bottom: 1px solid var(--wp-border);
+            font-size: 14px;
+            color: var(--wp-text);
+            background: #fff;
+        }
+        .sim-form-table tr:last-child th, .sim-form-table tr:last-child td { border-bottom: none; }
+        .sim-input-text { padding: 0 8px; height: 30px; border: 1px solid #8c8f94; border-radius: 4px; width: 80px; font-size: 14px; }
+        .sim-input-wide { padding: 0 8px; height: 30px; border: 1px solid #8c8f94; border-radius: 4px; width: 100%; font-size: 14px; }
+        .sim-desc { margin-top: 4px; font-size: 13px; color: var(--wp-text-muted); font-style: italic; }
+
+        .sim-submit-btn {
+            background: var(--wp-blue);
+            color: #fff;
+            border: 1px solid var(--wp-blue);
+            padding: 0 24px;
+            height: 32px;
+            line-height: 30px;
+            border-radius: 3px;
+            font-weight: 400;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .sim-submit-btn:hover { background: var(--wp-blue-hover); border-color: var(--wp-blue-hover); }
+
+        /* Settings info boxes */
+        .sim-info-box {
+            margin-top: 12px;
+            padding: 12px 16px;
+            border-radius: 3px;
+            font-size: 13px;
+        }
+        .sim-info-box.blue { background: #f0f6fc; border-left: 4px solid #2271b1; }
+        .sim-info-box.gray { background: #f6f7f7; border-left: 4px solid #646970; }
+        .sim-info-box.yellow { background: #fff8e5; border-left: 4px solid #f5a623; }
+        .sim-info-box.green { background: #edfaef; border-left: 4px solid #00a32a; }
+        .sim-info-box p { margin: 0 0 4px 0; }
+        .sim-info-box ul { margin: 4px 0 0 20px; list-style: disc; }
+
+        /* ===== Manager (per-page cache) ===== */
+        .sim-manager-style { background: #fff; border: 1px solid var(--wp-border); overflow-x: auto; }
+        .sim-manager-style table { width: 100%; border-collapse: collapse; background: #fff; }
+        .sim-manager-style th {
+            background: #f6f7f7;
+            text-align: left;
+            padding: 8px 10px;
+            font-size: 14px;
+            color: var(--wp-text);
+            border-bottom: 1px solid var(--wp-border);
+            font-weight: 600;
+        }
+        .sim-manager-style td {
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--wp-border);
+            font-size: 13px;
+            vertical-align: middle;
+            color: var(--wp-text);
+        }
+        .sim-manager-style tr:last-child td { border-bottom: none; }
+
+        .sim-mgr-url { font-family: monospace; color: var(--wp-blue); text-decoration: none; display: block; }
+        .sim-mgr-url:hover { color: var(--wp-blue-hover); text-decoration: underline; }
+        .sim-mgr-file { font-family: monospace; font-size: 12px; color: var(--wp-text-muted); }
+        .sim-mgr-actions { font-size: 13px; white-space: nowrap; }
+        .sim-mgr-actions a { color: var(--wp-blue); margin-right: 6px; text-decoration: none; }
+        .sim-mgr-actions a:hover { color: var(--wp-blue-hover); text-decoration: underline; }
+        .sim-mgr-actions a.remove { color: var(--wp-red); }
+        .sim-mgr-actions a.remove:hover { color: #a00; }
+
+        .sim-status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            border: 1px solid transparent;
+        }
+        .sim-status-success { background: #ecfdf5; color: var(--wp-teal); border-color: #a7f3d0; }
+        .sim-status-webp { background: #eff6ff; color: var(--wp-blue); border-color: #bfdbfe; }
+
+        .sim-pagination { padding: 10px; text-align: right; font-size: 13px; color: var(--wp-text-muted); border-top: 1px solid var(--wp-border); background: #fff; }
+
+        /* =========================================
+           Installation
+           ========================================= */
+        .install { padding: 100px 0; background-color: var(--bg-body); }
+        .install-steps { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+        .step { background-color: #fff; border: 1px solid var(--border-light); border-radius: 24px; padding: 40px 32px; text-align: center; flex: 1; min-width: 280px; transition: all 0.3s; }
+        .step:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .step-number { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--gradient-main); color: #ffffff; border-radius: 12px; font-weight: 800; font-size: 18px; margin-bottom: 24px; }
+        .step h3 { font-size: 18px; margin-bottom: 12px; font-weight: 700; }
+        .step p { color: var(--text-muted); font-size: 14px; }
+
+        /* =========================================
+           FAQ
+           ========================================= */
+        .faq { padding: 100px 0; background-color: #fff; }
+        .faq-list { max-width: 700px; margin: 0 auto; }
+        .faq-item { background-color: var(--bg-body); border-radius: 16px; margin-bottom: 16px; padding: 24px; transition: all 0.2s; border: 1px solid transparent; }
+        .faq-item:hover { background-color: #fff; border-color: var(--border-light); box-shadow: var(--shadow-md); }
+        .faq-item h3 { font-size: 16px; margin-bottom: 12px; color: var(--text-main); font-weight: 700; }
+        .faq-item p { color: var(--text-muted); font-size: 15px; }
+
+        /* =========================================
+           Support
+           ========================================= */
+        .support { padding: 120px 0; text-align: center; background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%); color: #ffffff; position: relative; overflow: hidden; }
+        .support::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 50%); pointer-events: none; }
+        .support h2 { font-size: 36px; margin-bottom: 16px; font-weight: 800; letter-spacing: -1px; position: relative; z-index: 1; }
+        .support > .container > p { font-size: 18px; color: #94a3b8; margin-bottom: 48px; max-width: 500px; margin-left: auto; margin-right: auto; position: relative; z-index: 1; }
+
+        .donate-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 480px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+        }
+        .donate-header { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 32px; }
+        .sol-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+        .donate-title { font-size: 18px; font-weight: 700; text-align: left; }
+        .donate-subtitle { font-size: 12px; color: #94a3b8; margin-top: 4px; text-align: left; }
+
+        .wallet-box {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .wallet-address { font-family: monospace; font-size: 13px; color: #e2e8f0; word-break: break-all; text-align: left; }
+        .copy-btn { background: var(--gradient-main); color: #fff; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; font-size: 13px; }
+        .copy-btn:hover { opacity: 0.9; transform: scale(1.02); }
+        .copy-btn.copied { background: var(--accent); }
+
+        .donate-footer { font-size: 13px; color: #64748b; }
+
+        /* =========================================
+           Footer
+           ========================================= */
+        footer { background-color: #0f172a; color: #64748b; padding: 40px 0; text-align: center; border-top: 1px solid #1e293b; }
+        footer p { font-size: 13px; margin-bottom: 8px; }
+        footer a { color: #94a3b8; }
+        footer a:hover { color: #fff; }
+
+        /* =========================================
+           Responsive
+           ========================================= */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 48px; }
+            .compare-grid { grid-template-columns: 1fr; }
+            .seo-content { flex-direction: column; }
+            .sim-dash-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 80px 0 60px; }
+            .hero h1 { font-size: 36px; letter-spacing: -1px; }
+            .hero p { font-size: 16px; }
+            .section-header h2 { font-size: 28px; }
+
+            .burger-menu { display: flex; }
+            nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff; border-bottom: 1px solid var(--border-light); box-shadow: var(--shadow-lg); padding: 20px; }
+            nav.active { display: block; }
+            nav ul { flex-direction: column; gap: 16px; }
+            nav a { display: block; padding: 8px 0; font-size: 16px; }
+            .nav-cta { text-align: center; margin-top: 10px; display: block; }
+
+            .burger-menu.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .burger-menu.active span:nth-child(2) { opacity: 0; }
+            .burger-menu.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+            .sim-form-table, .sim-form-table tbody, .sim-form-table tr, .sim-form-table td, .sim-form-table th { display: block; width: 100%; text-align: left; }
+            .sim-form-table th { padding: 16px 10px 8px; border-bottom: none; }
+            .sim-form-table td { padding: 0 10px 16px; }
+            .sim-manager-style { overflow-x: auto; }
+            .wallet-box { flex-direction: column; align-items: stretch; text-align: center; }
+            .wallet-address { text-align: center; }
+            .sim-dash-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== Header ===== -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">Jacker<span>CSS Merges</span></a>
+            <div class="burger-menu" id="burger-menu"><span></span><span></span><span></span></div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#seo">Performance</a></li>
+                    <li><a href="#preview">Interface</a></li>
+                    <li><a href="#install">Install</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#support" class="nav-cta">Support</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <span style="width:6px; height:6px; background:#10b981; border-radius:50%;"></span>
+                100% Free & Open Source - Forever
+            </div>
+            <h1>Turn 20+ CSS Files Into <span>One Request</span>.</h1>
+            <p>The WordPress CSS merger that actually fixes the real bottleneck: request count, not file size. Icon-safe, OneWebP-aware, and built for Core Web Vitals.</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/JackerArchitect/jacker-css-merges-manager/releases/download/v1.0.0/jacker-css-merges-manager.zip" class="btn btn-primary">📥 Download Plugin</a>
+                <a href="https://github.com/JackerArchitect/jacker-css-merges-manager" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View Source</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Comparison ===== -->
+    <section class="comparison">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Jacker CSS Merges Manager?</h2>
+                <p>The average WordPress page loads 20+ CSS files. Each one is a network round trip. Merging is the fix.</p>
+            </div>
+            <div class="compare-grid">
+                <div class="compare-card bad">
+                    <h3>❌ Without Merging</h3>
+                    <ul class="compare-list">
+                        <li><span>🐌</span> 20+ HTTP requests blocking first paint</li>
+                        <li><span>⏱️</span> 4-6 seconds of pure round-trip waiting</li>
+                        <li><span>📉</span> Poor LCP scores from critical request chains</li>
+                        <li><span>🧩</span> Each plugin adds its own separate CSS file</li>
+                    </ul>
+                </div>
+                <div class="compare-card good">
+                    <h3>✅ With Jacker CSS Merges Manager</h3>
+                    <ul class="compare-list">
+                        <li><span>⚡</span> 1 request, same total CSS bytes</li>
+                        <li><span>🚀</span> 95% less round-trip waiting time</li>
+                        <li><span>📈</span> LCP improves without touching a single line of JS</li>
+                        <li><span>🛡️</span> Icon fonts auto-excluded, no missing glyphs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Features ===== -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Powerful Features, Zero Bloat</h2>
+                <p>Engineered for the real WordPress performance problem.</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h10"/></svg></div>
+                    <h3>One Request Per Page</h3>
+                    <p>Combines every enqueued local CSS file into a single merged file. 20+ requests become 1. Same bytes, fraction of the latency.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+                    <h3>Icon Font Safe</h3>
+                    <p>Font Awesome, Elementor Icons, Dashicons, and other icon libraries are automatically excluded. No more missing glyphs after merging.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg></div>
+                    <h3>Per-Page Cache</h3>
+                    <p>Each page gets its own merged file, based on the exact CSS it loads. No cross-page contamination. No wasted bytes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2v6m0 0a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-6a4 4 0 0 1 4-4h4z"/></svg></div>
+                    <h3>Admin Bar Controls</h3>
+                    <p>Purge This Page or Purge All from the WordPress admin bar. One click, from any page, no need to visit settings.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
+                    <h3>Smart Cache Invalidation</h3>
+                    <p>Auto-purges on post save, theme switch, plugin update, menu change, and widget update. No manual cache management needed.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2z"/></svg></div>
+                    <h3>URL Rewriting Safe</h3>
+                    <p>Every url() inside merged CSS is rewritten to absolute paths. Background images never 404. Uses wp_styles base_url for accuracy.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+                    <h3>Zero JavaScript Impact</h3>
+                    <p>Does not touch any script. No defer, no lazy, no async. jQuery and Elementor JS keep loading exactly as before. No breakage.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div>
+                    <h3>OneWebP Aware</h3>
+                    <p>Auto-detects Jacker OneWebP. Rewrites background-image URLs inside merged CSS to the generated .jo.webp files. Full pipeline integration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SEO ===== -->
+    <section class="seo-focus" id="seo">
+        <div class="container">
+            <div class="seo-content">
+                <div class="seo-text">
+                    <h2>Built to Fix the Critical Request Chain</h2>
+                    <p>Lighthouse keeps telling you "avoid chaining critical requests." That chain is mostly CSS files, each one blocking the next. Merging collapses the whole chain into one link.</p>
+                    <ul class="seo-checklist">
+                        <li>Eliminates 15-25 HTTP round trips per page load.</li>
+                        <li>Collapses the critical CSS chain into a single link.</li>
+                        <li>Works with Elementor, Gutenberg, WooCommerce, WPBakery.</li>
+                        <li>CSS content is never modified, only reorganized.</li>
+                        <li>No Critical CSS, no FOUC, no flash of unstyled content.</li>
+                    </ul>
+                </div>
+                <div class="seo-visual">
+                    <div class="metric-box">
+                        <div class="metric-label">CSS Requests Per Page</div>
+                        <div class="metric-bar-bg"><div class="metric-bar-fill green"></div></div>
+                        <div style="margin-top:12px; font-weight:700; color:#059669; font-size:14px;">1 request (was 20+)</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Round-Trip Latency Saved</div>
+                        <div class="metric-bar-bg"><div class="metric-bar-fill blue"></div></div>
+                        <div style="margin-top:12px; font-weight:700; color:var(--primary); font-size:14px;">-95% (multi-second improvement)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Plugin Interface Preview ===== -->
+    <section class="plugin-preview" id="preview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Experience the Interface</h2>
+                <p>Native WordPress design. Click the tabs to explore the actual plugin pages.</p>
+            </div>
+
+            <div class="wp-admin-simulator">
+                <!-- Admin bar -->
+                <div class="sim-admin-bar">
+                    <span class="ab-item">🏠 Site</span>
+                    <span class="ab-item active">JCSSMM ▾</span>
+                    <span class="ab-item">➕ New</span>
+                    <span class="ab-right ab-item">👤 admin</span>
+                </div>
+
+                <div class="sim-tabs">
+                    <div class="sim-tab active" onclick="switchSimTab('dashboard')">📊 Settings</div>
+                    <div class="sim-tab" onclick="switchSimTab('manager')">🗂️ Per-page Cache</div>
+                    <div class="sim-tab" onclick="switchSimTab('adminbar')">⚡ Admin Bar</div>
+                </div>
+
+                <div class="sim-body">
+                    <!-- ===== SETTINGS ===== -->
+                    <div id="sim-dashboard" class="sim-content active">
+                        <div class="sim-stats-box">
+                            <p class="sim-stats-text">
+                                Merged files: <strong class="sim-stats-num">12</strong>
+                                &nbsp;·&nbsp;
+                                Total size: <strong class="sim-stats-num">284.6 KB</strong>
+                                &nbsp;·&nbsp;
+                                Tracked pages: <strong class="sim-stats-num">12</strong>
+                                &nbsp;·&nbsp;
+                                Plugin version: <strong class="sim-stats-num">1.0.0</strong>
+                            </p>
+                        </div>
+
+                        <div class="sim-info-box green">
+                            <p><strong>✅ OneWebP integration active.</strong> Background images inside merged CSS are rewritten to .jo.webp when a matching file exists.</p>
+                        </div>
+
+                        <form onsubmit="return false;">
+                            <table class="sim-form-table">
+                                <tr>
+                                    <th>Enable CSS merging</th>
+                                    <td>
+                                        <label><input type="checkbox" checked> Enabled</label>
+                                        <div class="sim-desc">Combines local CSS files into one request. Icon font libraries are automatically excluded. JavaScript is never touched.</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Cache TTL (seconds)</th>
+                                    <td>
+                                        <input type="number" class="sim-input-text" value="86400">
+                                        <div class="sim-desc">How long merged files are kept. 86400 = 1 day.</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Exclude URL patterns</th>
+                                    <td>
+                                        <textarea class="sim-input-wide" rows="3" style="height:auto; padding:6px 8px; font-family:monospace;" placeholder="One substring per line"></textarea>
+                                        <div class="sim-desc">One substring per line. Pages whose URL contains any of these are skipped. Useful for checkout, cart, or logged-in pages.</div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <button class="sim-submit-btn">💾 Save Changes</button>
+                        </form>
+
+                        <div style="margin-top:30px; padding-top:20px; border-top:1px solid var(--wp-border);">
+                            <h3 style="font-size:18px; font-weight:600; margin-bottom:15px; color:var(--wp-text);">Global Actions</h3>
+                            <form onsubmit="return false;">
+                                <button class="sim-btn sim-btn-secondary">🗑️ Purge all cache</button>
+                            </form>
+                        </div>
+
+                        <div class="sim-dash-footer">
+                            <p>Support open source original creation. Create sustainable, high-tech plugins.<br>
+                            Buy me a coffee to keep this project alive!
+                            <a href="https://jackerteo.com/plugin/jacker-css-merges-manager" class="sim-coffee-btn">☕ Buy me a coffee</a></p>
+                        </div>
+                    </div>
+
+                    <!-- ===== MANAGER ===== -->
+                    <div id="sim-manager" class="sim-content">
+                        <h3 style="font-size:18px; font-weight:600; margin-bottom:10px; color:var(--wp-text);">Per-page cache</h3>
+                        <p style="margin-bottom:15px; color:var(--wp-text-muted); font-size:13px;">Each page has its own merged file, based on the exact CSS it loads. Purge any page individually without touching the others.</p>
+
+                        <div class="sim-manager-style">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width:30%;">Page URL</th>
+                                        <th style="width:30%;">File</th>
+                                        <th style="width:15%;">Size</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="#" class="sim-mgr-url">/</a></td>
+                                        <td><span class="sim-mgr-file">merged-eb79f7557b91.css</span></td>
+                                        <td>27.62 KB</td>
+                                        <td class="sim-mgr-actions"><a href="#">Purge this page</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#" class="sim-mgr-url">/about/</a></td>
+                                        <td><span class="sim-mgr-file">merged-a3f8b2c1d4e5.css</span></td>
+                                        <td>24.18 KB</td>
+                                        <td class="sim-mgr-actions"><a href="#">Purge this page</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#" class="sim-mgr-url">/contact/</a></td>
+                                        <td><span class="sim-mgr-file">merged-b8c9d0e1f2a3.css</span></td>
+                                        <td>22.45 KB</td>
+                                        <td class="sim-mgr-actions"><a href="#">Purge this page</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#" class="sim-mgr-url">/blog/</a></td>
+                                        <td><span class="sim-mgr-file">merged-f2a3b4c5d6e7.css</span></td>
+                                        <td>26.03 KB</td>
+                                        <td class="sim-mgr-actions"><a href="#">Purge this page</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#" class="sim-mgr-url">/product/example/</a></td>
+                                        <td><span class="sim-mgr-file">merged-1a2b3c4d5e6f.css</span></td>
+                                        <td>31.87 KB</td>
+                                        <td class="sim-mgr-actions"><a href="#">Purge this page</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="sim-pagination">
+                                <span>5 of 12 pages</span>
+                            </div>
+                        </div>
+
+                        <div class="sim-info-box blue" style="margin-top:15px;">
+                            <p><strong>How per-page cache works:</strong></p>
+                            <ul>
+                                <li>Each URL gets its own merged file, hashed by its CSS list</li>
+                                <li>Purge This Page only removes that page's merged file</li>
+                                <li>Purge All resets everything, all pages regenerate on next visit</li>
+                                <li>Auto-purge runs on post save, theme switch, plugin update, menu change</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- ===== ADMIN BAR ===== -->
+                    <div id="sim-adminbar" class="sim-content">
+                        <h3 style="font-size:18px; font-weight:600; margin-bottom:10px; color:var(--wp-text);">Admin Bar Controls</h3>
+                        <p style="margin-bottom:20px; color:var(--wp-text-muted); font-size:13px;">When you're logged in as an administrator, the JCSSMM menu appears in the WordPress admin bar on every page — frontend and backend.</p>
+
+                        <div style="background:#1d2327; padding:20px; border-radius:4px; color:#c3c4c7; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; font-size:13px;">
+                            <p style="color:#fff; margin-bottom:15px; font-weight:600;">Hover over "JCSSMM" in the top bar to see:</p>
+
+                            <div style="background:#2c3338; border:1px solid #3c434a; border-radius:3px; padding:8px 0; display:inline-block; min-width:200px;">
+                                <div style="padding:8px 16px; border-bottom:1px solid #3c434a; color:#72aee6; font-weight:600;">JCSSMM</div>
+                                <div style="padding:8px 16px; border-bottom:1px solid #3c434a;">→ Purge This Page</div>
+                                <div style="padding:8px 16px; border-bottom:1px solid #3c434a;">→ Purge All</div>
+                                <div style="padding:8px 16px;">→ Settings</div>
+                            </div>
+
+                            <div style="margin-top:25px; padding-top:20px; border-top:1px solid #3c434a;">
+                                <p style="color:#fff; margin-bottom:10px; font-weight:600;">Workflow example:</p>
+                                <ol style="margin-left:20px; color:#c3c4cf; line-height:1.8;">
+                                    <li>You edit a page and the layout looks off</li>
+                                    <li>You look at the admin bar → JCSSMM → <strong style="color:#72aee6;">Purge This Page</strong></li>
+                                    <li>Refresh → the merged file regenerates with the new CSS</li>
+                                    <li>Other pages remain untouched, no full purge needed</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="sim-info-box yellow" style="margin-top:20px;">
+                            <p><strong>Note:</strong> The admin bar menu only appears for users with the <code>manage_options</code> capability (Administrators). Regular visitors never see it.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Installation ===== -->
+    <section class="install" id="install">
+        <div class="container">
+            <div class="section-header">
+                <h2>Install in 60 Seconds</h2>
+            </div>
+            <div class="install-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>📥 Download</h3>
+                    <p>Get the ZIP file from our plugin page or GitHub.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>⬆️ Upload</h3>
+                    <p>Upload via WordPress Plugins → Add New → Upload Plugin.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>🚀 Activate</h3>
+                    <p>Activate. Merging starts automatically. Nothing to configure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about Jacker CSS Merges Manager.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>Will this break my site?</h3>
+                    <p>No. The plugin only reorganizes &lt;link&gt; tags. It never modifies CSS content, never touches JavaScript, and never adds inline styles. Icon font libraries are automatically excluded. If anything looks wrong, deactivate the plugin and everything returns to normal instantly.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Why not use Critical CSS instead?</h3>
+                    <p>Critical CSS solves "first screen only needs a small part of the CSS." Your real problem is different: many small CSS files, each adding a network round trip. Merging directly reduces request count, which is where the seconds are actually lost.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Will it delay my page or cause flash of unstyled content?</h3>
+                    <p>No. The merged CSS loads the same way as before — blocking, in the &lt;head&gt;. The browser waits for one file instead of twenty. Same behavior, one request. No FOUC, no layout shift.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What about icon fonts?</h3>
+                    <p>Font Awesome, Elementor Icons, Dashicons, IcoMoon, Ionicons, and several other icon libraries are automatically excluded from merging. They load as separate files exactly as before. No more missing glyphs.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Does it work with Elementor, WooCommerce, Gutenberg?</h3>
+                    <p>Yes. All three are fully supported. Elementor's per-page CSS, WooCommerce product styles, and Gutenberg block styles are all merged into one request without breaking layout.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How does per-page cache work?</h3>
+                    <p>Each page gets its own merged file, hashed by the exact CSS it loads. Purging one page does not affect any other page. New pages regenerate on first visit. Content updates auto-purge via WordPress hooks.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Does it work with Jacker OneWebP?</h3>
+                    <p>Yes. JCSSMM auto-detects Jacker OneWebP. When active, it rewrites background-image URLs inside merged CSS to point at the .jo.webp files Jacker OneWebP generated. Both plugins work independently and integrate cleanly.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is this really 100% free?</h3>
+                    <p>Yes. Jacker CSS Merges Manager is completely free, open-source (GPL-2.0+), and will always be free. No hidden costs, no premium versions, no API calls, no server requirements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Support ===== -->
+    <section class="support" id="support">
+        <div class="container">
+            <h2>Support Open Source</h2>
+            <p>Jacker CSS Merges Manager is built with passion. If it helps your business, consider supporting sustainable development.</p>
+
+            <div class="donate-card">
+                <div class="donate-header">
+                    <div class="sol-icon">
+                        <svg width="32" height="32" viewBox="0 0 396 311" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M64.6 237.9c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.5c-5.8 0-8.7-7-4.6-11.1l62.7-62.7zM64.6 3.8C67.1 1.4 70.4 0 73.8 0h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.5c-5.8 0-8.7-7-4.6-11.1L64.6 3.8zM331.4 120.1c-2.4-2.4-5.7-3.8-9.2-3.8H4.8c-5.8 0-8.7 7-4.6 11.1l62.7 62.7c2.4 2.4 5.7 3.8 9.2 3.8h317.4c5.8 0 8.7-7 4.6-11.1l-62.7-62.7z" fill="url(#solana-gradient)"/>
+                            <defs>
+                                <linearGradient id="solana-gradient" x1="0" y1="0" x2="396" y2="311" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#14F195"/>
+                                    <stop offset="1" stop-color="#9945FF"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="donate-title">Donate via Solana</div>
+                        <div class="donate-subtitle">Solana Mainnet</div>
+                    </div>
+                </div>
+
+                <div class="wallet-box">
+                    <div class="wallet-address" id="sol-wallet">EHHPsci6pKbfL71t73KNCXrtanM1TWPrWYJZ1ik1b5FH</div>
+                    <button class="copy-btn" id="copy-btn" onclick="copyWallet()">Copy</button>
+                </div>
+
+                <div class="donate-footer">
+                    Thank you for keeping open source alive!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jacker Architect. All rights reserved.</p>
+            <p>Check out the full source code: <a href="https://github.com/JackerArchitect/jacker-css-merges-manager" target="_blank" rel="noopener noreferrer">github.com/JackerArchitect/jacker-css-merges-manager</a></p>
+            <p>Feedback? Email us at <a href="mailto:support@jackerteo.com">support@jackerteo.com</a></p>
+        </div>
+    </footer>
+
+    <!-- ===== JavaScript ===== -->
+    <script>
+        // Mobile menu
+        document.addEventListener('DOMContentLoaded', function() {
+            var burgerMenu = document.getElementById('burger-menu');
+            var mainNav = document.getElementById('main-nav');
+            burgerMenu.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mainNav.classList.toggle('active');
+            });
+            document.querySelectorAll('#main-nav a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    burgerMenu.classList.remove('active');
+                    mainNav.classList.remove('active');
+                });
+            });
+        });
+
+        // Tab switching
+        function switchSimTab(tabName) {
+            document.querySelectorAll('.sim-content').forEach(function(c) {
+                c.classList.remove('active');
+            });
+            document.querySelectorAll('.sim-tab').forEach(function(t) {
+                t.classList.remove('active');
+            });
+            document.getElementById('sim-' + tabName).classList.add('active');
+            var clickedTab = Array.from(document.querySelectorAll('.sim-tab')).find(function(t) {
+                return t.getAttribute('onclick').includes(tabName);
+            });
+            if (clickedTab) clickedTab.classList.add('active');
+        }
+
+        // Copy wallet
+        function copyWallet() {
+            var walletText = document.getElementById('sol-wallet').innerText;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(walletText).then(function() {
+                    var btn = document.getElementById('copy-btn');
+                    btn.innerText = 'Copied!';
+                    btn.classList.add('copied');
+                    setTimeout(function() {
+                        btn.innerText = 'Copy';
+                        btn.classList.remove('copied');
+                    }, 2000);
+                });
+            } else {
+                var input = document.createElement('input');
+                input.value = walletText;
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                document.body.removeChild(input);
+                var btn = document.getElementById('copy-btn');
+                btn.innerText = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(function() {
+                    btn.innerText = 'Copy';
+                    btn.classList.remove('copied');
+                }, 2000);
+            }
+        }
+    </script>
+</body>
+</html>
