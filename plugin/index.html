@@ -49,7 +49,6 @@
             font-size: 11px;
         }
 
-        /* Mobile menu styles */
         #mobile-menu {
             max-height: 0;
             overflow: hidden;
@@ -72,7 +71,6 @@
     <nav class="fixed w-full z-50 glass-panel border-b border-slate-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
                 <a href="/" class="flex items-center gap-3 group">
                     <div class="w-10 h-10 bg-gradient-to-br from-orange-500 via-red-500 to-blue-500 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/30 group-hover:scale-105 transition-transform">
                         <i class="fa-solid fa-shield-virus text-white text-xl"></i>
@@ -83,18 +81,17 @@
                     </div>
                 </a>
 
-                <!-- Desktop Menu -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="#features" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Features</a>
                         <a href="#preview" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Interface</a>
                         <a href="#story" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Story</a>
+                        <a href="#faq" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">FAQ</a>
                         <a href="#pro" class="hover:text-yellow-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Pro (Soon)</a>
                         <a href="#support" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all">Support Dev</a>
                     </div>
                 </div>
 
-                <!-- Mobile Menu Toggle -->
                 <div class="md:hidden menu-icon" onclick="toggleMobileMenu()" aria-label="Toggle menu" role="button" tabindex="0">
                     <div id="hamburger-icon" class="flex flex-col gap-1.5 p-2">
                         <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="bar1"></span>
@@ -104,12 +101,12 @@
                 </div>
             </div>
 
-            <!-- Mobile Menu Dropdown -->
             <div id="mobile-menu" class="md:hidden pb-4">
                 <div class="flex flex-col space-y-3 pt-2 border-t border-slate-700">
                     <a href="#features" class="text-slate-300 hover:text-white hover:bg-slate-700/50 px-3 py-2 rounded-md text-sm font-medium transition-colors" onclick="closeMobileMenu()">Features</a>
                     <a href="#preview" class="text-slate-300 hover:text-white hover:bg-slate-700/50 px-3 py-2 rounded-md text-sm font-medium transition-colors" onclick="closeMobileMenu()">Interface</a>
                     <a href="#story" class="text-slate-300 hover:text-white hover:bg-slate-700/50 px-3 py-2 rounded-md text-sm font-medium transition-colors" onclick="closeMobileMenu()">Story</a>
+                    <a href="#faq" class="text-slate-300 hover:text-white hover:bg-slate-700/50 px-3 py-2 rounded-md text-sm font-medium transition-colors" onclick="closeMobileMenu()">FAQ</a>
                     <a href="#pro" class="text-slate-300 hover:text-yellow-400 hover:bg-slate-700/50 px-3 py-2 rounded-md text-sm font-medium transition-colors" onclick="closeMobileMenu()">Pro (Soon)</a>
                     <a href="#support" class="bg-blue-600 hover:bg-blue-700 text-white text-center px-4 py-2 rounded-full text-sm font-medium transition-all" onclick="closeMobileMenu()">Support Dev</a>
                 </div>
@@ -120,27 +117,27 @@
     <!-- Hero Section -->
     <section id="home" class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            
+
             <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-orange-500/10 via-red-500/10 to-blue-500/10 border border-orange-500/30 mb-8">
                 <div class="w-6 h-6 bg-gradient-to-br from-orange-500 to-blue-500 rounded-md flex items-center justify-center">
                     <i class="fa-solid fa-shield-virus text-white text-xs"></i>
                 </div>
                 <span class="text-sm font-semibold text-white">Jacker Login Guard</span>
                 <span class="text-xs text-slate-400">·</span>
-                <span class="text-xs text-slate-300">v1.0.0 Submitted to WordPress.org</span>
+                <span class="text-xs text-slate-300">v1.0.0 — Submitted to WordPress.org</span>
             </div>
-            
+
             <h1 class="text-5xl md:text-7xl font-black text-white tracking-tight mb-6">
                 Stop Brute-Force Attacks <br>
                 <span class="brand-gradient">Before They Start.</span>
             </h1>
             <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-400">
-                The lightweight, zero-bloat WordPress login protection plugin. Hide your login page, enforce signed access tokens, and block unauthorized IP attempts instantly.
+                The lightweight, zero-bloat WordPress login protection plugin. Hide your login page, enforce HMAC-SHA256 signed access tokens, and block unauthorized IPs instantly.
             </p>
-            
+
             <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
                 <a href="https://github.com/JackerArchitect/jacker-login-guard/releases/download/v1.0.0/jacker-login-guard.zip" class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-download text-xl"></i> 
+                    <i class="fa-solid fa-download text-xl"></i>
                     <div class="flex flex-col items-start">
                         <span>Download Plugin v1.0.0</span>
                         <span class="text-xs opacity-75 font-normal">.zip file · 22.5 KB</span>
@@ -150,7 +147,7 @@
                     <i class="fa-brands fa-github text-xl"></i> View Source on GitHub
                 </a>
             </div>
-            <p class="mt-4 text-sm text-slate-500">Currently under review on WordPress.org. Download the .zip directly from GitHub to install it now!</p>
+            <p class="mt-4 text-sm text-slate-500">Currently under review on WordPress.org. Download the .zip directly from GitHub to install it now.</p>
 
             <div class="mt-12 glass-panel p-6 rounded-xl border border-blue-500/30 max-w-2xl mx-auto text-left">
                 <h4 class="text-white font-bold mb-3 flex items-center gap-2">
@@ -161,11 +158,13 @@
                     <li>Go to your WordPress Dashboard → <strong>Plugins</strong> → <strong>Add New Plugin</strong>.</li>
                     <li>Click <strong>Upload Plugin</strong> at the top, choose the downloaded .zip file, and click "Install Now".</li>
                     <li>Activate the plugin.</li>
-                    <li><strong>Configure:</strong> Go to <strong>Settings → Jacker Login Guard</strong> in your WordPress admin menu to set your secret URL and security options.</li>
+                    <li><strong>Configure:</strong> Go to <strong>Settings → Login Guard</strong> to set your secret URL and security options.</li>
+                    <li><strong>Bookmark your new Secret Entry URL immediately</strong> — you'll need it to log in.</li>
                 </ol>
+                <p class="text-xs text-slate-400 mt-3 italic">Optional: If you hit a 404 on first use, go to <strong>Settings → Permalinks</strong> and click <strong>Save Changes</strong>.</p>
             </div>
         </div>
-        
+
         <div class="absolute top-0 left-1/2 w-full -translate-x-1/2 h-full z-0 opacity-20 pointer-events-none">
             <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
             <div class="absolute top-20 right-10 w-72 h-72 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
@@ -187,330 +186,449 @@
                     <div class="w-12 h-12 bg-blue-900/50 rounded-lg flex items-center justify-center mb-4">
                         <i class="fa-solid fa-user-secret text-blue-400 text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">True URL Hiding</h3>
-                    <p class="text-slate-400">Completely removes `wp-login.php` from public view and HTML source code. Bots can't find what isn't there.</p>
+                    <h3 class="text-xl font-bold text-white mb-2">Hidden Entry URL</h3>
+                    <p class="text-slate-400">Hides <code class="text-blue-300">wp-login.php</code> and <code class="text-blue-300">wp-admin</code> from public view. Only your secret slug is reachable.</p>
                 </div>
                 <div class="glass-panel p-8 rounded-2xl hover:border-emerald-500/50 transition-colors">
                     <div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mb-4">
                         <i class="fa-solid fa-key text-emerald-400 text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">Signed Access Tokens</h3>
-                    <p class="text-slate-400">Uses HMAC-SHA256 signed, short-lived cookies. Even if someone guesses your URL, they can't access the login form without a valid token.</p>
+                    <p class="text-slate-400">HMAC-SHA256 signed, 5-minute cookies. Even if someone guesses your URL, they can't reach the login form without a valid token.</p>
                 </div>
                 <div class="glass-panel p-8 rounded-2xl hover:border-purple-500/50 transition-colors">
                     <div class="w-12 h-12 bg-purple-900/50 rounded-lg flex items-center justify-center mb-4">
                         <i class="fa-solid fa-network-wired text-purple-400 text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">Cloudflare Aware</h3>
-                    <p class="text-slate-400">Securely detects real visitor IPs behind Cloudflare proxies. No IP spoofing vulnerabilities. Full IPv4/IPv6 & CIDR support.</p>
+                    <p class="text-slate-400">Securely detects real visitor IPs behind Cloudflare. Cloudflare headers are only trusted when the request originates from an official Cloudflare IP range. Full IPv4/IPv6 & CIDR support.</p>
                 </div>
                 <div class="glass-panel p-8 rounded-2xl hover:border-orange-500/50 transition-colors">
                     <div class="w-12 h-12 bg-orange-900/50 rounded-lg flex items-center justify-center mb-4">
                         <i class="fa-solid fa-feather text-orange-400 text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">Zero Bloat</h3>
-                    <p class="text-slate-400">No heavy JavaScript, no external API calls on the frontend. Pure, optimized PHP that won't impact your Core Web Vitals.</p>
+                    <p class="text-slate-400">No heavy JavaScript on the frontend. External API calls are limited to admin-side geo lookups and a 7-day cached Cloudflare IP refresh — never on public page views.</p>
                 </div>
                 <div class="glass-panel p-8 rounded-2xl hover:border-pink-500/50 transition-colors">
                     <div class="w-12 h-12 bg-pink-900/50 rounded-lg flex items-center justify-center mb-4">
                         <i class="fa-solid fa-fingerprint text-pink-400 text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">Passkey & 2FA Friendly</h3>
-                    <p class="text-slate-400">Unlike older plugins that break modern auth, our architecture ensures WordPress 6.3+ Passkeys and 2FA plugins work flawlessly.</p>
+                    <p class="text-slate-400">Unlike older plugins that break modern auth, our architecture ensures WordPress 6.3+ Passkeys and popular 2FA plugins work flawlessly.</p>
                 </div>
                 <div class="glass-panel p-8 rounded-2xl hover:border-cyan-500/50 transition-colors">
                     <div class="w-12 h-12 bg-cyan-900/50 rounded-lg flex items-center justify-center mb-4">
                         <i class="fa-solid fa-ban text-cyan-400 text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Smart Null Routing</h3>
-                    <p class="text-slate-400">Returns a 403 Forbidden error to malicious scanners, wasting their resources and protecting your server load.</p>
+                    <h3 class="text-xl font-bold text-white mb-2">Smart Blocking</h3>
+                    <p class="text-slate-400">Returns 0.0.0.0, 404, or 403 to unauthorized scanners — hiding your site's existence and wasting their resources.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl hover:border-red-500/50 transition-colors">
+                    <div class="w-12 h-12 bg-red-900/50 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-robot text-red-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Auto-Block & Escalation</h3>
+                    <p class="text-slate-400">Suspicious IPs are auto-blocked after a configurable number of attacks, expire automatically, and repeat offenders escalate to the permanent blacklist.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl hover:border-teal-500/50 transition-colors">
+                    <div class="w-12 h-12 bg-teal-900/50 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-shield-halved text-teal-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Trusted IP Window</h3>
+                    <p class="text-slate-400">After a successful login, the same IP is protected from auto-blocking for a configurable window — so you never lock yourself out.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl hover:border-indigo-500/50 transition-colors">
+                    <div class="w-12 h-12 bg-indigo-900/50 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-clipboard-list text-indigo-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Three Logging Systems</h3>
+                    <p class="text-slate-400">Login Events, Access Log (with referer + status filter), and Auto Block List. Plus an admin operation audit with 15-minute deduplication.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Real Admin Interface Preview Section (100% Fake Data) -->
+    <!-- Admin Interface Preview -->
     <section id="preview" class="py-20 bg-slate-900">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">
                     <i class="fa-solid fa-desktop"></i> Live Preview
                 </div>
                 <h2 class="text-3xl font-bold text-white mb-4">Clean & Intuitive Admin Interface</h2>
                 <p class="text-slate-400 max-w-2xl mx-auto">
-                    No bloated menus or confusing options. Everything you need to secure your login page is organized in one clean settings panel.
+                    No bloated menus. Six clean tabs: Dashboard, Settings, Login Events, Current Login, Access Log, and Auto Block List.
                 </p>
             </div>
 
             <div class="bg-[#f0f0f1] p-4 md:p-8 rounded-xl shadow-2xl border border-slate-700 overflow-x-auto">
-                <div class="bg-white rounded shadow-sm border border-[#c3c4c7] p-6 md:p-8 min-w-[800px] mx-auto font-sans text-[13px] text-[#1d2327]">
-                    
+                <div class="bg-white rounded shadow-sm border border-[#c3c4c7] p-6 md:p-8 min-w-[900px] mx-auto font-sans text-[13px] text-[#1d2327]">
+
                     <div class="flex items-center gap-3 mb-4 pb-3 border-b border-[#c3c4c7]">
                         <div class="w-10 h-10 bg-gradient-to-br from-orange-500 via-red-500 to-blue-500 rounded-lg flex items-center justify-center shadow-md">
                             <i class="fa-solid fa-shield-virus text-white text-lg"></i>
                         </div>
                         <div>
-                            <h1 class="text-[23px] font-normal text-[#1d2327] leading-tight">Jacker Login Guard Settings</h1>
-                            <p class="text-[11px] text-[#50575e]">by <span class="font-semibold">Jacker Login Guard</span> · Jacker Architect</p>
+                            <h1 class="text-[23px] font-normal text-[#1d2327] leading-tight">Jacker Login Guard</h1>
                         </div>
                     </div>
-                    
-                    <div class="flex border-b border-[#c3c4c7] mb-6 -mx-8 -mt-2 px-8 bg-[#f0f0f1]">
-                        <button class="tab-btn active border border-[#c3c4c7] border-b-white px-4 py-2 rounded-t text-[#1d2327] font-medium -mb-px relative top-[1px]" onclick="switchTab('settings', this)">Settings</button>
+
+                    <div class="flex border-b border-[#c3c4c7] mb-6 -mx-8 -mt-2 px-8 bg-[#f0f0f1] flex-wrap">
+                        <button class="tab-btn active border border-[#c3c4c7] border-b-white px-4 py-2 rounded-t text-[#1d2327] font-medium -mb-px relative top-[1px]" onclick="switchTab('dashboard', this)">Dashboard</button>
+                        <button class="tab-btn bg-transparent border border-transparent px-4 py-2 text-[#50575e] hover:text-[#1d2327]" onclick="switchTab('settings', this)">Settings</button>
                         <button class="tab-btn bg-transparent border border-transparent px-4 py-2 text-[#50575e] hover:text-[#1d2327]" onclick="switchTab('events', this)">Login Events</button>
+                        <button class="tab-btn bg-transparent border border-transparent px-4 py-2 text-[#50575e] hover:text-[#1d2327]" onclick="switchTab('current', this)">Current Login</button>
+                        <button class="tab-btn bg-transparent border border-transparent px-4 py-2 text-[#50575e] hover:text-[#1d2327]" onclick="switchTab('access', this)">Access Log</button>
+                        <button class="tab-btn bg-transparent border border-transparent px-4 py-2 text-[#50575e] hover:text-[#1d2327]" onclick="switchTab('autoblock', this)">Auto Block List</button>
                     </div>
 
-                    <!-- Settings Tab Content -->
-                    <div id="tab-settings" class="tab-content active">
-                        <div class="bg-[#f0f6fc] border-l-4 border-[#72aee6] p-4 mb-8 text-[#50575e]">
-                            <p class="mb-1"><strong>Hidden Entry URL:</strong> <code class="bg-white px-2 py-0.5 rounded border border-[#c3c4c7] text-[#d63638]">https://example.com/my-login/</code> 
-                            <button class="ml-2 bg-white border border-[#c3c4c7] px-3 py-1 rounded text-[#50575e] hover:bg-[#f6f7f7] text-xs">Copy</button></p>
-                            <p class="text-[#50575e] text-[12px] mt-2">Note: If you encounter a 404 error on first use, please visit Settings > Permalinks and click "Save Changes" to refresh rewrite rules.</p>
+                    <!-- Dashboard Tab -->
+                    <div id="tab-dashboard" class="tab-content active">
+                        <div class="mb-6">
+                            <h2 class="text-[18px] font-semibold text-[#1d2327] mb-1">Dashboard</h2>
+                            <p class="text-[12px] text-[#50575e]">Real-time statistics. <span class="sample-note">Sample data for demonstration.</span></p>
                         </div>
 
-                        <table class="w-full form-table">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="bg-white p-4 rounded border-l-4 border-[#46b450] shadow-sm">
+                                <div class="text-[11px] text-[#888] uppercase tracking-wider">Last Login</div>
+                                <div class="text-[16px] font-semibold text-[#1d2327] mt-1">2026-09-03 08:24:15</div>
+                            </div>
+                            <div class="bg-white p-4 rounded border-l-4 border-[#2271b1] shadow-sm">
+                                <div class="text-[11px] text-[#888] uppercase tracking-wider">Admin Online</div>
+                                <div class="text-[22px] font-bold text-[#1d2327] mt-1">1</div>
+                            </div>
+                            <div class="bg-white p-4 rounded border-l-4 border-[#46b450] shadow-sm">
+                                <div class="text-[11px] text-[#888] uppercase tracking-wider">All Online Users</div>
+                                <div class="text-[22px] font-bold text-[#46b450] mt-1">3</div>
+                            </div>
+                            <div class="bg-white p-4 rounded border-l-4 border-[#9b59b6] shadow-sm">
+                                <div class="text-[11px] text-[#888] uppercase tracking-wider">Total Sessions</div>
+                                <div class="text-[22px] font-bold text-[#1d2327] mt-1">12</div>
+                            </div>
+                            <div class="bg-white p-4 rounded border-l-4 border-[#dc3232] shadow-sm">
+                                <div class="text-[11px] text-[#888] uppercase tracking-wider">Blocked (24h)</div>
+                                <div class="text-[22px] font-bold text-[#dc3232] mt-1">47</div>
+                            </div>
+                            <div class="bg-white p-4 rounded border-l-4 border-[#d63638] shadow-sm">
+                                <div class="text-[11px] text-[#888] uppercase tracking-wider">Total Blocked</div>
+                                <div class="text-[22px] font-bold text-[#d63638] mt-1">1,284</div>
+                            </div>
+                            <div class="bg-white p-4 rounded border-l-4 border-[#8b0000] shadow-sm">
+                                <div class="text-[11px] text-[#888] uppercase tracking-wider">Auto-Blocked IPs</div>
+                                <div class="text-[22px] font-bold text-[#8b0000] mt-1">8</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Settings Tab -->
+                    <div id="tab-settings" class="tab-content">
+                        <div class="bg-[#f0f6fc] border-l-4 border-[#72aee6] p-4 mb-6 text-[#50575e]">
+                            <p class="mb-1"><strong>Hidden Entry URL:</strong>
+                                <code class="bg-white px-2 py-0.5 rounded border border-[#c3c4c7] text-[#d63638]">https://example.com/my-login/</code>
+                                <button class="ml-2 bg-white border border-[#c3c4c7] px-3 py-1 rounded text-[#50575e] hover:bg-[#f6f7f7] text-xs">Copy</button>
+                            </p>
+                            <p class="text-[#50575e] text-[12px] mt-2">Note: If you encounter a 404 error on first use, please visit Settings &gt; Permalinks and click "Save Changes".</p>
+                        </div>
+
+                        <table class="w-full">
                             <tbody>
                                 <tr>
-                                    <th scope="row" class="w-[200px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Login Slug</th>
+                                    <th class="w-[220px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Login Slug</th>
                                     <td class="py-4 px-2">
-                                        <input type="text" value="my-login" class="regular-text border border-[#8c8f94] rounded px-3 py-1.5 w-[300px] focus:outline-none focus:border-[#2271b1] focus:ring-1 focus:ring-[#2271b1]" readonly>
-                                        <p class="text-[#50575e] text-[12px] mt-1">Enter a single URL slug (lowercase letters, numbers, and hyphens only). Example: my-login</p>
+                                        <input type="text" value="my-login" class="border border-[#8c8f94] rounded px-3 py-1.5 w-[300px]" readonly>
+                                        <p class="text-[#50575e] text-[12px] mt-1">Single URL slug (lowercase letters, numbers, hyphens). Example: my-login</p>
                                     </td>
                                 </tr>
-
                                 <tr>
-                                    <th scope="row" class="w-[200px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Login Protection Mode</th>
+                                    <th class="w-[220px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Login Protection Mode</th>
                                     <td class="py-4 px-2">
-                                        <fieldset>
-                                            <label class="flex items-start gap-2 mb-2 cursor-pointer">
-                                                <input type="radio" name="mode" checked class="mt-1">
-                                                <div>
-                                                    <span class="font-medium text-[#1d2327]">Compatibility Mode (Recommended)</span>
-                                                    <p class="text-[#50575e] text-[12px] mt-0.5">Allows WordPress password reset and recovery links to work normally without the hidden URL.</p>
-                                                </div>
-                                            </label>
-                                            <label class="flex items-start gap-2 cursor-pointer">
-                                                <input type="radio" name="mode" class="mt-1">
-                                                <div>
-                                                    <span class="font-medium text-[#1d2327]">Strict Mode</span>
-                                                    <p class="text-[#50575e] text-[12px] mt-0.5">Maximum protection. Requires the hidden login authorization cookie for all wp-login.php requests.</p>
-                                                </div>
-                                            </label>
-                                        </fieldset>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row" class="w-[200px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Unauthorized Request Response</th>
-                                    <td class="py-4 px-2">
-                                        <fieldset>
-                                            <label class="flex items-start gap-2 mb-2 cursor-pointer">
-                                                <input type="radio" name="response" checked class="mt-1">
-                                                <div>
-                                                    <span class="font-medium text-[#1d2327]">Return 404 (Recommended)</span>
-                                                    <p class="text-[#50575e] text-[12px] mt-0.5">Shows a standard "Page Not Found" error.</p>
-                                                </div>
-                                            </label>
-                                            <label class="flex items-start gap-2 mb-2 cursor-pointer">
-                                                <input type="radio" name="response" class="mt-1">
-                                                <div>
-                                                    <span class="font-medium text-[#1d2327]">Return 403 Forbidden</span>
-                                                    <p class="text-[#50575e] text-[12px] mt-0.5">Returns a 403 Forbidden error, acting as a honeypot to waste scanner resources.</p>
-                                                </div>
-                                            </label>
-                                            <label class="flex items-start gap-2 cursor-pointer">
-                                                <input type="radio" name="response" class="mt-1">
-                                                <div>
-                                                    <span class="font-medium text-[#1d2327]">Redirect to homepage</span>
-                                                    <p class="text-[#50575e] text-[12px] mt-0.5">Redirects unauthorized requests to the site homepage.</p>
-                                                </div>
-                                            </label>
-                                        </fieldset>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row" class="w-[200px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Cookie Security</th>
-                                    <td class="py-4 px-2">
-                                        <label class="flex items-start gap-2 cursor-pointer">
-                                            <input type="checkbox" class="mt-1 rounded border-[#8c8f94]">
+                                        <label class="flex items-start gap-2 mb-2">
+                                            <input type="radio" name="mode" checked class="mt-1">
                                             <div>
-                                                <span class="text-[#1d2327]">Bind authorization to visitor IP (Optional).</span>
-                                                <p class="text-[#50575e] text-[12px] mt-0.5">If enabled, the cookie becomes invalid if the user's IP changes.</p>
+                                                <span class="font-medium">Compatibility Mode (Recommended)</span>
+                                                <p class="text-[#50575e] text-[12px] mt-0.5">Allows password reset, logout, and recovery actions on wp-login.php without a token.</p>
+                                            </div>
+                                        </label>
+                                        <label class="flex items-start gap-2">
+                                            <input type="radio" name="mode" class="mt-1">
+                                            <div>
+                                                <span class="font-medium">Strict Mode</span>
+                                                <p class="text-[#50575e] text-[12px] mt-0.5">Requires the hidden login authorization cookie for all wp-login.php requests.</p>
                                             </div>
                                         </label>
                                     </td>
                                 </tr>
-
                                 <tr>
-                                    <th scope="row" class="w-[200px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">
-                                        Whitelist IPs<br>
-                                        <span class="text-[11px] font-normal text-[#50575e] block mt-1">IPv4 or IPv6. CIDR supported:<br>IPv4 (0-32), IPv6 (0-128). One per line.</span>
-                                        <em class="text-[11px] text-[#666] block mt-2 not-italic" style="font-style: italic;">Security Note: Cloudflare headers are only trusted if the request originates from an official Cloudflare IP range.</em>
-                                    </th>
+                                    <th class="w-[220px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Unauthorized Response</th>
                                     <td class="py-4 px-2">
-                                        <textarea class="w-full border border-[#8c8f94] rounded px-3 py-1.5 font-mono text-[12px] focus:outline-none focus:border-[#2271b1] focus:ring-1 focus:ring-[#2271b1]" rows="5" readonly>192.0.2.1 (example)
-198.51.100.0/24 (example)
-203.0.113.50 (example)</textarea>
-                                        <p class="sample-note mt-1">↑ Sample IPs shown for demonstration</p>
+                                        <label class="flex items-start gap-2 mb-2">
+                                            <input type="radio" name="response" checked class="mt-1">
+                                            <div>
+                                                <span class="font-medium">Return 0.0.0.0 (Recommended)</span>
+                                                <p class="text-[#50575e] text-[12px] mt-0.5">Returns a minimal 0.0.0.0 body. Best camouflage against scanners.</p>
+                                            </div>
+                                        </label>
+                                        <label class="flex items-start gap-2 mb-2">
+                                            <input type="radio" name="response" class="mt-1">
+                                            <div>
+                                                <span class="font-medium">Return 404 Not Found</span>
+                                                <p class="text-[#50575e] text-[12px] mt-0.5">Standard "Page Not Found" using your theme's 404 template.</p>
+                                            </div>
+                                        </label>
+                                        <label class="flex items-start gap-2 mb-2">
+                                            <input type="radio" name="response" class="mt-1">
+                                            <div>
+                                                <span class="font-medium">Return 403 Forbidden</span>
+                                                <p class="text-[#50575e] text-[12px] mt-0.5">Acts as a honeypot to waste scanner resources.</p>
+                                            </div>
+                                        </label>
+                                        <label class="flex items-start gap-2">
+                                            <input type="radio" name="response" class="mt-1">
+                                            <div>
+                                                <span class="font-medium">Redirect to homepage</span>
+                                                <p class="text-[#50575e] text-[12px] mt-0.5">Sends unauthorized requests to your homepage.</p>
+                                            </div>
+                                        </label>
                                     </td>
                                 </tr>
-
                                 <tr>
-                                    <th scope="row" class="w-[200px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">
-                                        Blacklist IPs<br>
-                                        <span class="text-[11px] font-normal text-[#50575e] block mt-1">IPv4 or IPv6. CIDR supported:<br>IPv4 (0-32), IPv6 (0-128). One per line.</span>
-                                        <em class="text-[11px] text-[#d63638] block mt-2 not-italic" style="font-style: italic;">Note: Blacklist always takes priority over Whitelist.</em>
-                                    </th>
+                                    <th class="w-[220px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Whitelist IPs</th>
                                     <td class="py-4 px-2">
-                                        <textarea class="w-full border border-[#8c8f94] rounded px-3 py-1.5 font-mono text-[12px] focus:outline-none focus:border-[#2271b1] focus:ring-1 focus:ring-[#2271b1]" rows="5" readonly>192.0.2.100 (example)
-198.51.100.55 (example)
-203.0.113.0/24 (example)</textarea>
-                                        <p class="sample-note mt-1">↑ Sample IPs shown for demonstration</p>
+                                        <textarea class="w-full border border-[#8c8f94] rounded px-3 py-1.5 font-mono text-[12px]" rows="4" readonly>192.0.2.1          # example
+198.51.100.0/24    # example
+2001:db8::1        # example</textarea>
+                                        <p class="text-[#50575e] text-[12px] mt-1">One IP or CIDR range per line. IPv4 (0–32), IPv6 (0–128). Inline comments after <code>#</code> are allowed.</p>
+                                        <p class="text-[#2271b1] text-[12px] mt-1">Whitelisted IPs bypass ALL protection rules and are never blocked.</p>
                                     </td>
                                 </tr>
-
                                 <tr>
-                                    <th scope="row" class="w-[200px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Security Options</th>
+                                    <th class="w-[220px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Blacklist IPs</th>
                                     <td class="py-4 px-2">
-                                        <fieldset class="space-y-2">
-                                            <label class="flex items-center gap-2 cursor-pointer">
-                                                <input type="checkbox" checked class="rounded border-[#8c8f94]"> 
-                                                <span>Add basic Security Headers (X-Frame-Options, etc.)</span>
-                                            </label>
-                                            <label class="flex items-center gap-2 cursor-pointer">
-                                                <input type="checkbox" checked class="rounded border-[#8c8f94]"> 
-                                                <span>Enable Event Logging (Auto-cleans to keep last 300)</span>
-                                            </label>
-                                            <label class="flex items-center gap-2 cursor-pointer">
-                                                <input type="checkbox" checked class="rounded border-[#8c8f94]"> 
-                                                <span>Block XML-RPC</span>
-                                            </label>
-                                            <label class="flex items-center gap-2 cursor-pointer">
-                                                <input type="checkbox" checked class="rounded border-[#8c8f94]"> 
-                                                <span>Block Author Enumeration</span>
-                                            </label>
-                                            <label class="flex items-center gap-2 cursor-pointer">
-                                                <input type="checkbox" checked class="rounded border-[#8c8f94]"> 
-                                                <span>Protect REST API User Enumeration</span>
-                                            </label>
-                                            <label class="flex items-center gap-2 cursor-pointer">
-                                                <input type="checkbox" checked class="rounded border-[#8c8f94]"> 
-                                                <span>Remove Username from Body Class</span>
-                                            </label>
-                                            <label class="flex items-center gap-2 cursor-pointer">
-                                                <input type="checkbox" checked class="rounded border-[#8c8f94]"> 
-                                                <span>Hide Author Name in RSS Feed</span>
-                                            </label>
-                                            <label class="flex items-center gap-2 cursor-pointer">
-                                                <input type="checkbox" checked class="rounded border-[#8c8f94]"> 
-                                                <span>Unify Login Error Messages</span>
-                                            </label>
-                                        </fieldset>
+                                        <textarea class="w-full border border-[#8c8f94] rounded px-3 py-1.5 font-mono text-[12px]" rows="4" readonly>203.0.113.55       # example
+198.51.100.0/24    # example</textarea>
+                                        <p class="text-[#50575e] text-[12px] mt-1">Same format as Whitelist. Blacklist always takes priority over Whitelist.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="w-[220px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">API Whitelist</th>
+                                    <td class="py-4 px-2">
+                                        <textarea class="w-full border border-[#8c8f94] rounded px-3 py-1.5 font-mono text-[12px]" rows="3" readonly>/wp-json/jetpack/v4/
+/wp-json/woocommerce/v1/</textarea>
+                                        <p class="text-[#50575e] text-[12px] mt-1">One endpoint per line. Paths starting with <code>/wp-json/</code>.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="w-[220px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Path Whitelist</th>
+                                    <td class="py-4 px-2">
+                                        <textarea class="w-full border border-[#8c8f94] rounded px-3 py-1.5 font-mono text-[12px]" rows="3" readonly>/wp-admin/admin-ajax.php
+/wp-cron.php</textarea>
+                                        <p class="text-[#50575e] text-[12px] mt-1">One path per line. Paths must start with <code>/</code>.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="w-[220px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Log Retention Limit</th>
+                                    <td class="py-4 px-2">
+                                        <input type="number" value="300" class="border border-[#8c8f94] rounded px-2 py-1 w-[90px]" readonly>
+                                        <p class="text-[#50575e] text-[12px] mt-1">Recommended: 300 entries per log table. Range: 10–5000.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="w-[220px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Session Lifetime</th>
+                                    <td class="py-4 px-2">
+                                        <input type="number" value="0" class="border border-[#8c8f94] rounded px-2 py-1 w-[90px]" readonly>
+                                        <span class="ml-2 text-[12px] text-[#50575e]">minutes</span>
+                                        <p class="text-[#50575e] text-[12px] mt-1">Auto-logout after inactivity. 0 = WordPress default (2 days). Max 10080 (7 days).</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="w-[220px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Auto-Block Trigger</th>
+                                    <td class="py-4 px-2">
+                                        <input type="number" value="3" class="border border-[#8c8f94] rounded px-2 py-1 w-[90px]" readonly>
+                                        <span class="ml-2 text-[12px] text-[#50575e]">attacks</span>
+                                        <p class="text-[#50575e] text-[12px] mt-1">An IP is blocked only after this many attack attempts. Recommended: 3.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="w-[220px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Auto-Block Duration</th>
+                                    <td class="py-4 px-2">
+                                        <input type="number" value="24" class="border border-[#8c8f94] rounded px-2 py-1 w-[90px]" readonly>
+                                        <span class="ml-2 text-[12px] text-[#50575e]">hours</span>
+                                        <p class="text-[#50575e] text-[12px] mt-1">How long a block lasts before the IP is automatically unblocked. Max 8760 (1 year).</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="w-[220px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Auto-Block Escalation</th>
+                                    <td class="py-4 px-2">
+                                        <input type="number" value="3" class="border border-[#8c8f94] rounded px-2 py-1 w-[90px]" readonly>
+                                        <span class="ml-2 text-[12px] text-[#50575e]">times</span>
+                                        <p class="text-[#50575e] text-[12px] mt-1">After this many block cycles, the IP is added to the permanent Blacklist. Set to 0 to disable.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="w-[220px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Trusted IP Window</th>
+                                    <td class="py-4 px-2">
+                                        <input type="number" value="7" class="border border-[#8c8f94] rounded px-2 py-1 w-[90px]" readonly>
+                                        <span class="ml-2 text-[12px] text-[#50575e]">days</span>
+                                        <p class="text-[#50575e] text-[12px] mt-1">After a successful login, the same IP is protected from auto-blocking for this many days. Set to 0 to disable.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="w-[220px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Security Options</th>
+                                    <td class="py-4 px-2">
+                                        <label class="flex items-center gap-2 mb-1.5"><input type="checkbox" checked> Add basic Security Headers</label>
+                                        <label class="flex items-center gap-2 mb-1.5"><input type="checkbox" checked> Enable Event Logging</label>
+                                        <label class="flex items-center gap-2 mb-1.5"><input type="checkbox" checked> Block XML-RPC</label>
+                                        <label class="flex items-center gap-2 mb-1.5"><input type="checkbox" checked> Block Author Enumeration</label>
+                                        <label class="flex items-center gap-2 mb-1.5"><input type="checkbox" checked> Protect REST API User Enumeration</label>
+                                        <label class="flex items-center gap-2 mb-1.5"><input type="checkbox" checked> Remove Username from Body Class</label>
+                                        <label class="flex items-center gap-2 mb-1.5"><input type="checkbox" checked> Hide Author Name in RSS Feed</label>
+                                        <label class="flex items-center gap-2 mb-1.5"><input type="checkbox" checked> Unify Login Error Messages</label>
+                                        <label class="flex items-center gap-2"><input type="checkbox" checked> Auto-block malicious attacks</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="w-[220px] py-4 px-2 text-left font-medium text-[#1d2327] align-top">Advanced Options</th>
+                                    <td class="py-4 px-2">
+                                        <label class="flex items-start gap-2">
+                                            <input type="checkbox" class="mt-1">
+                                            <div>
+                                                <span>Bind login access cookie to client IP address (stricter)</span>
+                                                <p class="text-[#50575e] text-[12px] mt-0.5">The one-time login access cookie is only valid for the same IP. Not recommended for mobile users.</p>
+                                            </div>
+                                        </label>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
 
                         <div class="mt-6 pt-4 border-t border-[#c3c4c7]">
-                            <button class="bg-[#2271b1] text-white border border-[#2271b1] px-4 py-1.5 rounded text-[13px] hover:bg-[#135e96] hover:border-[#135e96] shadow-sm">Save Changes</button>
+                            <button class="bg-[#2271b1] text-white border border-[#2271b1] px-4 py-1.5 rounded text-[13px] hover:bg-[#135e96]">Save Changes</button>
                         </div>
 
-                        <div class="border border-[#d63638] rounded p-5 mt-8 bg-white relative">
-                            <h3 class="text-[#d63638] font-bold flex items-center gap-2 mb-2 text-[15px]">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                                Danger Zone
-                            </h3>
-                            <p class="text-[#50575e] mb-4">Reset all plugin settings to their default values. Your secret URL will revert to the default.</p>
-                            <button class="bg-[#d63638] text-white border border-[#d63638] px-4 py-1.5 rounded text-[13px] hover:bg-[#b32d2e] hover:border-[#b32d2e] shadow-sm">Reset All Settings to Default</button>
-                            
-                            <hr class="my-6 border-[#c3c4c7]">
-                            
-                            <p class="text-[#1d2327] mb-3 font-medium">Data Retention on Plugin Deletion:</p>
-                            <label class="flex items-start gap-3 p-4 bg-[#fff8e5] border border-[#dba617] rounded cursor-pointer">
-                                <input type="checkbox" class="mt-1 rounded border-[#8c8f94]">
+                        <div class="border border-[#d63638] rounded p-5 mt-8 bg-white">
+                            <h3 class="text-[#d63638] font-bold mb-2 text-[15px]">Danger Zone</h3>
+                            <p class="text-[#50575e] mb-4 text-[12px]">Reset all plugin settings to their default values.</p>
+                            <button class="bg-[#d63638] text-white border border-[#d63638] px-4 py-1.5 rounded text-[13px] hover:bg-[#b32d2e]">Reset All Settings to Default</button>
+
+                            <hr class="my-5 border-[#c3c4c7]">
+
+                            <p class="text-[#1d2327] mb-2 font-medium text-[13px]">Data Retention on Plugin Deletion</p>
+                            <label class="flex items-start gap-3 p-3 bg-[#fff8e5] border border-[#dba617] rounded">
+                                <input type="checkbox" class="mt-1">
                                 <div>
-                                    <span class="font-medium text-[#8a6d3b]">Remove ALL plugin data when deleting the plugin</span>
-                                    <p class="text-[#8a6d3b] text-[12px] mt-1">If checked, your settings, login logs, and database tables will be permanently deleted when you click "Delete" on the Plugins page. If unchecked, your data will be preserved in case you reinstall later.</p>
+                                    <span class="font-medium text-[#8a6d3b] text-[12px]">Remove ALL plugin data when deleting the plugin</span>
+                                    <p class="text-[#8a6d3b] text-[12px] mt-1">Permanently deletes settings, logs, and custom tables on uninstall.</p>
                                 </div>
                             </label>
-                            <div class="mt-4">
-                                <button class="bg-white text-[#2271b1] border border-[#2271b1] px-4 py-1.5 rounded text-[13px] hover:bg-[#f6f7f7] shadow-sm">Save Uninstall Preference</button>
+                            <div class="mt-3">
+                                <button class="bg-white text-[#2271b1] border border-[#2271b1] px-4 py-1.5 rounded text-[13px]">Save Retention Setting</button>
+                            </div>
+
+                            <hr class="my-5 border-[#c3c4c7]">
+
+                            <p class="text-[#1d2327] mb-2 font-medium text-[13px]">Import / Export</p>
+                            <div class="flex gap-2">
+                                <button class="bg-white border border-[#c3c4c7] px-4 py-1.5 rounded text-[13px]">Download Settings</button>
+                                <button class="bg-white border border-[#c3c4c7] px-4 py-1.5 rounded text-[13px]">Import</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Login Events Tab Content (100% Fake Data) -->
+                    <!-- Login Events Tab -->
                     <div id="tab-events" class="tab-content">
-                        <div class="mb-6 flex justify-between items-center">
+                        <div class="mb-4 flex justify-between items-center">
                             <h3 class="text-[15px] font-semibold text-[#1d2327]">Login Events — Last 300 Entries (5 total) <span class="sample-note font-normal">· sample data</span></h3>
-                            <button class="bg-white border border-[#dc3232] text-[#dc3232] px-3 py-1 rounded text-[12px] hover:bg-[#dc3232] hover:text-white transition-colors">Clear All Events</button>
+                            <button class="bg-white border border-[#dc3232] text-[#dc3232] px-3 py-1 rounded text-[12px]">Clear All</button>
+                        </div>
+
+                        <div class="mb-3 flex gap-2 items-center">
+                            <select class="border border-[#8c8f94] rounded px-2 py-1 text-[12px]">
+                                <option>Bulk Action</option>
+                                <option>Whitelist</option>
+                                <option>Blacklist</option>
+                                <option>Remove</option>
+                            </select>
+                            <button class="bg-white border border-[#c3c4c7] px-3 py-1 rounded text-[12px]">Apply</button>
                         </div>
 
                         <table class="w-full border border-[#c3c4c7] bg-white text-[12px]">
                             <thead class="bg-[#f6f7f7]">
                                 <tr>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[30px]"><input type="checkbox"></th>
                                     <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[50px]">ID</th>
                                     <th class="border-b border-[#c3c4c7] px-3 py-2 text-left">Username</th>
-                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left">Event Time</th>
-                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left">User IP</th>
-                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[200px]">Actions</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left">Time</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left">IP</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[90px]">Status</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[220px]">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="hover:bg-[#f6f7f7]">
+                                <tr>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><input type="checkbox"></td>
                                     <td class="border-b border-[#c3c4c7] px-3 py-2">5</td>
-                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><strong>test_user</strong></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><strong>admin</strong></td>
                                     <td class="border-b border-[#c3c4c7] px-3 py-2">2026-09-03 08:24:15</td>
-                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">192.0.2.1</code> <span class="sample-note">(example)</span></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">192.0.2.1</code> 🇺🇸</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><span class="text-[#46b450]">✅ Success</span></td>
                                     <td class="border-b border-[#c3c4c7] px-3 py-2 space-x-1">
-                                        <button class="bg-white border border-[#2271b1] text-[#2271b1] px-2 py-0.5 rounded text-[11px] hover:bg-[#2271b1] hover:text-white">Whitelist</button>
-                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white">Blacklist</button>
-                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white hover:border-[#dc3232]">Delete</button>
+                                        <button class="bg-white border border-[#46b450] text-[#46b450] px-2 py-0.5 rounded text-[11px]">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px]">Blacklist</button>
+                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px]">Remove</button>
                                     </td>
                                 </tr>
-                                <tr class="hover:bg-[#f6f7f7]">
+                                <tr>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><input type="checkbox"></td>
                                     <td class="border-b border-[#c3c4c7] px-3 py-2">4</td>
-                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><strong>demo_admin</strong></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><strong>editor</strong></td>
                                     <td class="border-b border-[#c3c4c7] px-3 py-2">2026-09-02 16:21:11</td>
-                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">198.51.100.45</code> <span class="sample-note">(example)</span></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">198.51.100.45</code> 🇬🇧</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><span class="text-[#46b450]">✅ Success</span></td>
                                     <td class="border-b border-[#c3c4c7] px-3 py-2 space-x-1">
-                                        <button class="bg-white border border-[#2271b1] text-[#2271b1] px-2 py-0.5 rounded text-[11px] hover:bg-[#2271b1] hover:text-white">Whitelist</button>
-                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white">Blacklist</button>
-                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white hover:border-[#dc3232]">Delete</button>
+                                        <button class="bg-white border border-[#46b450] text-[#46b450] px-2 py-0.5 rounded text-[11px]">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px]">Blacklist</button>
+                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px]">Remove</button>
                                     </td>
                                 </tr>
-                                <tr class="hover:bg-[#f6f7f7]">
+                                <tr>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><input type="checkbox"></td>
                                     <td class="border-b border-[#c3c4c7] px-3 py-2">3</td>
                                     <td class="border-b border-[#c3c4c7] px-3 py-2"><strong>root</strong></td>
                                     <td class="border-b border-[#c3c4c7] px-3 py-2">2026-09-01 22:45:03</td>
-                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">203.0.113.78</code> <span class="sample-note">(example)</span></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">203.0.113.78</code> 🇷🇺</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><span class="text-[#dc3232]">❌ Failed</span></td>
                                     <td class="border-b border-[#c3c4c7] px-3 py-2 space-x-1">
-                                        <button class="bg-white border border-[#2271b1] text-[#2271b1] px-2 py-0.5 rounded text-[11px] hover:bg-[#2271b1] hover:text-white">Whitelist</button>
-                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white">Blacklist</button>
-                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white hover:border-[#dc3232]">Delete</button>
+                                        <button class="bg-white border border-[#46b450] text-[#46b450] px-2 py-0.5 rounded text-[11px]">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px]">Blacklist</button>
+                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px]">Remove</button>
                                     </td>
                                 </tr>
-                                <tr class="hover:bg-[#f6f7f7]">
+                                <tr>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><input type="checkbox"></td>
                                     <td class="border-b border-[#c3c4c7] px-3 py-2">2</td>
-                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><strong>editor</strong></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><strong>admin</strong></td>
                                     <td class="border-b border-[#c3c4c7] px-3 py-2">2026-08-31 12:39:23</td>
-                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">192.0.2.52</code> <span class="sample-note">(example)</span></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">192.0.2.52</code> 🇺🇸</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><span class="text-[#dc3232]">❌ Failed</span></td>
                                     <td class="border-b border-[#c3c4c7] px-3 py-2 space-x-1">
-                                        <button class="bg-white border border-[#2271b1] text-[#2271b1] px-2 py-0.5 rounded text-[11px] hover:bg-[#2271b1] hover:text-white">Whitelist</button>
-                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white">Blacklist</button>
-                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white hover:border-[#dc3232]">Delete</button>
+                                        <button class="bg-white border border-[#46b450] text-[#46b450] px-2 py-0.5 rounded text-[11px]">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px]">Blacklist</button>
+                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px]">Remove</button>
                                     </td>
                                 </tr>
-                                <tr class="hover:bg-[#f6f7f7]">
+                                <tr>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><input type="checkbox"></td>
                                     <td class="border-b border-[#c3c4c7] px-3 py-2">1</td>
-                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><strong>subscriber</strong></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><strong>admin</strong></td>
                                     <td class="border-b border-[#c3c4c7] px-3 py-2">2026-08-31 10:48:29</td>
-                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">198.51.100.52</code> <span class="sample-note">(example)</span></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">198.51.100.52</code> 🇬🇧</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><span class="text-[#46b450]">✅ Success</span></td>
                                     <td class="border-b border-[#c3c4c7] px-3 py-2 space-x-1">
-                                        <button class="bg-white border border-[#2271b1] text-[#2271b1] px-2 py-0.5 rounded text-[11px] hover:bg-[#2271b1] hover:text-white">Whitelist</button>
-                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white">Blacklist</button>
-                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px] hover:bg-[#dc3232] hover:text-white hover:border-[#dc3232]">Delete</button>
+                                        <button class="bg-white border border-[#46b450] text-[#46b450] px-2 py-0.5 rounded text-[11px]">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px]">Blacklist</button>
+                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px]">Remove</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -522,16 +640,275 @@
                                 <span class="px-3 py-1 bg-[#2271b1] text-white rounded border border-[#2271b1]">1</span>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="mt-6 p-3 bg-[#f0f6fc] border-l-4 border-[#72aee6] rounded text-[12px] text-[#50575e]">
-                            <i class="fa-solid fa-info-circle mr-1"></i>
-                            <strong>Note:</strong> The data above is sample data for demonstration purposes. Your actual login events will appear here after activation.
+                    <!-- Current Login Tab -->
+                    <div id="tab-current" class="tab-content">
+                        <div class="mb-4 flex justify-between items-center">
+                            <h3 class="text-[15px] font-semibold text-[#1d2327]">Current Login — 3 online sessions <span class="sample-note font-normal">· sample data</span></h3>
                         </div>
+                        <p class="text-[12px] text-[#50575e] mb-4">Shows users active within the last 30 minutes. Auto-refreshes every 5 minutes.</p>
+
+                        <div class="mb-3 flex gap-2 items-center">
+                            <select class="border border-[#8c8f94] rounded px-2 py-1 text-[12px]">
+                                <option>Bulk Action</option>
+                                <option>Force Logout</option>
+                                <option>Whitelist IP</option>
+                                <option>Blacklist IP</option>
+                            </select>
+                            <button class="bg-white border border-[#c3c4c7] px-3 py-1 rounded text-[12px]">Apply</button>
+                        </div>
+
+                        <table class="w-full border border-[#c3c4c7] bg-white text-[12px]">
+                            <thead class="bg-[#f6f7f7]">
+                                <tr>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[30px]"><input type="checkbox"></th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[40px]">#</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left">Username</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left">Display Name</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[120px]">Role</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[140px]">IP</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[140px]">Last Activity</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[90px]">Status</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[230px]">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><input type="checkbox"></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">1</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><strong>admin</strong></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">Site Administrator</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">administrator</code></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">192.0.2.1</code> 🇺🇸</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">12s ago</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><span class="text-[#46b450] font-bold">🟢 Online</span></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2 space-x-1">
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px]">Logout</button>
+                                        <button class="bg-white border border-[#46b450] text-[#46b450] px-2 py-0.5 rounded text-[11px]">Whitelist</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><input type="checkbox"></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">2</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><strong>editor</strong></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">Jane Editor</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">editor</code></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">198.51.100.45</code> 🇬🇧</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">3m 12s ago</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><span class="text-[#46b450] font-bold">🟢 Online</span></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2 space-x-1">
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px]">Logout</button>
+                                        <button class="bg-white border border-[#46b450] text-[#46b450] px-2 py-0.5 rounded text-[11px]">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px]">Blacklist</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><input type="checkbox"></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">3</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><strong>author1</strong></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">John Author</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">author</code></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">203.0.113.78</code> 🇷🇺</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">18m 4s ago</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><span class="text-[#dba617]">🟡 Away</span></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2 space-x-1">
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px]">Logout</button>
+                                        <button class="bg-white border border-[#46b450] text-[#46b450] px-2 py-0.5 rounded text-[11px]">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px]">Blacklist</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Access Log Tab -->
+                    <div id="tab-access" class="tab-content">
+                        <div class="mb-4 flex justify-between items-center">
+                            <h3 class="text-[15px] font-semibold text-[#1d2327]">Access Log — Last 300 Entries <span class="sample-note font-normal">· sample data</span></h3>
+                            <button class="bg-white border border-[#dc3232] text-[#dc3232] px-3 py-1 rounded text-[12px]">Clear All</button>
+                        </div>
+                        <p class="text-[12px] text-[#50575e] mb-1">Records access attempts to sensitive resources: login, wp-admin, REST API, XML-RPC, and config files.</p>
+                        <p class="text-[12px] text-[#d63638] mb-3"><strong>Note:</strong> An IP is automatically blocked after 3 attack attempts.</p>
+
+                        <div class="mb-3 flex gap-3 items-center text-[12px]">
+                            <a href="#" class="text-[#2271b1] font-semibold">All</a><span class="text-[#c3c4c7]">|</span>
+                            <a href="#" class="text-[#2271b1]">Allowed</a><span class="text-[#c3c4c7]">|</span>
+                            <a href="#" class="text-[#2271b1]">Blocked</a>
+                        </div>
+
+                        <div class="mb-3 flex gap-2 items-center">
+                            <select class="border border-[#8c8f94] rounded px-2 py-1 text-[12px]">
+                                <option>Bulk Action</option>
+                                <option>Whitelist</option>
+                                <option>Blacklist</option>
+                                <option>Remove</option>
+                            </select>
+                            <button class="bg-white border border-[#c3c4c7] px-3 py-1 rounded text-[12px]">Apply</button>
+                        </div>
+
+                        <table class="w-full border border-[#c3c4c7] bg-white text-[11px]">
+                            <thead class="bg-[#f6f7f7]">
+                                <tr>
+                                    <th class="border-b border-[#c3c4c7] px-2 py-2 text-left w-[30px]"><input type="checkbox"></th>
+                                    <th class="border-b border-[#c3c4c7] px-2 py-2 text-left w-[40px]">ID</th>
+                                    <th class="border-b border-[#c3c4c7] px-2 py-2 text-left w-[120px]">Time</th>
+                                    <th class="border-b border-[#c3c4c7] px-2 py-2 text-left w-[120px]">IP</th>
+                                    <th class="border-b border-[#c3c4c7] px-2 py-2 text-left">Target</th>
+                                    <th class="border-b border-[#c3c4c7] px-2 py-2 text-left">Referer</th>
+                                    <th class="border-b border-[#c3c4c7] px-2 py-2 text-left w-[160px]">Reason</th>
+                                    <th class="border-b border-[#c3c4c7] px-2 py-2 text-left w-[80px]">Status</th>
+                                    <th class="border-b border-[#c3c4c7] px-2 py-2 text-left w-[200px]">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-[#fef0f0]">
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2"><input type="checkbox"></td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2">4</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2">2026-09-03 09:14:02</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2"><code class="bg-[#f0f0f1] px-1 py-0.5 rounded">203.0.113.78</code> 🇷🇺</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2">wp-login.php</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2 text-[#888]">(direct access)</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2">Direct login access attempt</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2"><span class="text-[#dc3232]">⛔ Blocked</span></td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2 space-x-1">
+                                        <button class="bg-white border border-[#46b450] text-[#46b450] px-2 py-0.5 rounded">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded">Blacklist</button>
+                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded">Remove</button>
+                                    </td>
+                                </tr>
+                                <tr class="bg-[#fef0f0]">
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2"><input type="checkbox"></td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2">3</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2">2026-09-03 09:13:44</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2"><code class="bg-[#f0f0f1] px-1 py-0.5 rounded">203.0.113.78</code> 🇷🇺</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2">wp-json/wp/v2/users</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2 text-[#888]">(direct access)</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2">User enumeration attempt</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2"><span class="text-[#dc3232]">⛔ Blocked</span></td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2 space-x-1">
+                                        <button class="bg-white border border-[#46b450] text-[#46b450] px-2 py-0.5 rounded">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded">Blacklist</button>
+                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded">Remove</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2"><input type="checkbox"></td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2">2</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2">2026-09-03 08:24:15</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2"><code class="bg-[#f0f0f1] px-1 py-0.5 rounded">192.0.2.1</code> 🇺🇸</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2">my-login</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2 text-[#888]">(direct access)</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2">Login gate opened (auth cookie issued)</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2"><span class="text-[#46b450]">✅ Allowed</span></td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2 space-x-1">
+                                        <button class="bg-white border border-[#46b450] text-[#46b450] px-2 py-0.5 rounded">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded">Blacklist</button>
+                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded">Remove</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2"><input type="checkbox"></td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2">1</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2">2026-09-03 08:23:58</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2"><code class="bg-[#f0f0f1] px-1 py-0.5 rounded">192.0.2.1</code> 🇺🇸</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2">options-general.php?action=save</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2 text-[#888]">https://example.com/wp-admin/</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2">Admin operation: POST options-general.php (user #1, save)</td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2"><span class="text-[#46b450]">✅ Allowed</span></td>
+                                    <td class="border-b border-[#c3c4c7] px-2 py-2 space-x-1">
+                                        <button class="bg-white border border-[#46b450] text-[#46b450] px-2 py-0.5 rounded">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded">Blacklist</button>
+                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded">Remove</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Auto Block List Tab -->
+                    <div id="tab-autoblock" class="tab-content">
+                        <div class="mb-4 flex justify-between items-center">
+                            <h3 class="text-[15px] font-semibold text-[#1d2327]">Auto Block List — Last 300 Entries (3 active) <span class="sample-note font-normal">· sample data</span></h3>
+                            <button class="bg-white border border-[#dc3232] text-[#dc3232] px-3 py-1 rounded text-[12px]">Clear All</button>
+                        </div>
+                        <p class="text-[12px] text-[#50575e] mb-1">Remove = unblock (unless on manual blacklist).</p>
+                        <p class="text-[12px] text-[#d63638] mb-3"><strong>Note:</strong> Auto-blocks expire automatically after 24 hours. An IP that is auto-blocked 3 times is escalated to the permanent Blacklist.</p>
+
+                        <div class="mb-3 flex gap-2 items-center">
+                            <select class="border border-[#8c8f94] rounded px-2 py-1 text-[12px]">
+                                <option>Bulk Action</option>
+                                <option>Whitelist</option>
+                                <option>Blacklist</option>
+                                <option>Remove (Unblock)</option>
+                            </select>
+                            <button class="bg-white border border-[#c3c4c7] px-3 py-1 rounded text-[12px]">Apply</button>
+                        </div>
+
+                        <table class="w-full border border-[#c3c4c7] bg-white text-[12px]">
+                            <thead class="bg-[#f6f7f7]">
+                                <tr>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[30px]"><input type="checkbox"></th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[50px]">#</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[150px]">IP</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left">Reason</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[150px]">Blocked At</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[150px]">Expires At</th>
+                                    <th class="border-b border-[#c3c4c7] px-3 py-2 text-left w-[230px]">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><input type="checkbox"></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">3</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">203.0.113.78</code> 🇷🇺</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">Direct login access attempt</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">2026-09-03 09:14:02</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">2026-09-04 09:14:02</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2 space-x-1">
+                                        <button class="bg-white border border-[#46b450] text-[#46b450] px-2 py-0.5 rounded text-[11px]">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px]">Blacklist</button>
+                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px]">Remove</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><input type="checkbox"></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">2</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">198.51.100.201</code> 🌐</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">User enumeration attempt</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">2026-09-03 07:52:11</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">2026-09-04 07:52:11</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2 space-x-1">
+                                        <button class="bg-white border border-[#46b450] text-[#46b450] px-2 py-0.5 rounded text-[11px]">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px]">Blacklist</button>
+                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px]">Remove</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><input type="checkbox"></td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">1</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2"><code class="bg-[#f0f0f1] px-1.5 py-0.5 rounded text-[11px]">203.0.113.55</code> 🇷🇺</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">Sensitive file access attempt</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">2026-09-02 23:08:45</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2">2026-09-03 23:08:45</td>
+                                    <td class="border-b border-[#c3c4c7] px-3 py-2 space-x-1">
+                                        <button class="bg-white border border-[#46b450] text-[#46b450] px-2 py-0.5 rounded text-[11px]">Whitelist</button>
+                                        <button class="bg-white border border-[#dc3232] text-[#dc3232] px-2 py-0.5 rounded text-[11px]">Blacklist</button>
+                                        <button class="bg-white border border-[#c3c4c7] text-[#50575e] px-2 py-0.5 rounded text-[11px]">Remove</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-6 p-3 bg-[#f0f6fc] border-l-4 border-[#72aee6] text-[12px] text-[#50575e]">
+                        <i class="fa-solid fa-info-circle mr-1"></i>
+                        <strong>Note:</strong> All data above is sample data for demonstration purposes. Your actual logs will appear here after activation.
                     </div>
 
                 </div>
             </div>
-            
+
             <p class="text-center text-slate-500 text-sm mt-8">
                 <i class="fa-solid fa-eye mr-2"></i> A preview of the actual <span class="font-semibold text-white">Jacker Login Guard</span> settings page inside WordPress.
             </p>
@@ -548,22 +925,22 @@
                 <h2 class="text-3xl font-bold text-white mb-4">Why I Built This Plugin</h2>
                 <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
             </div>
-            
+
             <div class="glass-panel p-8 md:p-12 rounded-2xl">
                 <div class="prose prose-invert prose-lg max-w-none">
                     <p class="text-slate-300 leading-relaxed mb-6">
-                        <strong class="text-white">This plugin was born from frustration.</strong> Like many WordPress site owners, 
-                        I was constantly battling brute-force attacks, suspicious login attempts, and bloated security plugins 
-                        that slowed down my site to a crawl.
+                        <strong class="text-white">This plugin was born from frustration.</strong> My site was repeatedly targeted:
+                        hackers kept resetting admin passwords, escalated to mass-creating fake admin accounts,
+                        and finally installed a malicious backdoor plugin to steal data.
                     </p>
                     <p class="text-slate-300 leading-relaxed mb-6">
-                        I needed something <strong class="text-blue-400">lightweight</strong>, 
-                        <strong class="text-blue-400">effective</strong>, and <strong class="text-blue-400">modern</strong> — 
-                        that respects Core Web Vitals and works seamlessly with WordPress 6.3+ Passkeys. 
+                        I needed something <strong class="text-blue-400">lightweight</strong>,
+                        <strong class="text-blue-400">effective</strong>, and <strong class="text-blue-400">modern</strong> —
+                        that respects Core Web Vitals and works seamlessly with WordPress 6.3+ Passkeys.
                         Existing solutions were either too heavy or broke modern authentication features.
                     </p>
                     <p class="text-slate-300 leading-relaxed mb-6">
-                        So I built it myself. No tracking, no upsells, no bloat. Just pure, lightweight security 
+                        So I built it myself. No tracking, no upsells, no bloat. Just pure, lightweight security
                         that does one thing exceptionally well: <strong class="text-white">protecting your login page</strong>.
                     </p>
                     <div class="mt-8 pt-8 border-t border-slate-700">
@@ -582,6 +959,76 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-slate-800/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">
+                    <i class="fa-solid fa-circle-question"></i> FAQ
+                </div>
+                <h2 class="text-3xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="glass-panel rounded-xl overflow-hidden">
+                    <summary class="cursor-pointer p-5 font-semibold text-white hover:text-blue-400 transition-colors">What happens if I forget my Secret Entry URL?</summary>
+                    <div class="px-5 pb-5 text-slate-400 text-sm leading-relaxed">If you have access to your hosting file manager or FTP, rename the plugin folder (e.g., to <code class="text-blue-300">jacker-login-guard-disabled</code>) to temporarily disable it, then log in via the standard <code class="text-blue-300">wp-login.php</code>. Once logged in, reactivate the plugin and check the settings.</div>
+                </details>
+                <details class="glass-panel rounded-xl overflow-hidden">
+                    <summary class="cursor-pointer p-5 font-semibold text-white hover:text-blue-400 transition-colors">Does this plugin support Passkeys and 2FA?</summary>
+                    <div class="px-5 pb-5 text-slate-400 text-sm leading-relaxed">Yes. Our signed cookie mechanism is designed to be fully compatible with WordPress 6.3+ Passkeys and popular 2FA plugins. It does not interfere with the authentication flow.</div>
+                </details>
+                <details class="glass-panel rounded-xl overflow-hidden">
+                    <summary class="cursor-pointer p-5 font-semibold text-white hover:text-blue-400 transition-colors">Will this slow down my website?</summary>
+                    <div class="px-5 pb-5 text-slate-400 text-sm leading-relaxed">No. The plugin uses extremely lightweight PHP hooks and object caching. It does not load any heavy scripts or stylesheets on your frontend pages.</div>
+                </details>
+                <details class="glass-panel rounded-xl overflow-hidden">
+                    <summary class="cursor-pointer p-5 font-semibold text-white hover:text-blue-400 transition-colors">Does this plugin support multisite?</summary>
+                    <div class="px-5 pb-5 text-slate-400 text-sm leading-relaxed">Yes. However, settings are managed per-site, not network-wide.</div>
+                </details>
+                <details class="glass-panel rounded-xl overflow-hidden">
+                    <summary class="cursor-pointer p-5 font-semibold text-white hover:text-blue-400 transition-colors">How does the Attack Detection work?</summary>
+                    <div class="px-5 pb-5 text-slate-400 text-sm leading-relaxed">The plugin automatically detects suspicious User-Agent strings, empty or short User-Agents, encoded malicious content (SQL injection, XSS, command injection), invalid request methods, and high-frequency requests (120+ per minute). Detected attacks are counted. After the configured number of attempts, the IP is auto-blocked.</div>
+                </details>
+                <details class="glass-panel rounded-xl overflow-hidden">
+                    <summary class="cursor-pointer p-5 font-semibold text-white hover:text-blue-400 transition-colors">How does auto-unblock work?</summary>
+                    <div class="px-5 pb-5 text-slate-400 text-sm leading-relaxed">Auto-blocks expire after the configured duration. Once expired, the IP is automatically unbanned.</div>
+                </details>
+                <details class="glass-panel rounded-xl overflow-hidden">
+                    <summary class="cursor-pointer p-5 font-semibold text-white hover:text-blue-400 transition-colors">How does escalation work?</summary>
+                    <div class="px-5 pb-5 text-slate-400 text-sm leading-relaxed">Every auto-block cycle is counted. When the count reaches the configured threshold, the IP is added to the permanent blacklist, which never expires unless manually removed.</div>
+                </details>
+                <details class="glass-panel rounded-xl overflow-hidden">
+                    <summary class="cursor-pointer p-5 font-semibold text-white hover:text-blue-400 transition-colors">What is the Trusted IP Window?</summary>
+                    <div class="px-5 pb-5 text-slate-400 text-sm leading-relaxed">After a successful login, the same IP is protected from auto-blocking for a configurable number of days. This prevents the admin from accidentally blocking themselves when their session expires.</div>
+                </details>
+                <details class="glass-panel rounded-xl overflow-hidden">
+                    <summary class="cursor-pointer p-5 font-semibold text-white hover:text-blue-400 transition-colors">What is the API Whitelist for?</summary>
+                    <div class="px-5 pb-5 text-slate-400 text-sm leading-relaxed">By default, all REST API endpoints are blocked. If you use plugins like Jetpack, WooCommerce, or custom APIs, add their endpoint paths to the whitelist. Example: <code class="text-blue-300">/wp-json/jetpack/v4/</code>, <code class="text-blue-300">/wp-json/woocommerce/v1/</code>.</div>
+                </details>
+                <details class="glass-panel rounded-xl overflow-hidden">
+                    <summary class="cursor-pointer p-5 font-semibold text-white hover:text-blue-400 transition-colors">What is the Access Log?</summary>
+                    <div class="px-5 pb-5 text-slate-400 text-sm leading-relaxed">The Access Log records requests to sensitive resources: login page attempts (allowed and blocked), wp-admin access attempts, REST API calls (whitelisted endpoints), XML-RPC requests, and configuration file access attempts. Each entry shows the target path, the referer, and whether it was allowed or blocked. Normal page views (homepage, posts, categories) are NOT logged.</div>
+                </details>
+                <details class="glass-panel rounded-xl overflow-hidden">
+                    <summary class="cursor-pointer p-5 font-semibold text-white hover:text-blue-400 transition-colors">Which IP formats are supported?</summary>
+                    <div class="px-5 pb-5 text-slate-400 text-sm leading-relaxed">
+                        Whitelist and Blacklist accept one entry per line:
+                        <ul class="list-disc list-inside mt-2 space-y-1">
+                            <li>Single IPv4 — <code class="text-blue-300">192.168.1.100</code></li>
+                            <li>Single IPv6 — <code class="text-blue-300">2001:db8::1</code></li>
+                            <li>IPv4 CIDR — <code class="text-blue-300">192.168.1.0/24</code></li>
+                            <li>IPv6 CIDR — <code class="text-blue-300">2001:db8::/32</code></li>
+                            <li>IPv4 range — <code class="text-blue-300">192.168.1.10-192.168.1.50</code></li>
+                            <li>IPv6 range — <code class="text-blue-300">2001:db8::1-2001:db8::ffff</code></li>
+                            <li>Inline comment — <code class="text-blue-300">192.168.1.100 # My Office</code></li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
     <!-- Pro Version Coming Soon -->
     <section id="pro" class="py-20 bg-gradient-to-b from-slate-800 to-slate-900">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -592,7 +1039,7 @@
                 </div>
                 <h2 class="text-3xl font-bold text-white mb-4">Pro Version (In Development)</h2>
                 <p class="text-slate-400 max-w-2xl mx-auto">
-                    Based on user feedback, I'm working on advanced features for those who need 
+                    Based on user feedback, I'm working on advanced features for those who need
                     enterprise-grade login protection.
                 </p>
             </div>
@@ -607,7 +1054,7 @@
                 <div class="glass-panel p-6 rounded-xl hover:border-blue-500/30 transition-colors">
                     <h3 class="text-white font-bold mb-3 flex items-center gap-3">
                         <div class="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center"><i class="fa-solid fa-fingerprint text-blue-400"></i></div>
-                        Forced 2FA/Passkey
+                        Forced 2FA / Passkey
                     </h3>
                     <p class="text-slate-400 text-sm">Disable password login for Administrators entirely. Force biometric or TOTP authentication only.</p>
                 </div>
@@ -616,7 +1063,7 @@
                         <div class="w-10 h-10 bg-green-500/10 rounded-lg flex items-center justify-center"><i class="fa-solid fa-globe text-green-400"></i></div>
                         Country Blocking
                     </h3>
-                    <p class="text-slate-400 text-sm">Block login attempts from specific countries using GeoIP database. Perfect for region-specific businesses.</p>
+                    <p class="text-slate-400 text-sm">Block login attempts from specific countries using GeoIP. Perfect for region-specific businesses.</p>
                 </div>
                 <div class="glass-panel p-6 rounded-xl hover:border-yellow-500/30 transition-colors">
                     <h3 class="text-white font-bold mb-3 flex items-center gap-3">
@@ -624,13 +1071,6 @@
                         Real-time Alerts
                     </h3>
                     <p class="text-slate-400 text-sm">Email notifications for suspicious login attempts, failed authentications, and security events.</p>
-                </div>
-                <div class="glass-panel p-6 rounded-xl hover:border-purple-500/30 transition-colors">
-                    <h3 class="text-white font-bold mb-3 flex items-center gap-3">
-                        <div class="w-10 h-10 bg-purple-500/10 rounded-lg flex items-center justify-center"><i class="fa-solid fa-database text-purple-400"></i></div>
-                        Unlimited Logs
-                    </h3>
-                    <p class="text-slate-400 text-sm">Store unlimited login events with advanced filtering, search, and export capabilities.</p>
                 </div>
                 <div class="glass-panel p-6 rounded-xl hover:border-cyan-500/30 transition-colors">
                     <h3 class="text-white font-bold mb-3 flex items-center gap-3">
@@ -642,7 +1082,7 @@
             </div>
             <div class="mt-10 text-center">
                 <p class="text-slate-400 mb-4">
-                    <strong class="text-white">Want to influence Pro development?</strong> 
+                    <strong class="text-white">Want to influence Pro development?</strong>
                     Your feedback shapes the roadmap.
                 </p>
                 <a href="mailto:support@jackerteo.com" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors font-medium">
@@ -662,9 +1102,9 @@
                 </div>
                 <h2 class="text-3xl font-bold text-white mb-4">Support Independent Development</h2>
                 <p class="text-slate-300 mb-8 leading-relaxed">
-                    This plugin is built, maintained, and supported by an independent developer. 
-                    There are no premium upsells, no tracking, and no bloat. 
-                    If this plugin has saved your website from attacks or saved you hours of debugging, 
+                    This plugin is built, maintained, and supported by an independent developer.
+                    There are no premium upsells, no tracking, and no bloat.
+                    If this plugin has saved your website from attacks or saved you hours of debugging,
                     consider buying me a coffee to keep the development going!
                 </p>
 
@@ -679,9 +1119,9 @@
                         </div>
                     </div>
                     <div class="relative group">
-                        <input type="text" readonly value="EHHPsci6pKbfL71t73KNCXrtanM1TWPrWYJZ1ik1b5FH" 
+                        <input type="text" readonly value="EHHPsci6pKbfL71t73KNCXrtanM1TWPrWYJZ1ik1b5FH"
                                class="w-full bg-slate-800 text-slate-300 text-sm font-mono p-4 rounded-lg border border-slate-600 focus:outline-none focus:border-yellow-500 transition-colors pr-12">
-                        <button onclick="copyToClipboard('EHHPsci6pKbfL71t73KNCXrtanM1TWPrWYJZ1ik1b5FH')" 
+                        <button onclick="copyToClipboard('EHHPsci6pKbfL71t73KNCXrtanM1TWPrWYJZ1ik1b5FH')"
                                 class="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-700 hover:bg-yellow-600 text-white p-2 rounded-md transition-all" title="Copy Address">
                             <i class="fa-regular fa-copy"></i>
                         </button>
@@ -690,7 +1130,7 @@
                         <i class="fa-solid fa-check"></i> Address copied to clipboard!
                     </p>
                 </div>
-                
+
                 <div class="mt-6 flex flex-col sm:flex-row justify-center items-center gap-4 text-sm text-slate-400">
                     <span>Check out the full source code:</span>
                     <a href="https://github.com/JackerArchitect/jacker-login-guard" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold flex items-center gap-1">
@@ -726,7 +1166,6 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
@@ -749,7 +1188,7 @@
                 el.classList.add('bg-transparent', 'border-transparent');
                 el.classList.remove('border-[#c3c4c7]', 'border-b-white');
             });
-            
+
             document.getElementById('tab-' + tabName).classList.add('active');
             btn.classList.add('active', 'border-[#c3c4c7]', 'border-b-white');
             btn.classList.remove('bg-transparent', 'border-transparent');
@@ -760,10 +1199,9 @@
             const bar1 = document.getElementById('bar1');
             const bar2 = document.getElementById('bar2');
             const bar3 = document.getElementById('bar3');
-            
+
             menu.classList.toggle('open');
-            
-            // Hamburger to X animation
+
             if (menu.classList.contains('open')) {
                 bar1.classList.add('rotate-45', 'translate-y-2');
                 bar2.classList.add('opacity-0');
@@ -780,7 +1218,7 @@
             const bar1 = document.getElementById('bar1');
             const bar2 = document.getElementById('bar2');
             const bar3 = document.getElementById('bar3');
-            
+
             if (menu.classList.contains('open')) {
                 menu.classList.remove('open');
                 bar1.classList.remove('rotate-45', 'translate-y-2');
@@ -789,18 +1227,15 @@
             }
         }
 
-        // Close mobile menu when clicking outside
         document.addEventListener('click', function(event) {
             const nav = document.querySelector('nav');
             const menu = document.getElementById('mobile-menu');
-            const toggle = document.querySelector('.menu-icon');
-            
+
             if (menu.classList.contains('open') && !nav.contains(event.target)) {
                 closeMobileMenu();
             }
         });
 
-        // Close mobile menu on window resize (back to desktop)
         window.addEventListener('resize', function() {
             if (window.innerWidth >= 768) {
                 closeMobileMenu();
